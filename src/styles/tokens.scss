@@ -1,0 +1,201 @@
+/* [🌐] Global Tokens */
+
+/* --- Colors --- */
+
+/* -> Neutrals */
+$color-neutral-100: #fcfcfc;
+$color-neutral-200: #f0f0f0;
+$color-neutral-300: #5c5c5c;
+$color-neutral-400: #444444;
+$color-neutral-500: #2c2c2c;
+$color-neutral-600: #101010;
+$color-neutral-700: #141414;
+
+/* -> Primary */
+$color-primary-100: #2060df;
+$color-primary-200: #9098d8;
+
+/* -> Secondary */
+$color-secondary-purple: #9147ff;
+$color-secondary-cyan: #00f0f0;
+
+/* -> Gradients */
+$color-gradient-detail: linear-gradient(
+  229deg,
+  $color-secondary-cyan 27.77%,
+  $color-secondary-purple 101.52%
+);
+$color-gradient-light-theme: linear-gradient(
+  225deg,
+  $color-primary-100 -9.83%,
+  $color-secondary-cyan 102.1%
+);
+$color-gradient-dark-theme: linear-gradient(
+  221deg,
+  #2060df -21.86%,
+  #9147ff 100.66%
+);
+$color-gradient-background: linear-gradient(
+  288deg,
+  $color-neutral-600 14.41%,
+  $color-neutral-700 93.36%
+);
+
+/* -> Auxiliaries */
+$color-mint: #5cffbe;
+
+/* -> Status */
+$color-danger-100: #f47b7b;
+$color-danger-200: #d22d2d;
+$color-success-100: #54c985;
+$color-success-200: #008f3b;
+
+/* Statics */
+$color-white: #ffffff;
+$color-black: #000000;
+$color-transparent: transparent;
+
+/* [🎨] Semantic Tokens */
+
+/* --- Colors --- */
+
+/* Background */
+$color-background-light: $color-neutral-100;
+$color-background-dark: $color-neutral-600;
+$color-background-gradient: $color-gradient-background;
+$color-background-field: $color-neutral-200;
+$color-background-on-dark: $color-neutral-700;
+$color-background-featured: $color-gradient-dark-theme;
+
+/* Texts */
+$color-text-title-light: $color-white;
+$color-text-title-dark: $color-neutral-700;
+$color-text-body-light: $color-neutral-600;
+$color-text-body-dark: $color-neutral-100;
+$color-text-label: $color-neutral-300;
+$color-text-featured-light: $color-gradient-dark-theme;
+$color-text-featured-dark: $color-gradient-light-theme;
+$color-text-label: $color-neutral-500;
+$color-text-placeholder: $color-neutral-400;
+$color-text-caption: $color-primary-100;
+
+/* --- Typography --- */
+$font-heading-1: (
+  font-family: 'Heebo-Bold',
+  font-size: 48px,
+  font-weight: 700,
+  line-height: 133%,
+);
+
+$font-heading-2: (
+  font-family: 'Heebo-Bold',
+  font-size: 40px,
+  font-weight: 700,
+  line-height: 133%,
+);
+
+$font-heading-3: (
+  font-family: 'Heebo-Bold',
+  font-size: 32px,
+  font-weight: 700,
+  line-height: 133%,
+);
+
+$font-heading-4: (
+  font-family: 'Heebo-Bold',
+  font-size: 24px,
+  font-weight: 700,
+  line-height: 133%,
+);
+
+$font-reviews: (
+  font-family: 'Heebo-Bold',
+  font-size: 24px,
+  font-weight: 700,
+  line-height: 133%,
+);
+
+$font-intro: (
+  font-family: 'Inter-Regular',
+  font-size: 20px,
+  font-weight: 400,
+  line-height: 150%,
+);
+
+$font-intro-highlight: (
+  font-family: 'Inter-SemiBold',
+  font-size: 20px,
+  font-weight: 600,
+  line-height: 150%,
+);
+
+$font-blog: (
+  font-family: 'Inter-Regular',
+  font-size: 20px,
+  font-weight: 400,
+  line-height: 200%,
+);
+
+$font-extended-large: (
+  font-family: 'Inter-Regular',
+  font-size: 18px,
+  font-weight: 400,
+  line-height: 180%,
+);
+
+$font-extended-medium: (
+  font-family: 'Inter-Regular',
+  font-size: 16px,
+  font-weight: 400,
+  line-height: 180%,
+);
+
+$font-extended-small: (
+  font-family: 'Inter-Regular',
+  font-size: 14px,
+  font-weight: 400,
+  line-height: 180%,
+);
+
+$font-body: (
+  font-family: 'Inter-Regular',
+  font-size: 16px,
+  font-weight: 400,
+  line-height: 150%,
+);
+
+$font-label: (
+  font-family: 'Inter-SemiBold',
+  font-size: 16px,
+  font-weight: 600,
+  line-height: 24px,
+);
+
+$font-small: (
+  font-family: 'Inter-SemiBold',
+  font-size: 14px,
+  font-weight: 600,
+  line-height: 100%,
+);
+
+$font-caption: (
+  font-family: 'Inter-SemiBold',
+  font-size: 14px,
+  font-weight: 600,
+  line-height: 100%,
+  text-transform: uppercase,
+);
+
+/* [📍] Contextual Tokens */
+
+/* --- Borders --- */
+$color-border-on-light: rgba(68, 68, 68, 0.12);
+$color-border-on-dark: rgba(252, 252, 252, 0.12);
+
+/* --- Icons --- */
+$color-icon-highlight: $color-primary-200;
+$color-icon-featured: $color-gradient-dark-theme;
+$color-icon-on-text: $color-gradient-light-theme;
+
+/* --- Interactions --- */
+$color-focus: $color-primary-100;

@@ -1,0 +1,55 @@
+/* [🗒️] Website Fonts */
+@font-face {
+  font-family: 'Inter-Regular';
+  src:
+    url('/fonts/Inter18pt-Regular.woff2') format('woff2'),
+    url('/fonts/Inter18pt-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Inter-SemiBold';
+  src:
+    url('/fonts/Inter18pt-SemiBold.woff2') format('woff2'),
+    url('/fonts/Inter18pt-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Heebo-SemiBold';
+  src:
+    url('/fonts/Heebo-SemiBold.woff2') format('woff2'),
+    url('/fonts/Heebo-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Heebo-Bold';
+  src:
+    url('/fonts/Heebo-Bold.woff2') format('woff2'),
+    url('/fonts/Heebo-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* [🗺️] Global Settings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Heebo-Bold';
+}
+
+body {
+  font-family: 'Inter-Regular';
+}
+
+:focus {
+  outline: 2px solid $color-focus;
+  outline-offset: 2px;
+}

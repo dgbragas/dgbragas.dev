@@ -1,0 +1,32 @@
+---
+import LayoutProvider from '../providers/LayoutProvider.astro';
+import StylesProvider from '../providers/StylesProvider.astro';
+
+const layoutProps = {
+  title: '',
+  description: '',
+  url: 'https://dgbragas.dev/blog/',
+  image: '',
+  publishedTime: '',
+  modifiedTime: '',
+  type: 'article',
+};
+---
+
+<LayoutProvider {...layoutProps}>
+  <Fragment slot='meta'>
+    <meta
+      property='article:published_time'
+      content={layoutProps.publishedTime}
+    />
+    <meta property='article:modified_time' content={layoutProps.modifiedTime} />
+    <meta property='article:author' content="Diego 'Dg' Braga" />
+  </Fragment>
+
+  <StylesProvider>
+    <article>
+      <h1>{layoutProps.title}</h1>
+      <p>Content</p>
+    </article>
+  </StylesProvider>
+</LayoutProvider>

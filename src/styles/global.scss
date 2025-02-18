@@ -1,3 +1,5 @@
+@use './tokens.scss' as *;
+
 /* [🗒️] Website Fonts */
 @font-face {
   font-family: 'Inter-Regular';
@@ -52,4 +54,6 @@ body {
 :focus {
   outline: 2px solid $color-focus;
   outline-offset: 2px;
+
+  background: red;
 }

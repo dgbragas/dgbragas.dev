@@ -1,0 +1,43 @@
+@use '@/styles/mixins.scss';
+@use '@/styles/tokens.scss';
+
+.button {
+  background-color: $color-primary-100;
+  border-radius: 4px;
+  color: $color-white;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 100%;
+  height: 56px;
+  padding-inline: 16px;
+  position: relative;
+  width: fit-content;
+  transition: all 0.5s;
+
+  &::after {
+    content: '';
+    left: -4px;
+    position: absolute;
+    top: -4px;
+
+    background-color: rgba(32, 96, 233, 0.16);
+    border-radius: 4px;
+    height: calc(100% + 8px);
+    opacity: 0;
+    width: calc(100% + 8px);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+
+  &__icon {
+    margin-right: 4px;
+  }
+
+  &:focus {
+    background: $color-primary-200;
+  }
+}

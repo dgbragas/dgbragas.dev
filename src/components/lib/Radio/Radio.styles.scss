@@ -1,0 +1,55 @@
+@use '@/styles/tokens.scss';
+@use '@/styles/mixins.scss' as *;
+
+.radio {
+  display: flex;
+  gap: 12px;
+
+  color: $color-neutral-700;
+  @include apply-map($font-body);
+
+  &:focus {
+    background: transparent;
+  }
+
+  &__indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    width: 100%;
+    height: 100%;
+
+    &::after {
+      content: '';
+      background: $color-primary-100;
+      border-radius: 50%;
+      height: 10px;
+      width: 10px;
+    }
+  }
+
+  &__group {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+
+    &__item {
+      background: transparent;
+      border: 1px solid $color-primary-100;
+      border-radius: 40px;
+      height: 22px;
+      width: 22px;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background: $color-primary-200;
+      }
+    }
+
+    &__label {
+      cursor: pointer;
+    }
+  }
+}

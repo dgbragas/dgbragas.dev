@@ -1,0 +1,41 @@
+@use '@/styles/mixins.scss' as *;
+@use '@/styles/tokens.scss';
+
+.input-text {
+  @include apply-map($font-body);
+  border: 0;
+  background: transparent;
+  height: 100%;
+  padding-top: 16px;
+  padding-inline: 20px;
+  width: 100%;
+
+  &:focus + label,
+  &:not(:placeholder-shown) + label {
+    font-size: 14px;
+    line-height: 100%;
+    top: 20px;
+    left: 20px;
+    transition: all 0.24s ease;
+  }
+
+  &:focus {
+    background: transparent;
+  }
+
+  &__group {
+    background-color: $color-neutral-200;
+    border-radius: 8px;
+    height: 64px;
+    position: relative;
+  }
+
+  &__label {
+    @include apply-map($font-body);
+    color: $color-text-placeholder;
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+  }
+}

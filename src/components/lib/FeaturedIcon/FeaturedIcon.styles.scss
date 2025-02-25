@@ -1,0 +1,27 @@
+.featured-icon {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+
+  border: 1.5px solid;
+  border-radius: 20px;
+  height: 40px;
+  padding: 8px;
+  width: 40px;
+
+  &:hover {
+    color: $color-primary-200;
+    border-color: $color-primary-200;
+    transition: all 0.24s ease;
+  }
+
+  &--on-dark {
+    border-color: $color-border-on-dark;
+    color: $color-neutral-200;
+  }
+
+  &--on-light {
+    border-color: $color-border-on-light;
+    color: $color-neutral-400;
+  }
+}

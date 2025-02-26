@@ -1,0 +1,40 @@
+@use '@/styles/mixins.scss' as *;
+
+.testimony-slider {
+  overflow: hidden;
+
+  &__container {
+    display: flex;
+  }
+
+  &__slide {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &__content {
+      align-items: center;
+      flex-direction: column;
+      display: flex;
+      text-align: center;
+
+      margin-top: 16px;
+
+      h3 {
+        @include apply-map($font-reviews);
+        color: $color-neutral-600;
+      }
+
+      span {
+        @include apply-map($font-intro-highlight);
+        color: $color-neutral-500;
+      }
+
+      small {
+        @include apply-map($font-body);
+        color: $color-neutral-300;
+      }
+    }
+  }
+}

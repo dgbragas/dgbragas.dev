@@ -4,27 +4,19 @@ import useEmblaCarousel from 'embla-carousel-react';
 
 import QuoteIcon from '@/assets/icons/quote.svg?raw';
 
-import './TestimonySlider.styles.scss';
 import { useSliderDot, type EmblaType } from './TestimonySlider.hook';
+import { TestimonySliderDot } from './components';
+import './TestimonySlider.styles.scss';
 
-type TestimonySliderDot = {
-  onClick: VoidFunction;
-  selected: boolean;
+type TestimonySlider = {
+  testimonies: Array<{
+    content: string;
+    author: string;
+    description: string;
+  }>;
 };
 
-const TestimonySliderDot = ({ onClick, selected }: TestimonySliderDot) => (
-  <button
-    className={
-      selected
-        ? `testimony-slider__navigation__dot--selected`
-        : `testimony-slider__navigation__dot`
-    }
-    onClick={onClick}
-    type='button'
-  />
-);
-
-const TestimonySlider = () => {
+const TestimonySlider = ({ testimonies }: TestimonySlider) => {
   const [emblaRef, emblaAPI] = useEmblaCarousel();
   const { currentIndex, onDotButtonClick, scrollSnaps } = useSliderDot(
     emblaAPI as EmblaType,
@@ -33,28 +25,16 @@ const TestimonySlider = () => {
   return (
     <div className='testimony-slider' ref={emblaRef}>
       <div className='testimony-slider__container'>
-        <div className='testimony-slider__slide'>
-          <span aria-hidden dangerouslySetInnerHTML={{ __html: QuoteIcon }} />
-          <div className='testimony-slider__slide__content'>
-            <h3>
-              Gostei muito do novo portfólio, de verdade. Achei incrível o
-              trabalho, gostei muito. Recomendo muito, ficou monstro!
-            </h3>
-            <span>Danilo</span>
-            <small>Avaliação pós-entrega</small>
+        {testimonies.map(({ author, content, description }) => (
+          <div className='testimony-slider__slide'>
+            <span aria-hidden dangerouslySetInnerHTML={{ __html: QuoteIcon }} />
+            <div className='testimony-slider__slide__content'>
+              <h3>{content}</h3>
+              <span>{author}</span>
+              <small>{description}</small>
+            </div>
           </div>
-        </div>
-        <div className='testimony-slider__slide'>
-          <span aria-hidden dangerouslySetInnerHTML={{ __html: QuoteIcon }} />
-          <div className='testimony-slider__slide__content'>
-            <h3>
-              Gostei muito do novo portfólio, de verdade. Achei incrível o
-              trabalho, gostei muito. Recomendo muito, ficou monstro!
-            </h3>
-            <span>Danilo</span>
-            <small>Avaliação pós-entrega</small>
-          </div>
-        </div>
+        ))}
       </div>
 
       <div className='testimony-slider__navigation'>

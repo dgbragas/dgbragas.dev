@@ -1,3 +1,5 @@
+import './Text.styles.scss';
+
 type Headings = 'h1' | 'h2' | 'h3' | 'h4';
 type Bodies = 'span' | 'small' | 'p';
 type Variants =
@@ -19,8 +21,8 @@ type Variants =
 
 type TextProps = {
   children: React.ReactNode;
-  element: Headings | Bodies;
-  variant: Variants;
+  element?: Headings | Bodies;
+  variant?: Variants;
 };
 
 const Text = ({ children, element = 'span', variant = 'body' }: TextProps) => {

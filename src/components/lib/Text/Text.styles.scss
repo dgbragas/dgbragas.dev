@@ -1,0 +1,49 @@
+@use '@/styles/mixins.scss' as *;
+
+.text {
+  &--heading-1 {
+    @include apply-map($font-heading-1);
+  }
+  &--heading-2 {
+    @include apply-map($font-heading-2);
+  }
+  &--heading-3 {
+    @include apply-map($font-heading-3);
+  }
+  &--heading-4 {
+    @include apply-map($font-heading-4);
+  }
+  &--reviews {
+    @include apply-map($font-reviews);
+  }
+  &--intro {
+    @include apply-map($font-intro);
+  }
+  &--intro-highlight {
+    @include apply-map($font-intro-highlight);
+  }
+  &--blog {
+    @include apply-map($font-blog);
+  }
+  &--extended-large {
+    @include apply-map($font-extended-large);
+  }
+  &--extended-medium {
+    @include apply-map($font-extended-medium);
+  }
+  &--extended-small {
+    @include apply-map($font-extended-small);
+  }
+  &--body {
+    @include apply-map($font-body);
+  }
+  &--label {
+    @include apply-map($font-label);
+  }
+  &--small {
+    @include apply-map($font-small);
+  }
+  &--caption {
+    @include apply-map($font-caption);
+  }
+}

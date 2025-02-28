@@ -3,18 +3,22 @@ import { Toggle } from 'radix-ui';
 import './ToggleButton.styles.scss';
 
 type ToggleButtonProps = {
+  ariaLabel: string;
+  children: React.ReactNode;
   variant?: 'expanded' | 'compact';
 };
 
-const ToggleButton = ({ variant = 'compact' }: ToggleButtonProps) => {
-  return (
-    <Toggle.Root
-      aria-label='Toggle'
-      className={`toggle-button toggle-button--${variant}`}
-    >
-      Hii
-    </Toggle.Root>
-  );
-};
+const ToggleButton = ({
+  ariaLabel,
+  children,
+  variant = 'compact',
+}: ToggleButtonProps) => (
+  <Toggle.Root
+    aria-label={ariaLabel}
+    className={`toggle-button toggle-button--${variant}`}
+  >
+    {children}
+  </Toggle.Root>
+);
 
 export { ToggleButton };

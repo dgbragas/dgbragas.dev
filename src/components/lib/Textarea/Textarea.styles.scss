@@ -1,0 +1,48 @@
+@use '@/styles/mixins.scss' as *;
+body {
+  padding: 64px;
+}
+.textarea {
+  @include apply-map($font-body);
+  border: 0;
+  border-radius: 8px;
+  background: $color-neutral-200;
+  min-height: 64px;
+  height: 64px;
+  padding: 20px 20px;
+  min-width: 100%;
+
+  &:focus {
+    background: $color-neutral-200;
+  }
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+
+  &[aria-invalid='true'] {
+    box-shadow: 0 0 0 2px $color-danger-200;
+  }
+
+  &__label {
+    display: none;
+  }
+
+  &__description {
+    align-items: flex-end;
+    display: flex;
+    margin-top: -9px;
+    margin-left: 16px;
+
+    small {
+      color: $color-neutral-300;
+      margin-bottom: 4px;
+      margin-left: 4px;
+    }
+  }
+
+  &__error {
+    color: $color-danger-200;
+    margin-left: 12px;
+  }
+}

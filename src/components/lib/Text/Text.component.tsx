@@ -20,15 +20,23 @@ type Variants =
   | 'caption';
 
 type TextProps = {
+  className?: string;
   children: React.ReactNode;
   element?: Headings | Bodies;
   variant?: Variants;
 };
 
-const Text = ({ children, element = 'span', variant = 'body' }: TextProps) => {
+const Text = ({
+  className,
+  children,
+  element = 'span',
+  variant = 'body',
+}: TextProps) => {
   const DOMElement = element;
   return (
-    <DOMElement className={`text text--${variant}`}>{children}</DOMElement>
+    <DOMElement className={`text text--${variant} ${className}`.trim()}>
+      {children}
+    </DOMElement>
   );
 };
 

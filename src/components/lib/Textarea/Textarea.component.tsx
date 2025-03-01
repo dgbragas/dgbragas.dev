@@ -36,8 +36,8 @@ const Textarea = ({
 
     {!error && description && (
       <div className='textarea__description'>
-        <span dangerouslySetInnerHTML={{ __html: DetailIcon }} />
-        <small>Hello World</small>
+        <span aria-hidden dangerouslySetInnerHTML={{ __html: DetailIcon }} />
+        <small>{description}</small>
       </div>
     )}
 

@@ -3,11 +3,13 @@
 
 .input-text {
   @include apply-map($font-body);
-  border: 0;
   background: transparent;
+  border: 0;
+  border-radius: 8px;
   height: 100%;
   padding-top: 16px;
   padding-inline: 20px;
+  overflow: hidden;
   width: 100%;
 
   &:focus + label,
@@ -23,9 +25,12 @@
     background: transparent;
   }
 
+  &[aria-invalid='true'] {
+    box-shadow: 0 0 0 2px $color-danger-200;
+  }
+
   &__group {
     background-color: $color-neutral-200;
-    border-radius: 8px;
     height: 64px;
     position: relative;
   }
@@ -37,5 +42,10 @@
     top: 50%;
     left: 1rem;
     transform: translateY(-50%);
+  }
+
+  &__error {
+    color: $color-danger-200;
+    margin-left: 12px;
   }
 }

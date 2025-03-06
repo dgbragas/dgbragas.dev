@@ -44,10 +44,12 @@ h3,
 h4,
 h5,
 h6 {
+  color: $color-neutral-700;
   font-family: 'Heebo-Bold';
 }
 
 body {
+  color: $color-neutral-300;
   font-family: 'Inter-Regular';
 }
 

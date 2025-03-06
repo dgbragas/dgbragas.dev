@@ -1,7 +1,5 @@
 @use '@/styles/mixins.scss' as *;
-body {
-  padding: 64px;
-}
+
 .textarea {
   @include apply-map($font-body);
   border: 0;

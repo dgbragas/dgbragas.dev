@@ -34,7 +34,7 @@ const Text = ({
 }: TextProps) => {
   const DOMElement = element;
   return (
-    <DOMElement className={`text text--${variant} ${className}`.trim()}>
+    <DOMElement className={`text text--${variant} ${className ?? ''}`.trim()}>
       {children}
     </DOMElement>
   );

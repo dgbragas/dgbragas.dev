@@ -1,6 +1,7 @@
 @use '@/styles/mixins.scss' as *;
 
 .text {
+  /* [🎛️] Variants */
   &--heading-1 {
     @include apply-map($font-heading-1);
   }

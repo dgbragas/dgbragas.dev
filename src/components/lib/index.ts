@@ -5,6 +5,7 @@ export * from './FeaturedIcon';
 export * from './InputText';
 export * from './MediaObject';
 export * from './Radio';
+export * from './Tag';
 export * from './Text';
 export * from './Textarea';
 export * from './ToggleButton';

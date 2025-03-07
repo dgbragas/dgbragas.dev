@@ -1,0 +1,45 @@
+.tag {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  border-radius: 999px;
+  width: fit-content;
+
+  /* [🔍️] Sizes */
+  &--small {
+    height: 24px;
+    padding-inline: 8px;
+  }
+
+  &--medium {
+    height: 32px;
+    padding-inline: 12px;
+  }
+
+  /* [🎛️] Variants */
+  &--filled {
+    background: $color-gradient-dark-theme;
+    color: $color-neutral-100;
+  }
+
+  &--outline {
+    box-shadow: 0 0 0 1px $color-border-on-light;
+    color: $color-neutral-300;
+  }
+
+  &__remove {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    border-radius: 2px;
+    margin-bottom: 2px;
+    padding-inline: 4px;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.24);
+    }
+  }
+}

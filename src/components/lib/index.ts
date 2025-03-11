@@ -1,6 +1,7 @@
 export * from './AnnouncementBar';
 export * from './Button';
 export * from './CardPortfolio';
+export * from './CardPost';
 export * from './Container';
 export * from './FeaturedIcon';
 export * from './InputText';

@@ -22,6 +22,7 @@ const Radio = ({ ariaLabel, defaultValue, values }: RadioProps) => (
         <RadioGroup.Item className='radio__group__item' id={id} value={value}>
           <RadioGroup.Indicator className='radio__indicator' />
         </RadioGroup.Item>
+
         <label className='radio__group__label' htmlFor={id}>
           {label}
         </label>

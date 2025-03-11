@@ -36,15 +36,18 @@ const CardPost = ({
             <Tag label={label} />
           ))}
         </div>
+
         <header>
           <Text element='h3' variant='heading-4'>
             {title}
           </Text>
         </header>
+
         <Text element='p' variant='extended-medium'>
           {description}
         </Text>
       </div>
+
       <footer className='card-post__footer'>
         <Text element='span' variant='label'>
           {publishedAt}

@@ -37,6 +37,7 @@ const Tag = ({
       <Text className='tag__label' element='span' variant='small'>
         {label}
       </Text>
+
       {onRemove && (
         <button
           aria-label={`Remove: ${label} Tag`}

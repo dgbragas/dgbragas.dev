@@ -37,6 +37,7 @@ const CardPortfolio = ({
           <Tag label={label} />
         ))}
       </div>
+
       <header className='card-portfolio__header'>
         <Text
           element='h3'
@@ -45,6 +46,7 @@ const CardPortfolio = ({
           {title}
         </Text>
       </header>
+
       <Text
         element='p'
         variant={variant === 'extended' ? 'extended-medium' : 'body'}

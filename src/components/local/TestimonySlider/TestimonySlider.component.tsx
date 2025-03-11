@@ -28,6 +28,7 @@ const TestimonySlider = ({ testimonies }: TestimonySlider) => {
         {testimonies.map(({ author, content, description }) => (
           <div className='testimony-slider__slide'>
             <span aria-hidden dangerouslySetInnerHTML={{ __html: QuoteIcon }} />
+
             <div className='testimony-slider__slide__content'>
               <h3>{content}</h3>
               <span>{author}</span>

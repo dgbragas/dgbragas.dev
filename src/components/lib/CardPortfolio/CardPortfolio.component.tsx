@@ -1,5 +1,5 @@
-import { Tag } from '../Tag';
-import { Text } from '../Text';
+import { Tag, Text } from '@/components/lib';
+
 import './CardPortfolio.styles.scss';
 
 type CardPortfolioProps = {

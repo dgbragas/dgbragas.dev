@@ -21,6 +21,7 @@
     width: 100%;
   }
 
+  /* [🎛️] Variants */
   &--extended {
     img {
       border-radius: 8px;
@@ -80,6 +81,7 @@
     }
   }
 
+  /* [🏗️] Structure */
   &__labels > span {
     box-shadow: 0 0 0 1px $color-border-on-dark;
     color: $color-neutral-200;

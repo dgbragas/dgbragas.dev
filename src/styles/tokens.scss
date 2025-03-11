@@ -19,11 +19,14 @@ $color-primary-200: #9098d8;
 $color-secondary-purple: #9147ff;
 $color-secondary-cyan: #00f0f0;
 
+/* -> Auxiliaries */
+$color-mint: #5cffbe;
+
 /* -> Gradients */
 $color-gradient-detail: linear-gradient(
   229deg,
   $color-secondary-cyan 27.77%,
-  $color-secondary-purple 101.52%
+  $color-mint 101.52%
 );
 $color-gradient-light-theme: linear-gradient(
   225deg,
@@ -40,9 +43,6 @@ $color-gradient-background: linear-gradient(
   $color-neutral-600 14.41%,
   $color-neutral-700 93.36%
 );
-
-/* -> Auxiliaries */
-$color-mint: #5cffbe;
 
 /* -> Status */
 $color-danger-100: #f47b7b;

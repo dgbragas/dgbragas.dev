@@ -1,2 +1,31 @@
 .card-how {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+
+  background: $color-neutral-700;
+  border-radius: 4px;
+  height: 100%;
+  padding: 56px;
+  width: 100%;
+
+  &__content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    text-align: center;
+
+    h3 {
+      color: $color-neutral-100;
+    }
+
+    p {
+      color: $color-neutral-100;
+      opacity: 0.8;
+    }
+  }
 }

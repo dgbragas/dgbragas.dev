@@ -1,2 +1,2 @@
-export * from './CardGithub';
+export * from './CardGitHub';
 export * from './TestimonySlider';

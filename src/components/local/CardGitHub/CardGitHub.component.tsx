@@ -1,15 +1,15 @@
 import GithubIcon from '@/assets/icons/github.svg?raw';
 
-import './CardGithub.styles.scss';
+import './CardGitHub.styles.scss';
 import { Text } from '@/components/lib';
 
-type CardGithubProps = {
+type CardGitHubProps = {
   description: string;
   repoUrl: string;
   title: string;
 };
 
-const CardGithub = ({ description, repoUrl, title }: CardGithubProps) => (
+const CardGitHub = ({ description, repoUrl, title }: CardGitHubProps) => (
   <a className='card-github' href={repoUrl} target='_blank'>
     <div className='card-github__header'>
       <span aria-hidden dangerouslySetInnerHTML={{ __html: GithubIcon }} />
@@ -23,4 +23,4 @@ const CardGithub = ({ description, repoUrl, title }: CardGithubProps) => (
   </a>
 );
 
-export { CardGithub };
+export { CardGitHub };

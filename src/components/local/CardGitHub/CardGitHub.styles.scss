@@ -1,0 +1,38 @@
+.card-github {
+  background: $color-neutral-200;
+  border-radius: 4px;
+  display: block;
+  padding: 24px 32px;
+  transition: background 0.24s ease;
+
+  &:hover,
+  &:focus {
+    background: $color-neutral-300;
+
+    h3 {
+      color: $color-neutral-100;
+    }
+
+    p {
+      color: $color-neutral-200;
+    }
+
+    svg path {
+      fill: $color-neutral-200;
+    }
+  }
+
+  &__header {
+    align-items: center;
+    display: flex;
+    gap: 12px;
+  }
+
+  p {
+    color: $color-neutral-400;
+  }
+}
+
+body {
+  padding: 128px;
+}

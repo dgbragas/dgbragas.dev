@@ -5,6 +5,7 @@ export * from './CardPost';
 export * from './Container';
 export * from './FeaturedIcon';
 export * from './InputText';
+export * from './Link';
 export * from './MediaObject';
 export * from './Radio';
 export * from './Tag';

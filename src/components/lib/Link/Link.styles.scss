@@ -1,0 +1,56 @@
+.link {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  width: fit-content;
+
+  &:hover {
+    opacity: 0.64;
+  }
+
+  /* [🎛️] Variants */
+  &--dribbble:hover span {
+    color: #ea4c89;
+  }
+
+  &--instagram:hover {
+    span {
+      background: linear-gradient(
+        45deg,
+        #7017ff 0%,
+        #ed00c0 50%,
+        #f80261 70%,
+        #ff1b90 85%,
+        #fcb045 100%
+      );
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    svg path {
+      fill: #7017ff;
+    }
+  }
+
+  &--linkedin:hover span {
+    color: #0a66c2;
+  }
+
+  &--whatt-if:hover {
+    span {
+      background: linear-gradient(239deg, #fa9401 15.27%, #ef3f36 96.96%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    svg path {
+      fill: #ef3f36;
+    }
+  }
+
+  &--whatsapp:hover span {
+    color: #25d366;
+  }
+}

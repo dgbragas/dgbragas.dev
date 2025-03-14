@@ -8,12 +8,19 @@
     opacity: 0.64;
   }
 
+  &[aria-disabled='true'] {
+    pointer-events: none;
+    opacity: 0.32;
+  }
+
   /* [🎛️] Variants */
-  &--dribbble:hover span {
+  &--dribbble:hover span,
+  &--dribbble:focus span {
     color: #ea4c89;
   }
 
-  &--instagram:hover {
+  &--instagram:hover,
+  &--instagram:focus {
     span {
       background: linear-gradient(
         45deg,
@@ -33,11 +40,13 @@
     }
   }
 
-  &--linkedin:hover span {
+  &--linkedin:hover span,
+  &--linkedin:focus span {
     color: #0a66c2;
   }
 
-  &--whatt-if:hover {
+  &--whatt-if:hover,
+  &--whatt-if:focus {
     span {
       background: linear-gradient(239deg, #fa9401 15.27%, #ef3f36 96.96%);
       background-clip: text;
@@ -50,7 +59,8 @@
     }
   }
 
-  &--whatsapp:hover span {
+  &--whatsapp:hover span,
+  &--whatsapp:focus span {
     color: #25d366;
   }
 }

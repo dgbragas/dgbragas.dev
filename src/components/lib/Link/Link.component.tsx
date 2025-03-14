@@ -2,8 +2,12 @@ import { Text } from '@/components/lib';
 
 import './Link.styles.scss';
 
-type LinkProps = React.HTMLAttributes<HTMLAnchorElement> & {
+type LinkProps = Omit<
+  React.HTMLAttributes<HTMLAnchorElement>,
+  'aria-disabled'
+> & {
   children: React.ReactNode;
+  disabled?: boolean;
   href: string;
   icon?: string;
   target?: '_blank' | '_self';
@@ -12,12 +16,15 @@ type LinkProps = React.HTMLAttributes<HTMLAnchorElement> & {
 
 const Link = ({
   children,
+  disabled,
   href,
   icon,
   variant,
   target = '_blank',
 }: LinkProps) => (
   <a
+    aria-disabled={disabled}
+    tabIndex={disabled ? -1 : 0}
     className={`link ${variant ? `link--${variant}` : ''}`}
     href={href}
     target={target}

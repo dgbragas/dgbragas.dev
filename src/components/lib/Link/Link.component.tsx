@@ -29,7 +29,13 @@ const Link = ({
     href={href}
     target={target}
   >
-    {icon && <span aria-hidden dangerouslySetInnerHTML={{ __html: icon }} />}
+    {icon && (
+      <span
+        aria-hidden
+        className='link__icon'
+        dangerouslySetInnerHTML={{ __html: icon }}
+      />
+    )}
     <Text variant='label'>{children}</Text>
   </a>
 );

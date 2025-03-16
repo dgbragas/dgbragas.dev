@@ -1,5 +1,31 @@
+$breakpoints: (
+  'small': 420px,
+  'medium': 768px,
+  'large': 1280px,
+);
+
 @mixin apply-map($map) {
   @each $prop, $value in $map {
     #{$prop}: $value;
+  }
+}
+
+@mixin breakpoint($size, $type: max) {
+  $value: map-get($breakpoints, $size);
+
+  @if $value {
+    @if $type == min {
+      @media (min-width: $value) {
+        @content;
+      }
+    }
+
+    @if $type == max {
+      @media (max-width: ($value -1px)) {
+        @content;
+      }
+    }
+  } @else {
+    @warn "Breakpoint #{$size} não está definido.";
   }
 }

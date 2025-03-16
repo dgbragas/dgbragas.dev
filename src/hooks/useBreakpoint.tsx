@@ -1,28 +1,31 @@
 import * as React from 'react';
 
-const breakpoints = {
-  small: 420,
-  medium: 768,
-  large: 1280,
+import { breakpoints } from '@/constants';
+import { throttle } from '@/utils';
+
+type UseBreakpointProps = {
+  initialWidth: number;
 };
 
 const getBreakpoint = (width: number): keyof typeof breakpoints => {
   if (width >= breakpoints.large) return 'large';
-  if (width > breakpoints.medium && width < breakpoints.large) return 'medium';
+  if (width >= breakpoints.medium) return 'medium';
   return 'small';
 };
 
-function useBreakpoint() {
+function useBreakpoint({ initialWidth }: UseBreakpointProps) {
   const [breakpoint, setBreakpoint] = React.useState(() =>
-    typeof window !== 'undefined' ? getBreakpoint(window.innerWidth) : 'large',
+    typeof window !== 'undefined'
+      ? getBreakpoint(window.innerWidth)
+      : getBreakpoint(initialWidth),
   );
 
   React.useEffect(() => {
-    if (typeof window === undefined) return;
+    if (typeof window === 'undefined') return;
 
-    const updateBreakpoint = () => {
+    const updateBreakpoint = throttle(() => {
       setBreakpoint(getBreakpoint(window.innerWidth));
-    };
+    }, 200);
 
     window.addEventListener('resize', updateBreakpoint);
     return () => window.removeEventListener('resize', updateBreakpoint);

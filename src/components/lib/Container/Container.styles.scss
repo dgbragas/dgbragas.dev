@@ -1,16 +1,18 @@
+@use '@/styles/mixins.scss' as *;
+
 .container {
   width: 100%;
 
   /* [🎛️] Variants */
-  &--large {
-    padding: 0 112px;
+  @include breakpoint('small') {
+    padding: 0 20px;
   }
 
-  &--medium {
+  @include breakpoint('medium') {
     padding: 0 40px;
   }
 
-  &--small {
-    padding: 0 20px;
+  @include breakpoint('large', 'min') {
+    padding: 0 112px;
   }
 }

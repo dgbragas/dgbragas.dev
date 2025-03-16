@@ -1,5 +1,4 @@
 @use '@/styles/mixins.scss' as *;
-@use '@/styles/tokens.scss';
 
 .toggle-button {
   @include apply-map($font-label);

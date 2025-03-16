@@ -1,5 +1,4 @@
 @use '@/styles/mixins.scss' as *;
-@use '@/styles/tokens.scss';
 
 .input-text {
   @include apply-map($font-body);

@@ -4,13 +4,19 @@
   gap: 8px;
   width: fit-content;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: $color-primary-200;
   }
 
   &[aria-disabled='true'] {
     pointer-events: none;
     opacity: 0.32;
+  }
+
+  &__icon {
+    height: 18px;
+    width: 18px;
   }
 
   /* [🎛️] Variants */

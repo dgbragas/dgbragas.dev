@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-import DgLogo from '@/assets/icons/dg.svg?raw';
+import DgLogoBase from '@/assets/icons/dg.svg?raw';
+import DgLogoDark from '@/assets/icons/dg--dark.svg?raw';
+import DgLogoLight from '@/assets/icons/dg--light.svg?raw';
 import MenuLogo from '@/assets/icons/menu.svg?raw';
 import { Container, Text } from '@/components/lib';
 import { MenuOverlay } from './components';
@@ -18,6 +20,12 @@ const TopMenu = () => {
 
   const [menuStyle, setMenuStyle] = React.useState<'dark' | 'light'>('light');
   const [scrolled, setScrolled] = React.useState(false);
+
+  const Logo = {
+    dark: DgLogoDark,
+    light: DgLogoLight,
+    default: DgLogoBase,
+  }[scrolled ? menuStyle : 'default'];
 
   const updateMenuColor = React.useCallback(() => {
     if (!menuRef.current) return;
@@ -65,19 +73,27 @@ const TopMenu = () => {
       <Container>
         <nav className='top-menu__nav'>
           <a aria-label='Retornar à página inicial' href='/'>
-            <span dangerouslySetInnerHTML={{ __html: DgLogo }} />
+            <span dangerouslySetInnerHTML={{ __html: Logo }} />
           </a>
 
-          <Clock />
-
-          {scrolled && (
-            <button aria-label='Abrir menu'>
-              <span dangerouslySetInnerHTML={{ __html: MenuLogo }} />
-            </button>
+          {!scrolled && (
+            <>
+              <Clock />
+              <span aria-hidden className='top-menu__nav__placeholder' />
+            </>
           )}
 
-          {!scrolled && (
-            <span aria-hidden className='top-menu__nav__placeholder' />
+          {scrolled && (
+            <>
+              <button className='top-menu__nav__cta'>
+                <span aria-hidden />
+                Disponível para novos projetos
+              </button>
+
+              <button aria-label='Abrir menu' className='top-menu__nav__toggle'>
+                <span dangerouslySetInnerHTML={{ __html: MenuLogo }} />
+              </button>
+            </>
           )}
         </nav>
       </Container>

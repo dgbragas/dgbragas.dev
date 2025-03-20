@@ -5,11 +5,12 @@ import WhatsAppIcon from '@/assets/icons/whatsapp.svg?raw';
 import WhattIfIcon from '@/assets/icons/whatt-if.svg?raw';
 
 import { Container, Link, Text } from '@/components/lib';
+import { getCurrentYear } from '@/utils';
 
 import './Footer.styles.scss';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const year = getCurrentYear();
 
   return (
     <footer className='footer' aria-label='Rodapé' role='contentinfo'>
@@ -100,9 +101,7 @@ const Footer = () => {
 
         <div className='footer__copy'>
           <div className='footer__copy__content'>
-            <Text>
-              © {currentYear}. Todos os direitos reservados a dgbragas
-            </Text>
+            <Text>© {year}. Todos os direitos reservados a dgbragas</Text>
             <div />
             <Text>
               Made from scratch by &#32;

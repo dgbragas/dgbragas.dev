@@ -10,16 +10,21 @@ import { useRealTimeClock } from '@/hooks';
 
 import './TopMenu.styles.scss';
 
+type TopMenuProps = {
+  keepDefaultStyle?: boolean;
+};
+
 const Clock = () => {
   const currentTime = useRealTimeClock();
   return <Text className='top-menu__clock'>{currentTime} - SP, Brasil</Text>;
 };
 
-const TopMenu = () => {
+const TopMenu = ({ keepDefaultStyle }: TopMenuProps) => {
   const menuRef = React.useRef<HTMLHeadElement>(null);
 
-  const [menuStyle, setMenuStyle] = React.useState<'dark' | 'light'>('light');
   const [scrolled, setScrolled] = React.useState(false);
+  const [menuStyle, setMenuStyle] = React.useState<'dark' | 'light'>('light');
+  const [overlayOpen, setOverlayOpen] = React.useState(true);
 
   const Logo = {
     dark: DgLogoDark,
@@ -58,6 +63,8 @@ const TopMenu = () => {
     updateMenuColor();
   };
 
+  const handleOverlay = () => setOverlayOpen(current => !current);
+
   React.useEffect(() => updateMenuColor(), []);
 
   React.useEffect(() => {
@@ -66,38 +73,51 @@ const TopMenu = () => {
   }, [handleScroll]);
 
   return (
-    <header
-      className={`top-menu top-menu--${menuStyle} ${scrolled ? 'top-menu--scrolled' : ''}`}
-      ref={menuRef}
-    >
-      <Container>
-        <nav className='top-menu__nav'>
-          <a aria-label='Retornar à página inicial' href='/'>
-            <span dangerouslySetInnerHTML={{ __html: Logo }} />
-          </a>
+    <>
+      <header
+        className={`top-menu top-menu--${menuStyle} ${scrolled ? 'top-menu--scrolled' : ''}`}
+        ref={menuRef}
+      >
+        <Container>
+          <nav className='top-menu__nav'>
+            <a aria-label='Retornar à página inicial' href='/'>
+              <span dangerouslySetInnerHTML={{ __html: Logo }} />
+            </a>
 
-          {!scrolled && (
-            <>
-              <Clock />
-              <span aria-hidden className='top-menu__nav__placeholder' />
-            </>
-          )}
+            {!scrolled && (
+              <>
+                <Clock />
+                <span aria-hidden className='top-menu__nav__placeholder' />
+              </>
+            )}
 
-          {scrolled && (
-            <>
-              <button className='top-menu__nav__cta'>
-                <span aria-hidden />
-                Disponível para novos projetos
-              </button>
+            {scrolled && (
+              <>
+                <button className='top-menu__nav__cta'>
+                  <span aria-hidden />
+                  Disponível para novos projetos
+                </button>
 
-              <button aria-label='Abrir menu' className='top-menu__nav__toggle'>
-                <span dangerouslySetInnerHTML={{ __html: MenuLogo }} />
-              </button>
-            </>
-          )}
-        </nav>
-      </Container>
-    </header>
+                <button
+                  aria-controls='top-menu__overlay'
+                  aria-expanded={overlayOpen}
+                  aria-label='Abrir menu'
+                  aria-haspopup='menu'
+                  className='top-menu__nav__toggle'
+                  onClick={handleOverlay}
+                >
+                  <span dangerouslySetInnerHTML={{ __html: MenuLogo }} />
+                </button>
+              </>
+            )}
+          </nav>
+        </Container>
+      </header>
+
+      {overlayOpen && (
+        <MenuOverlay onToggle={handleOverlay} open={overlayOpen} />
+      )}
+    </>
   );
 };
 

@@ -1,2 +1,2 @@
-export * from './getCurrentTime';
+export * from './getCurrentYear';
 export * from './throttle';

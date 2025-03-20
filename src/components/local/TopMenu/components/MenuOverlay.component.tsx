@@ -4,7 +4,7 @@ import IgIcon from '@/assets/icons/instagram.svg?raw';
 import InIcon from '@/assets/icons/linkedin.svg?raw';
 import MailIcon from '@/assets/icons/mail.svg?raw';
 import WhatsAppIcon from '@/assets/icons/whatsapp.svg?raw';
-import XIcon from '@/assets/icons/twitter.svg?raw';
+import TwitterIcon from '@/assets/icons/twitter.svg?raw';
 
 import BrazilFlag from '@/assets/illustrations/brazil-flag.svg?raw';
 
@@ -14,6 +14,7 @@ import { getCurrentYear } from '@/utils';
 
 type MenuOverlayProps = {
   open: boolean;
+  onToggle: VoidFunction;
 };
 
 const socials = [
@@ -39,7 +40,7 @@ const socials = [
   },
   {
     href: 'http://www.twitter.com/dgbragas',
-    icon: XIcon,
+    icon: TwitterIcon,
     label: 'Acessar o X de @dgbragas',
   },
   {
@@ -58,27 +59,39 @@ const MenuOverlay = ({ open }: MenuOverlayProps) => {
   const year = getCurrentYear();
 
   return (
-    <div aria-hidden={!open} className='top-menu__menu-overlay' role='dialog'>
+    <div
+      aria-hidden={!open}
+      aria-labelledby='Menu secundário'
+      className='top-menu__overlay'
+      id='top-menu__overlay'
+      role='dialog'
+    >
+      <Text className='sr-only'>Menu secundário</Text>
+
       <Container>
-        <button aria-hidden tabIndex={-1}>
+        <button
+          aria-hidden
+          className='top-menu__overlay__language'
+          tabIndex={-1}
+        >
           <span dangerouslySetInnerHTML={{ __html: BrazilFlag }} />
           pt-BR
         </button>
 
-        <nav className='top-menu__menu-overlay__nav'>
+        <nav className='top-menu__overlay__nav'>
           <Link href='/blog'>Blog</Link>
           <Link href='/about'>Sobre mim</Link>
           <Link href='/portfolio'>Portfólio</Link>
 
-          <div className='top-menu__menu-overlay__nav__additional'>
+          <div className='top-menu__overlay__nav__additional'>
             <Link href='/daily-ui'>DailyUI</Link>
             <Link href={mailTo}>Contate-me</Link>
             <Link href='https://dgbragas.dev#what'>O que eu faço</Link>
           </div>
         </nav>
 
-        <footer className='top-menu__menu-overlay__footer'>
-          <div className='top-menu__menu-overlay__footer__socials'>
+        <footer className='top-menu__overlay__footer'>
+          <div className='top-menu__overlay__footer__socials'>
             {socials.map(social => (
               <FeaturedIcon
                 ariaLabel={social.label}
@@ -95,6 +108,14 @@ const MenuOverlay = ({ open }: MenuOverlayProps) => {
           </Text>
         </footer>
       </Container>
+
+      <button
+        aria-expanded={open}
+        aria-label='Fechar menu'
+        className='top-menu__overlay__close'
+      >
+        <Text variant='heading-3'>&#88;</Text>
+      </button>
     </div>
   );
 };

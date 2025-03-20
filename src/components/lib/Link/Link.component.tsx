@@ -16,16 +16,19 @@ type LinkProps = Omit<
 
 const Link = ({
   children,
+  className,
   disabled,
   href,
   icon,
   variant,
   target = '_blank',
+  ...rest
 }: LinkProps) => (
   <a
+    {...rest}
     aria-disabled={disabled}
     tabIndex={disabled ? -1 : 0}
-    className={`link ${variant ? `link--${variant}` : ''}`}
+    className={`link ${className ?? ''} ${variant ? `link--${variant}` : ''}`}
     href={href}
     target={target}
   >

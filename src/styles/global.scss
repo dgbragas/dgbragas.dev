@@ -65,3 +65,8 @@ body {
 .light-section {
   --theme: light;
 }
+
+.sr-only {
+  pointer-events: none;
+  display: none;
+}

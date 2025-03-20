@@ -23,6 +23,7 @@ const FeaturedIcon = ({
     href={href}
     rel={openInNewTab ? 'noopener noreferrer' : undefined}
     target={openInNewTab ? '_blank' : undefined}
+    title={ariaLabel}
   >
     <span aria-hidden dangerouslySetInnerHTML={{ __html: icon }} />
   </a>

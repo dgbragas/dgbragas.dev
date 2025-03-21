@@ -10,21 +10,20 @@ import { useRealTimeClock } from '@/hooks';
 
 import './TopMenu.styles.scss';
 
-type TopMenuProps = {
-  keepDefaultStyle?: boolean;
-};
-
 const Clock = () => {
   const currentTime = useRealTimeClock();
   return <Text className='top-menu__clock'>{currentTime} - SP, Brasil</Text>;
 };
 
-const TopMenu = ({ keepDefaultStyle }: TopMenuProps) => {
+const TopMenu = () => {
   const menuRef = React.useRef<HTMLHeadElement>(null);
+  const hamburgerRef = React.useRef<HTMLButtonElement>(null);
 
   const [scrolled, setScrolled] = React.useState(false);
   const [menuStyle, setMenuStyle] = React.useState<'dark' | 'light'>('light');
-  const [overlayOpen, setOverlayOpen] = React.useState(true);
+
+  const overlayPreviouslyOpen = React.useRef(false);
+  const [overlayOpen, setOverlayOpen] = React.useState(false);
 
   const Logo = {
     dark: DgLogoDark,
@@ -65,17 +64,29 @@ const TopMenu = ({ keepDefaultStyle }: TopMenuProps) => {
 
   const handleOverlay = () => setOverlayOpen(current => !current);
 
-  React.useEffect(() => updateMenuColor(), []);
+  React.useEffect(() => {
+    if (!overlayPreviouslyOpen.current) {
+      overlayPreviouslyOpen.current = true;
+      return;
+    }
+
+    if (!overlayOpen) {
+      hamburgerRef.current?.focus();
+    }
+  }, [overlayOpen]);
 
   React.useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
+  React.useEffect(() => updateMenuColor(), []);
+
   return (
     <>
       <header
-        className={`top-menu top-menu--${menuStyle} ${scrolled ? 'top-menu--scrolled' : ''}`}
+        className={`top-menu top-menu--${menuStyle}
+          ${scrolled ? 'top-menu--scrolled' : ''}`.trim()}
         ref={menuRef}
       >
         <Container>
@@ -105,6 +116,8 @@ const TopMenu = ({ keepDefaultStyle }: TopMenuProps) => {
                   aria-haspopup='menu'
                   className='top-menu__nav__toggle'
                   onClick={handleOverlay}
+                  ref={hamburgerRef}
+                  tabIndex={overlayOpen ? -1 : 0}
                 >
                   <span dangerouslySetInnerHTML={{ __html: MenuLogo }} />
                 </button>

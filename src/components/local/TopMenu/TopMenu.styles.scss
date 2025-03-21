@@ -10,6 +10,7 @@
 
   height: 72px;
   width: 100%;
+  z-index: $z-index-docked;
 
   /* [🎛️] Variants */
   &--dark.top-menu--scrolled {
@@ -119,6 +120,7 @@
     background: $color-neutral-600;
     height: 100%;
     width: 100%;
+    z-index: $z-index-overlay;
 
     @include breakpoint('large') {
       padding: 0 128px;
@@ -157,7 +159,8 @@
           position: relative;
           text-transform: uppercase;
 
-          &:hover {
+          &:hover,
+          &:focus {
             color: $color-primary-200;
 
             &::after {

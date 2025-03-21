@@ -9,7 +9,8 @@
   padding: 8px;
   width: 40px;
 
-  &:hover {
+  &:hover,
+  &:focus {
     color: $color-primary-200;
     border-color: $color-primary-200;
     transition: all 0.24s ease;

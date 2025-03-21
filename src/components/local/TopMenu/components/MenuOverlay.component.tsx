@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import BeIcon from '@/assets/icons/behance.svg?raw';
 import DribbbleIcon from '@/assets/icons/dribbble.svg?raw';
 import IgIcon from '@/assets/icons/instagram.svg?raw';
@@ -5,9 +7,7 @@ import InIcon from '@/assets/icons/linkedin.svg?raw';
 import MailIcon from '@/assets/icons/mail.svg?raw';
 import WhatsAppIcon from '@/assets/icons/whatsapp.svg?raw';
 import TwitterIcon from '@/assets/icons/twitter.svg?raw';
-
 import BrazilFlag from '@/assets/illustrations/brazil-flag.svg?raw';
-
 import { Container, FeaturedIcon, Link, Text } from '@/components/lib';
 import { mailTo } from '@/constants';
 import { getCurrentYear } from '@/utils';
@@ -55,8 +55,56 @@ const socials = [
   },
 ];
 
-const MenuOverlay = ({ open }: MenuOverlayProps) => {
+const MenuOverlay = ({ onToggle, open }: MenuOverlayProps) => {
+  const overlayRef = React.useRef<HTMLDivElement>(null);
+  const toggleButtonRef = React.useRef<HTMLButtonElement>(null);
+
   const year = getCurrentYear();
+
+  const handleKeyDown = (event: KeyboardEvent) => {
+    if (!overlayRef.current) return;
+
+    if (event.key === 'Escape') {
+      onToggle();
+    }
+
+    const focusableElements = overlayRef.current.querySelectorAll('a, button');
+    const firstElement = focusableElements[0] as HTMLElement;
+    const lastElement = focusableElements[
+      focusableElements.length - 1
+    ] as HTMLElement;
+
+    if (event.key === 'Tab') {
+      if (event.shiftKey && document.activeElement === firstElement) {
+        lastElement.focus();
+        event.preventDefault();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        firstElement.focus();
+        event.preventDefault();
+      }
+    }
+  };
+
+  React.useEffect(() => {
+    if (open && toggleButtonRef.current) {
+      toggleButtonRef.current.focus();
+    }
+  }, [open]);
+
+  React.useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden';
+      document.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open]);
 
   return (
     <div
@@ -64,8 +112,19 @@ const MenuOverlay = ({ open }: MenuOverlayProps) => {
       aria-labelledby='Menu secundário'
       className='top-menu__overlay'
       id='top-menu__overlay'
+      ref={overlayRef}
       role='dialog'
     >
+      <button
+        aria-expanded={open}
+        aria-label='Fechar menu'
+        className='top-menu__overlay__close'
+        onClick={onToggle}
+        ref={toggleButtonRef}
+      >
+        <Text variant='heading-3'>&#88;</Text>
+      </button>
+
       <Text className='sr-only'>Menu secundário</Text>
 
       <Container>
@@ -94,6 +153,7 @@ const MenuOverlay = ({ open }: MenuOverlayProps) => {
           <div className='top-menu__overlay__footer__socials'>
             {socials.map(social => (
               <FeaturedIcon
+                key={social.label}
                 ariaLabel={social.label}
                 href={social.href}
                 icon={social.icon}
@@ -108,14 +168,6 @@ const MenuOverlay = ({ open }: MenuOverlayProps) => {
           </Text>
         </footer>
       </Container>
-
-      <button
-        aria-expanded={open}
-        aria-label='Fechar menu'
-        className='top-menu__overlay__close'
-      >
-        <Text variant='heading-3'>&#88;</Text>
-      </button>
     </div>
   );
 };

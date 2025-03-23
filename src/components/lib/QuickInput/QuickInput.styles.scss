@@ -1,0 +1,39 @@
+@use '@/styles/mixins.scss' as *;
+
+.quick-input {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  background: $color-neutral-700;
+  border: 1px solid $color-border-on-dark;
+  border-radius: 4px;
+  padding: 8px;
+
+  input {
+    color: $color-neutral-200;
+    display: inline-block;
+
+    background: transparent;
+    border: 0;
+    border-radius: 2px;
+    height: 48px;
+    padding-inline: 24px;
+    flex: 1;
+
+    &[aria-invalid='true'] {
+      border: 1px solid $color-danger-200;
+    }
+  }
+
+  button {
+    min-width: 156px;
+  }
+
+  @include breakpoint('medium', 'max') {
+    button {
+      flex: 1;
+    }
+  }
+}

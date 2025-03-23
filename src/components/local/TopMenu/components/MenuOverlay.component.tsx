@@ -9,7 +9,7 @@ import WhatsAppIcon from '@/assets/icons/whatsapp.svg?raw';
 import TwitterIcon from '@/assets/icons/twitter.svg?raw';
 import BrazilFlag from '@/assets/illustrations/brazil-flag.svg?raw';
 import { Container, FeaturedIcon, Link, Text } from '@/components/lib';
-import { mailTo } from '@/constants';
+import { socials } from '@/constants';
 import { getCurrentYear } from '@/utils';
 
 type MenuOverlayProps = {
@@ -17,39 +17,39 @@ type MenuOverlayProps = {
   onToggle: VoidFunction;
 };
 
-const socials = [
+const socialsList = [
   {
-    href: 'https://www.instagram.com/dgbragas.dev',
+    href: socials.instagram,
     icon: IgIcon,
     label: 'Acessar o Instagram de @dgbragas',
   },
   {
-    href: 'https://www.linkedin/in/dgbragas',
+    href: socials.linkedIn,
     icon: InIcon,
     label: 'Acessar o LinkedIn de @dgbragas',
   },
   {
-    href: 'https://www.dribbble.com/dgbragas',
+    href: socials.dribbble,
     icon: DribbbleIcon,
     label: 'Visualizar portfólio de @dgbragas no Dribbble',
   },
   {
-    href: 'https://www.behance.net/dgbragas',
+    href: socials.behance,
     icon: BeIcon,
     label: 'Visualizar portfólio de @dgbragas no Behance ',
   },
   {
-    href: 'http://www.twitter.com/dgbragas',
+    href: socials.twitter,
     icon: TwitterIcon,
     label: 'Acessar o X de @dgbragas',
   },
   {
-    href: 'https://wa.me/5511973447533',
+    href: socials.whatsApp,
     icon: WhatsAppIcon,
     label: 'Enviar mensagem WhatsApp para +5511973447533',
   },
   {
-    href: mailTo,
+    href: socials.mail,
     icon: MailIcon,
     label: 'Enviar e-mail para work@dgbragas.com',
   },
@@ -144,14 +144,14 @@ const MenuOverlay = ({ onToggle, open }: MenuOverlayProps) => {
 
           <div className='top-menu__overlay__nav__additional'>
             <Link href='/daily-ui'>DailyUI</Link>
-            <Link href={mailTo}>Contate-me</Link>
+            <Link href={socials.mail}>Contate-me</Link>
             <Link href='https://dgbragas.dev#what'>O que eu faço</Link>
           </div>
         </nav>
 
         <footer className='top-menu__overlay__footer'>
           <div className='top-menu__overlay__footer__socials'>
-            {socials.map(social => (
+            {socialsList.map(social => (
               <FeaturedIcon
                 key={social.label}
                 ariaLabel={social.label}

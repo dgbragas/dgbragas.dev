@@ -4,6 +4,7 @@ import LinkedInIcon from '@/assets/icons/linkedin.svg?raw';
 import WhatsAppIcon from '@/assets/icons/whatsapp.svg?raw';
 import WhattIfIcon from '@/assets/icons/whatt-if.svg?raw';
 
+import { socials } from '@/constants';
 import { Container, Link, Text } from '@/components/lib';
 import { getCurrentYear } from '@/utils';
 
@@ -23,7 +24,7 @@ const Footer = () => {
             <ul>
               <li>
                 <Link
-                  href='http://dribbble.com/dgbragas'
+                  href={socials.dribbble}
                   icon={DribbleIcon}
                   variant='dribbble'
                 >
@@ -32,7 +33,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href='http://instagram.com/dgbragas.dev'
+                  href={socials.instagram}
                   icon={InstagramIcon}
                   variant='instagram'
                 >
@@ -41,7 +42,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href='https://www.linkedin.com/in/dgbragas/'
+                  href={socials.linkedIn}
                   icon={LinkedInIcon}
                   variant='linkedin'
                 >
@@ -67,7 +68,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href='https://wa.me/5511973447533'
+                  href={socials.whatsApp}
                   icon={WhatsAppIcon}
                   variant='whatsapp'
                 >

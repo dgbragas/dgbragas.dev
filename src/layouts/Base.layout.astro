@@ -1,9 +1,23 @@
 ---
+import { AnnouncementBar, Link } from '@/components/lib';
+import { TopMenu } from '@/components/local';
 import { LayoutProvider, StylesProvider } from '@/providers';
+
+import './Base.styles.scss';
 ---
 
 <LayoutProvider>
   <StylesProvider>
+    <div class='fixed-header'>
+      <AnnouncementBar client:visible unfixed>
+        Portfólio em construção — encontrou algo? Fique à vontade para
+        <Link href='http://github.com/dgbragas/dgbragas.dev/issues'>
+          abrir uma issue no GitHub
+        </Link>
+        ♥️
+      </AnnouncementBar>
+      <TopMenu client:only unfixed />
+    </div>
     <slot />
   </StylesProvider>
 </LayoutProvider>

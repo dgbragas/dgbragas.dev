@@ -7,7 +7,18 @@
   background-color: $color-primary-100;
   color: $color-white;
   height: 32px;
+  width: 100%;
 
+  /* [🎛️] Variants */
+  &--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: $z-index-docked;
+  }
+
+  /* [🏗️] Structure */
   &__content {
     @include apply-map($font-small);
     align-items: center;
@@ -34,5 +45,12 @@
         background: rgba(255, 255, 255, 0.24);
       }
     }
+  }
+
+  a,
+  a span {
+    @include apply-map($font-small);
+    display: inline-block;
+    text-decoration: underline;
   }
 }

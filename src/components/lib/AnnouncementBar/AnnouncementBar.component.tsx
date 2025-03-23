@@ -1,12 +1,18 @@
 import * as React from 'react';
+
+import { Container } from '@/components/lib';
+
 import './AnnouncementBar.styles.scss';
-import { Container } from '../Container/Container.component';
 
 type AnnouncementBarProps = {
   children?: React.ReactNode;
+  unfixed?: boolean;
 };
 
-const AnnouncementBar = ({ children }: AnnouncementBarProps) => {
+const AnnouncementBar = ({
+  children,
+  unfixed = false,
+}: AnnouncementBarProps) => {
   const [open, setOpen] = React.useState(true);
 
   if (!open) return <></>;
@@ -15,7 +21,7 @@ const AnnouncementBar = ({ children }: AnnouncementBarProps) => {
 
   return (
     <div
-      className='announcement-bar'
+      className={`announcement-bar ${!unfixed ? 'announcement-bar--fixed' : ''}`.trim()}
       aria-label='Anúncio'
       aria-live='polite'
       role='region'

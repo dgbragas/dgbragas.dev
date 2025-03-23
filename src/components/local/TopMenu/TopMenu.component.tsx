@@ -10,12 +10,16 @@ import { useRealTimeClock } from '@/hooks';
 
 import './TopMenu.styles.scss';
 
+type TopMenuProps = {
+  unfixed?: boolean;
+};
+
 const Clock = () => {
   const currentTime = useRealTimeClock();
   return <Text className='top-menu__clock'>{currentTime} - SP, Brasil</Text>;
 };
 
-const TopMenu = () => {
+const TopMenu = ({ unfixed = false }: TopMenuProps) => {
   const menuRef = React.useRef<HTMLHeadElement>(null);
   const hamburgerRef = React.useRef<HTMLButtonElement>(null);
 
@@ -85,13 +89,19 @@ const TopMenu = () => {
   return (
     <>
       <header
-        className={`top-menu top-menu--${menuStyle}
-          ${scrolled ? 'top-menu--scrolled' : ''}`.trim()}
+        className={`
+          top-menu top-menu--${menuStyle}
+          ${scrolled ? 'top-menu--scrolled' : ''}
+          ${!unfixed ? 'top-menu--fixed' : ''}`.trim()}
         ref={menuRef}
       >
         <Container>
           <nav className='top-menu__nav'>
-            <a aria-label='Retornar à página inicial' href='/'>
+            <a
+              aria-label='Retornar à página inicial'
+              className='top-menu__logo'
+              href='/'
+            >
               <span dangerouslySetInnerHTML={{ __html: Logo }} />
             </a>
 

@@ -9,6 +9,7 @@
   padding-inline: 16px;
   position: relative;
   width: fit-content;
+  text-align: center;
   transition: all 0.5s;
 
   &::after {
@@ -34,7 +35,8 @@
     margin-right: 4px;
   }
 
-  &:focus {
+  &:focus,
+  &:hover {
     background: $color-primary-200;
   }
 }

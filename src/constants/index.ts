@@ -1,2 +1,2 @@
 export * from './breakpoints.constants';
-export * from './mail.constants';
+export * from './socials.constants';

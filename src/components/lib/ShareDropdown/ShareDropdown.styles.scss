@@ -7,6 +7,7 @@
   flex-direction: column;
   gap: 12px;
 
+  animation: slideDown 0.24s ease-in-out;
   border: 1px solid $color-border-on-light;
   border-radius: 4px;
   min-width: 288px;
@@ -57,5 +58,16 @@
         opacity: 0.8;
       }
     }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

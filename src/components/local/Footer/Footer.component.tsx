@@ -106,7 +106,7 @@ const Footer = () => {
             <div />
             <Text>
               Made from scratch by &#32;
-              <Link href='https://instagram.com/dgbrags.dev'>@dgbragas</Link>
+              <Link href={socials.instagram}>@dgbragas</Link>
             </Text>
           </div>
 

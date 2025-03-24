@@ -1,0 +1,238 @@
+@use '@/styles/mixins.scss' as *;
+
+.section-presentation {
+  background: $color-neutral-700;
+  padding-bottom: 40px;
+  padding-top: 176px;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    &__intro {
+      max-width: 48vw;
+
+      h1 {
+        color: $color-neutral-200;
+      }
+
+      p {
+        color: $color-neutral-100;
+        margin-top: 16px;
+        opacity: 0.8;
+      }
+    }
+
+    &__socials {
+      align-items: center;
+      display: flex;
+      gap: 28px;
+
+      color: $color-neutral-100;
+      margin-top: 40px;
+
+      a {
+        position: relative;
+
+        &:nth-of-type(1),
+        &:nth-of-type(2) {
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -16px;
+            transform: translateY(-50%);
+
+            background: $color-border-on-dark;
+            border-radius: 2px;
+            height: 4px;
+            width: 4px;
+          }
+        }
+
+        &:nth-of-type(3) {
+          margin-right: -12px;
+        }
+
+        &:last-of-type {
+          margin-left: -12px;
+        }
+
+        span {
+          color: inherit;
+        }
+      }
+
+      > div {
+        background: $color-border-on-dark;
+        height: 2px;
+        width: 60px;
+      }
+    }
+
+    &__about {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      margin-top: 120px;
+      padding-bottom: 64px;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        background: $color-gradient-light-theme;
+        height: 2px;
+        width: 50px;
+      }
+
+      p {
+        a {
+          &:hover {
+            opacity: 0.8;
+          }
+
+          span {
+            color: $color-secondary-cyan;
+            text-decoration: underline;
+          }
+        }
+
+        span.about--highlight {
+          color: $color-secondary-cyan;
+          font-family: 'Inter-SemiBold';
+        }
+      }
+    }
+
+    &__cards {
+      max-width: 32vw;
+
+      nav {
+        position: sticky;
+        // AnnouncementBar + TopMenu + Gap
+        top: calc(32px + 72px + 16px);
+
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+
+      &__blog {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        @include apply-map($font-heading-4);
+        background: $color-neutral-500;
+        border-radius: 4px;
+        box-shadow:
+          0px 2px 4px 0px rgba(40, 40, 40, 0.14),
+          0px 1px 5px 0px rgba(40, 40, 40, 0.2),
+          0px 3px 4px 0px rgba(40, 40, 40, 0.12);
+        color: $color-neutral-200;
+        height: 200px;
+        width: 200px;
+      }
+
+      &__featured {
+        align-self: end;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        background: $color-gradient-dark-theme;
+        border-radius: 4px;
+        box-shadow:
+          0px 2px 4px 0px rgba(136, 70, 251, 0.14),
+          0px 1px 5px 0px rgba(136, 70, 251, 0.2),
+          0px 3px 4px 0px rgba(136, 70, 251, 0.12);
+        color: $color-neutral-100;
+        height: 150px;
+        padding: 24px;
+        width: 200px;
+
+        span:first-of-type {
+          @include apply-map($font-heading-4);
+        }
+      }
+
+      &__profile {
+        background: url('../../assets/images/about-profile.png') top center
+          no-repeat;
+        border-radius: 4px;
+        width: 200px;
+        height: 150px;
+      }
+
+      &__last-work {
+        background: url('../../assets/images/about-post.png') top center
+          no-repeat;
+        border-radius: 4px;
+        height: 200px;
+        width: 200px;
+
+        div {
+          align-items: end;
+          display: flex;
+
+          background: $color-neutral-600;
+          color: $color-neutral-200;
+          height: 100%;
+          opacity: 0.8;
+          padding: 24px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.section-career {
+  background: $color-gradient-background;
+  padding-bottom: 144px;
+  padding-top: 40px;
+
+  &__jobs-history {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__job {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &:hover h2 {
+      color: $color-primary-200;
+    }
+
+    div {
+      h2 {
+        align-items: center;
+        display: flex;
+        gap: 12px;
+      }
+
+      h2,
+      small,
+      p {
+        color: inherit;
+      }
+
+      &:first-of-type {
+        color: $color-neutral-100;
+      }
+
+      &:last-of-type {
+        color: $color-neutral-200;
+      }
+    }
+  }
+}

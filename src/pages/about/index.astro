@@ -1,0 +1,182 @@
+---
+import { socials } from '@/constants';
+import { Container, Link, Tag, Text } from '@/components/lib';
+import { BaseLayout } from '@/layouts';
+
+import './about.styles.scss';
+
+const companies = [
+  {
+    date: { final: '2025/01', initial: '2021/09' },
+    isStartup: false,
+    location: 'Remoto, São Paulo',
+    name: 'Arco Educação',
+    position: 'Software Engineer',
+  },
+  {
+    date: { final: '2021/09', initial: '2021/01' },
+    isStartup: true,
+    location: 'Remoto, Santa Catarina',
+    name: 'Studos',
+    position: 'Engenheiro de Sistemas',
+  },
+  {
+    date: { final: '2021/01', initial: '2019/11' },
+    isStartup: false,
+    location: 'Pinheiros, São Paulo',
+    name: 'Semantix',
+    position: 'Programador Front-end',
+  },
+  {
+    date: { final: '2019/11', initial: '2019/07' },
+    isStartup: true,
+    location: 'Vergueiro, São Paulo',
+    name: 'Cosmobots',
+    position: 'Engenheiro de Sistemas',
+  },
+  {
+    date: { final: '2019/06', initial: '2018/06' },
+    isStartup: false,
+    location: 'Trianon Masp, São Paulo',
+    name: 'Digisystem',
+    position: 'Estagiário de desenvolvimento Front-end',
+  },
+];
+---
+
+<BaseLayout>
+  <section class='styled-section section--dark section-presentation'>
+    <Container client:load>
+      <div class='section-presentation__content'>
+        <div class='section-presentation__content__intro'>
+          <Text element='h1' variant='heading-2'>
+            Designer de Interfaces & Desenvolvedor Front-end da região do Grande
+            ABC, São Paulo
+          </Text>
+          <Text element='p' variant='intro'>
+            Solucionando os seus problemas através de uma stack baseada em
+            tecnologia e design.
+          </Text>
+
+          <div class='section-presentation__content__socials'>
+            <Link href={socials.instagram} variant='instagram'>
+              Instagram
+            </Link>
+            <Link href={socials.linkedIn} variant='linkedin'> LinkedIn </Link>
+            <Link href={socials.dribbble} variant='dribbble'> Dribbble </Link>
+            <div></div>
+            <Link href='/dgbragas-cv.pdf'> Currículo profissional </Link>
+          </div>
+
+          <div class='section-presentation__content__about'>
+            <Text element='p' variant='extended-medium'>
+              Opa, tudo bem contigo?
+            </Text>
+
+            <Text element='p' variant='extended-medium'>
+              Graduado em <strong>Análise e Desenvolvimento de Sistemas</strong>
+              pela
+              <Link href='https://www.sptech.school/'>
+                Faculdade Bandeirantes de Tecnologia
+              </Link>
+              (atual SPTech), atuo como <strong>Desenvolvedor Front-end</strong>
+              e <strong>UI Designer</strong> há 7 anos, passando por empresas com
+              foco em <strong>Consultoria</strong>,
+              <strong>Desenvolvimento SaaS</strong>,
+              <strong>Serviços Chatbot</strong>, <strong>Big Data</strong>,
+              <strong>Educação</strong> e <strong>e-Commerce</strong>.
+            </Text>
+
+            <Text element='p' variant='extended-medium'>
+              Detentor de um grande zelo por padrões web, tanto na prototipação
+              quanto na codificação, sempre busco entregar
+              <span class='about--highlight'>
+                o melhor código aliado a interfaces insanas e surpreendentes aos
+                olhos do usuário
+              </span>. Para isso, possuo habilidades core em <i>wireframing</i>,
+              <i>prototyping</i>, a11y (Acessibilidade), <strong>Figma</strong>,
+              <strong>React & Next.js (TypeScript + JavaScript)</strong>,
+              <strong>Design Systems</strong> e outras tecnologias que complementam
+              o meu stack.
+            </Text>
+
+            <Text element='p' variant='extended-medium'>
+              Além disso, busco sempre compartilhar conhecimentos e experiência
+              com a comunidade e o time da companhia, pois, no fim do dia, o
+              mais importante é que “todos joguem juntos e não deixem a bolinha
+              cair”. Afinal,
+              <span class='about--highlight'>
+                não existem adversários quando o objeto é entregar a melhor
+                solução ao usuário
+              </span>.
+            </Text>
+          </div>
+        </div>
+
+        <aside class='section-presentation__content__cards'>
+          <nav>
+            <a class='section-presentation__content__cards__blog' href='/blog'>
+              {'<Blog />'}
+            </a>
+
+            <a
+              class='section-presentation__content__cards__featured'
+              href='/daily-ui'
+            >
+              <span>UI</span>
+              <Text variant='label'>
+                Daily UI: <i>Becoming a better Designer</i>
+              </Text>
+            </a>
+
+            <a class='section-presentation__content__cards__profile'></a>
+
+            <a
+              class='section-presentation__content__cards__last-work'
+              href={`${socials.instagram}/post123`}
+            >
+              <div>
+                <Text variant='label'>
+                  Veja o meu último trabalho
+                  <!-- <ExternalIcon /> -->
+                </Text>
+              </div>
+            </a>
+          </nav>
+        </aside>
+      </div>
+    </Container>
+  </section>
+
+  <section class='styled-section section--dark section-career'>
+    <Container>
+      <div class='section-career__jobs-history'>
+        {
+          companies.map(company => (
+            <div class='section-career__job'>
+              <div>
+                <Text element='h2' variant='heading-4'>
+                  {company.name}
+                  {company.isStartup && (
+                    <Tag label='Startup' variant='filled' />
+                  )}
+                </Text>
+                <Text element='small' variant='small'>
+                  {company.date.initial} - {company.date.final}
+                </Text>
+              </div>
+              <div>
+                <Text element='p' variant='extended-medium'>
+                  {company.position}
+                </Text>
+                <Text element='p' variant='extended-medium'>
+                  {company.location}
+                </Text>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

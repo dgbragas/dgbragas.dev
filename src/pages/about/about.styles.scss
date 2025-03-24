@@ -120,6 +120,7 @@
 
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
         gap: 16px;
       }
 
@@ -138,6 +139,12 @@
         color: $color-neutral-200;
         height: 200px;
         width: 200px;
+        transition: background 0.24s ease-out;
+
+        &:hover,
+        &:focus {
+          background: $color-neutral-400;
+        }
       }
 
       &__featured {
@@ -160,6 +167,11 @@
         span:first-of-type {
           @include apply-map($font-heading-4);
         }
+
+        &:hover,
+        &:focus {
+          background: $color-secondary-purple;
+        }
       }
 
       &__profile {
@@ -168,6 +180,11 @@
         border-radius: 4px;
         width: 200px;
         height: 150px;
+
+        &:hover,
+        &:focus {
+          filter: brightness(1.2);
+        }
       }
 
       &__last-work {
@@ -187,6 +204,17 @@
           opacity: 0.8;
           padding: 24px;
           width: 100%;
+        }
+
+        &:hover,
+        &:focus {
+          span {
+            color: $color-neutral-100;
+          }
+
+          div {
+            opacity: 0.88;
+          }
         }
       }
     }
@@ -208,6 +236,8 @@
     display: inline-flex;
     flex-direction: column;
     gap: 16px;
+
+    cursor: default;
 
     &:hover h2 {
       color: $color-primary-200;

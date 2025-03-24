@@ -122,6 +122,8 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 16px;
+
+        margin-top: 32px;
       }
 
       &__blog {
@@ -178,8 +180,9 @@
         background: url('../../assets/images/about-profile.png') top center
           no-repeat;
         border-radius: 4px;
-        width: 200px;
         height: 150px;
+        transition: filter 0.24s ease-out;
+        width: 200px;
 
         &:hover,
         &:focus {
@@ -203,6 +206,7 @@
           height: 100%;
           opacity: 0.8;
           padding: 24px;
+          transition: opacity 0.24s ease-out;
           width: 100%;
         }
 

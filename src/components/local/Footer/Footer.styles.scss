@@ -49,6 +49,10 @@
     color: $color-neutral-100;
     padding: 40px 0;
 
+    span {
+      font-size: 13px;
+    }
+
     &__content {
       align-items: center;
       display: flex;

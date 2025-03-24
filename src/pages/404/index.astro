@@ -1,0 +1,33 @@
+---
+import { Container, Link, Text } from '@/components/lib';
+import { BaseLayout } from '@/layouts';
+
+import './404.styles.scss';
+---
+
+<BaseLayout>
+  <section class='styled-section section--dark'>
+    <div class='section-404'>
+      <Container>
+        <div class='section-404__content'>
+          <div class='section-404__content__cta'>
+            <img alt='404 - Oh shit' src='src/assets/illustrations/404.svg' />
+            <Text element='h1' variant='heading-3'>
+              You're in a wrong place
+            </Text>
+            <a class='button' href='/'>Go back home</a>
+          </div>
+
+          <div class='section-404__content__copy'>
+            <Text element='small' variant='small'>
+              Reference by Kieran James on
+              <Link href='https://dribbble.com/shots/6551175-404-Daily-UI-008'>
+                Dribbble
+              </Link>
+            </Text>
+          </div>
+        </div>
+      </Container>
+    </div>
+  </section>
+</BaseLayout>

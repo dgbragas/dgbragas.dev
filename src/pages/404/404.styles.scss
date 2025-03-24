@@ -1,0 +1,43 @@
+.section-404 {
+  background: $color-gradient-background;
+
+  &__content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-height: 100vh;
+
+    &__cta {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      flex: 1;
+      flex-direction: column;
+      gap: 24px;
+
+      h1 {
+        color: $color-neutral-100;
+      }
+
+      a {
+        margin-top: 16px;
+      }
+    }
+
+    &__copy {
+      align-self: end;
+      margin-bottom: 40px;
+
+      small {
+        color: $color-neutral-200;
+
+        a {
+          color: #ea4c89;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

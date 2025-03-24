@@ -45,11 +45,14 @@ const companies = [
 ---
 
 <BaseLayout>
-  <section class='styled-section section--dark section-presentation'>
+  <section
+    aria-labelledby='introduction'
+    class='styled-section section--dark section-presentation'
+  >
     <Container client:load>
       <div class='section-presentation__content'>
         <div class='section-presentation__content__intro'>
-          <Text element='h1' variant='heading-2'>
+          <Text id='introduction' element='h1' variant='heading-2'>
             Designer de Interfaces & Desenvolvedor Front-end da região do Grande
             ABC, São Paulo
           </Text>
@@ -113,7 +116,11 @@ const companies = [
           </div>
         </div>
 
-        <aside class='section-presentation__content__cards'>
+        <aside
+          aria-labelledby='extra-navigation'
+          class='section-presentation__content__cards'
+        >
+          <Text id='extra-navigation' className='sr-only'>Links extras</Text>
           <nav>
             <a class='section-presentation__content__cards__blog' href='/blog'>
               {'<Blog />'}
@@ -130,11 +137,13 @@ const companies = [
             </a>
 
             <a
+              aria-label='Acesse meu Instagram pessoal'
               class='section-presentation__content__cards__profile'
               href='https://www.instagram.com/dgbragas'
               target='_blank'></a>
 
             <a
+              aria-label='Visite meu último trabalho no Instagram'
               class='section-presentation__content__cards__last-work'
               href={`${socials.instagram}/post123`}
             >

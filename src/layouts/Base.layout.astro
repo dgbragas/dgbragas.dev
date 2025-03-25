@@ -1,6 +1,6 @@
 ---
 import { AnnouncementBar, Link } from '@/components/lib';
-import { TopMenu } from '@/components/local';
+import { Footer, TopMenu } from '@/components/local';
 import { LayoutProvider, StylesProvider } from '@/providers';
 
 import './Base.styles.scss';
@@ -19,5 +19,6 @@ import './Base.styles.scss';
       <TopMenu client:only unfixed />
     </div>
     <slot />
+    <Footer />
   </StylesProvider>
 </LayoutProvider>

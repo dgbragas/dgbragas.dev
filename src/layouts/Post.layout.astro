@@ -1,25 +1,17 @@
 ---
 import { LayoutProvider, StylesProvider } from '@/providers';
 
-const layoutProps = {
-  title: '',
-  description: '',
-  url: 'https://dgbragas.dev/blog/',
-  image: '',
-  publishedTime: '',
-  modifiedTime: '',
-  type: 'article',
-};
+const { modifiedTime, publishedTime, section, tags, type, ...layoutProps } =
+  Astro.props;
 ---
 
 <LayoutProvider {...layoutProps}>
   <Fragment slot='meta'>
-    <meta
-      property='article:published_time'
-      content={layoutProps.publishedTime}
-    />
-    <meta property='article:modified_time' content={layoutProps.modifiedTime} />
-    <meta property='article:author' content="Diego 'Dg' Braga" />
+    <meta property='article:author' content="Diego '@dgbragas' Braga" />
+    <meta property='article:section' content={section} />
+    <meta property='article:tag' content={tags} />
+    <meta property='article:published_time' content={publishedTime} />
+    <meta property='article:modified_time' content={modifiedTime} />
   </Fragment>
 
   <StylesProvider>

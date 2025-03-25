@@ -18,7 +18,11 @@ import './Base.styles.scss';
       </AnnouncementBar>
       <TopMenu client:only unfixed />
     </div>
-    <slot />
+
+    <main>
+      <slot />
+    </main>
+
     <Footer />
   </StylesProvider>
 </LayoutProvider>

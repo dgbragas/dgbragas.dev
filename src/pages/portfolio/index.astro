@@ -1,0 +1,8 @@
+---
+import { getPortfolioPosts } from '@/api';
+import { BaseLayout } from '@/layouts';
+
+const { privatePosts, publicPosts, tags } = await getPortfolioPosts();
+---
+
+<BaseLayout />

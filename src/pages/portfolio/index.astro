@@ -1,8 +1,133 @@
 ---
-import { getPortfolioPosts } from '@/api';
+import { getPortfolioPosts, getPortfolioProjects } from '@/api';
+import {
+  CardPortfolio,
+  Container,
+  Link,
+  QuickInput,
+  Text,
+} from '@/components/lib';
 import { BaseLayout } from '@/layouts';
 
-const { privatePosts, publicPosts, tags } = await getPortfolioPosts();
+import './portfolio.styles.scss';
+import { CardGitHub } from '@/components/local';
+
+const { publicPosts, tags } = await getPortfolioPosts();
+const projects = await getPortfolioProjects();
+
+const fullUrl = new URL(import.meta.env.SITE + Astro.request.url);
+const currentFilter = fullUrl.searchParams.get('filter') ?? 'Todos trabalhos';
+
+const portfolioList = [...publicPosts, ...projects].sort(
+  () => Math.random() - 0.5,
+);
+const tagsList = ['Todos trabalhos', ...tags, 'GitHub'];
+
+const currentPortfolio = () => {
+  if (currentFilter === 'GitHub') {
+    return projects;
+  }
+
+  if (currentFilter && currentFilter !== 'Todos trabalhos') {
+    return publicPosts.filter(({ tags }) => tags.includes(currentFilter));
+  }
+
+  return portfolioList;
+};
 ---
 
-<BaseLayout />
+<BaseLayout>
+  <Fragment slot='scripts'>
+    <script src='/scripts/resize-grid.js' type='module'></script>
+  </Fragment>
+
+  <section class='styled-section section--dark section-portfolio__intro'>
+    <Container>
+      <div class='section-portfolio__intro__content'>
+        <div class='section-portfolio__intro__content__texts'>
+          <Text element='small' variant='caption'>Portfólio</Text>
+          <Text element='h1' variant='heading-2'>
+            Designs de Interface, protótipos navegáveis e aplicações web
+          </Text>
+          <Text element='p' variant='intro'>
+            Todos os meus principais trabalhos de design e desenvolvimento web
+            reunidos em um único local. Espero que você goste! :D
+          </Text>
+        </div>
+
+        <QuickInput
+          id='private-portfolio'
+          label='> insira a senha'
+          searchText='Acessar portfólio privado'
+          onSearch={() => console.log('testing')}
+        />
+      </div>
+    </Container>
+  </section>
+
+  <section class='styled-section section--dark section-portfolio'>
+    <Container>
+      <div class='section-portfolio__content'>
+        <aside>
+          <Text className='sr-only' element='h2'>Filtro de conteúdos</Text>
+          {
+            tagsList.map(tag => {
+              const isCurrent = currentFilter === tag;
+
+              return (
+                <Link
+                  className={isCurrent ? '--active' : ''}
+                  href={`?filter=${tag}`}
+                  target='_self'
+                >
+                  {isCurrent && '> '}
+                  {tag}
+                </Link>
+              );
+            })
+          }
+        </aside>
+
+        <div class='section-portfolio__content__posts'>
+          <div class='masonry-grid'>
+            {
+              currentPortfolio().map(post => {
+                if ('html_url' in post) {
+                  return (
+                    <div class='masonry-grid__item'>
+                      <CardGitHub
+                        aria-label={`Acessar o projeto ${post.name} no GitHub`}
+                        className='masonry-grid__item__content'
+                        description={post.description}
+                        repoUrl={post.html_url}
+                        title={post.name}
+                      />
+                    </div>
+                  );
+                }
+
+                return (
+                  <div class='masonry-grid__item'>
+                    <CardPortfolio
+                      aria-label={`Acessar "${post.title}" no Instagram"`}
+                      className='masonry-grid__item__content'
+                      description={post.description}
+                      image={{
+                        alt: post.image.alternativeText,
+                        caption: post.image.caption,
+                        src: post.image.url,
+                      }}
+                      labels={post.tags}
+                      url={{ href: post.url, target: '_blank' }}
+                      title={post.title}
+                    />
+                  </div>
+                );
+              })
+            }
+          </div>
+        </div>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

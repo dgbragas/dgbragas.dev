@@ -1,0 +1,80 @@
+.section-portfolio__intro {
+  background: $color-neutral-600;
+  padding-top: 176px;
+  padding-inline: 24vw;
+
+  &__content {
+    padding-bottom: 96px;
+
+    &__texts {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      margin-bottom: 40px;
+      text-align: center;
+
+      small {
+        background: $color-gradient-light-theme;
+
+        background-clip: text;
+        -webkit-backgroun-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      h1 {
+        color: $color-neutral-100;
+      }
+
+      p {
+        color: $color-neutral-200;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.section-portfolio {
+  background: $color-gradient-background;
+  padding: 96px 0 128px;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 176px 1fr;
+    gap: 32px;
+
+    aside {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      a {
+        span {
+          color: $color-neutral-200;
+          font-family: 'Heebo-Bold';
+          font-size: 14px;
+          line-height: 180%;
+          opacity: 0.4;
+
+          &:hover {
+            color: $color-primary-200;
+            opacity: 1;
+          }
+        }
+
+        &.--active span {
+          opacity: 1;
+        }
+      }
+    }
+
+    &__posts {
+      .masonry-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-auto-rows: 8px;
+        gap: 32px;
+      }
+    }
+  }
+}

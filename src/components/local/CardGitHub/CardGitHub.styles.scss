@@ -1,5 +1,5 @@
 .card-github {
-  background: $color-neutral-200;
+  background: $color-neutral-500;
   border-radius: 4px;
   display: block;
   padding: 24px 32px;
@@ -17,18 +17,40 @@
       color: $color-neutral-200;
     }
 
+    span {
+      border: 1px solid $color-neutral-200;
+    }
+
     svg path {
       fill: $color-neutral-200;
     }
   }
 
   &__header {
-    align-items: center;
     display: flex;
-    gap: 12px;
+    flex-direction: column;
+    gap: 24px;
+
+    margin-bottom: 4px;
+
+    span {
+      border: 1px solid $color-neutral-300;
+      border-radius: 2px;
+      padding: 8px;
+      width: fit-content;
+
+      svg {
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    h2 {
+      color: $color-neutral-200;
+    }
   }
 
   p {
-    color: $color-neutral-400;
+    color: $color-neutral-200;
   }
 }

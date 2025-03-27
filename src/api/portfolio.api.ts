@@ -10,6 +10,14 @@ type PortfolioPost = {
   };
   private: boolean;
   tags: string[];
+  title: string;
+  url: string;
+};
+
+type PortfolioProject = {
+  description: string;
+  name: string;
+  html_url: string;
 };
 
 const getPortfolioPosts = async () => {
@@ -38,4 +46,9 @@ const getPortfolioPosts = async () => {
   return { privatePosts, publicPosts, tags };
 };
 
-export { getPortfolioPosts };
+const getPortfolioProjects = async () => {
+  const response = await fetch(`${baseUrl.github}/users/dgbragas/repos`);
+  return (await response.json()) as PortfolioProject[];
+};
+
+export { getPortfolioPosts, getPortfolioProjects };

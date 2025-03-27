@@ -2,10 +2,12 @@ import { Tag, Text } from '@/components/lib';
 
 import './CardPortfolio.styles.scss';
 
-type CardPortfolioProps = {
+type CardPortfolioProps = React.HTMLAttributes<HTMLAnchorElement> & {
+  className?: string;
   description: string;
   image: {
     alt: string;
+    caption: string;
     src: string;
   };
   labels: string[];
@@ -18,19 +20,27 @@ type CardPortfolioProps = {
 };
 
 const CardPortfolio = ({
+  className,
   description,
   image,
   labels,
   title,
   url,
   variant = 'overlay',
+  ...rest
 }: CardPortfolioProps) => (
   <a
-    className={`card-portfolio card-portfolio--${variant}`}
+    {...rest}
+    className={`card-portfolio card-portfolio--${variant} ${className ?? ''}`.trim()}
     href={url.href}
     target={url.target}
+    rel={url.target === '_blank' ? 'noopener noreferrer' : undefined}
   >
-    <img src={image.src} alt={image.alt} />
+    <img alt={image.alt} aria-describedby='described-img' src={image.src} />
+    <Text className='sr-only' element='p' id='described-img'>
+      {image.caption}
+    </Text>
+
     <article className='card-portfolio__container'>
       <div className='card-portfolio__labels'>
         {labels.map(label => (
@@ -49,7 +59,7 @@ const CardPortfolio = ({
 
       <Text
         element='p'
-        variant={variant === 'extended' ? 'extended-medium' : 'body'}
+        variant={variant === 'extended' ? 'extended-medium' : 'extended-small'}
       >
         {description}
       </Text>

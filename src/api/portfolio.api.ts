@@ -16,8 +16,9 @@ type PortfolioPost = {
 
 type PortfolioProject = {
   description: string;
-  name: string;
+  fork: boolean;
   html_url: string;
+  name: string;
 };
 
 const getPortfolioPosts = async () => {
@@ -48,7 +49,10 @@ const getPortfolioPosts = async () => {
 
 const getPortfolioProjects = async () => {
   const response = await fetch(`${baseUrl.github}/users/dgbragas/repos`);
-  return (await response.json()) as PortfolioProject[];
+  const data = (await response.json()) as PortfolioProject[];
+
+  const ownerRepos = data.filter(project => !project.fork);
+  return ownerRepos;
 };
 
 export { getPortfolioPosts, getPortfolioProjects };

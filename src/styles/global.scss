@@ -48,6 +48,17 @@ h6 {
   font-family: 'Heebo-Bold';
 }
 
+html {
+  scroll-behavior: auto !important;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: auto;
+}
+
 body {
   color: $color-neutral-300;
   font-family: 'Inter-Regular';

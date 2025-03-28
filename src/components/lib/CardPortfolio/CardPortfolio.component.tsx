@@ -50,7 +50,7 @@ const CardPortfolio = ({
 
       <header className='card-portfolio__header'>
         <Text
-          element='h3'
+          element='h2'
           variant={variant === 'extended' ? 'heading-4' : 'intro-highlight'}
         >
           {title}

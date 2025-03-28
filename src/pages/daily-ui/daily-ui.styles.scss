@@ -1,3 +1,9 @@
 .dui--highlight {
   background: $color-gradient-dark-theme;
 }
+
+.dui-posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 280px);
+  gap: 96px 32px;
+}

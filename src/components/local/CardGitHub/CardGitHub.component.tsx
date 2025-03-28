@@ -16,11 +16,12 @@ const CardGitHub = ({
   description,
   repoUrl,
   title,
+  variant = 'boxed',
   ...rest
 }: CardGitHubProps) => (
   <a
     {...rest}
-    className={`card-github ${className ?? ''}`.trim()}
+    className={`card-github card-github--${variant} ${className ?? ''}`.trim()}
     href={repoUrl}
     target='_blank'
   >

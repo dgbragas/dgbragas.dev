@@ -1,18 +1,64 @@
 ---
 import { getRepos } from '@/api';
+import { CardGitHub } from '@/components/local';
 import { HighlightLayout } from '@/layouts';
 
 import './whatt-if.styles.scss';
 
+const fullUrl = new URL(import.meta.env.SITE + Astro.request.url);
+const currentFilter = fullUrl.searchParams.get('filter') ?? 'all';
+
+const repositories = await getRepos();
+
+const links = [
+  {
+    'aria-label': 'Filtrar por Todos',
+    active: currentFilter.includes('all'),
+    href: '?filter=all',
+    children: 'Todos',
+  },
+  {
+    'aria-label': 'Filtrar por Actions',
+    active: currentFilter.includes('actions'),
+    href: '?filter=actions',
+    children: 'Actions',
+  },
+  {
+    'aria-label': 'Filtrar por Linters',
+    active: currentFilter.includes('linters'),
+    href: '?filter=linters',
+    children: 'Linters',
+  },
+  {
+    'aria-label': 'Filtrar por Design System',
+    active: currentFilter.includes('ds'),
+    href: '?filter=design-system',
+    children: 'Styles',
+  },
+  {
+    'aria-label': 'Filtrar por Utils',
+    active: currentFilter.includes('utils'),
+    href: '?filter=utils',
+    children: 'Utils',
+  },
+];
+
+const repositoriesList = () => {
+  if (currentFilter !== 'all') {
+    return repositories.filter(({ name }) => currentFilter.includes(name));
+  }
+
+  return repositories;
+};
+
 const pageProps = {
+  links,
   callToAction: 'Saiba mais sobre o projeto',
   className: 'whatt-if--highlight',
   tag: '⚠️ Em desenvolvimento',
   title: '“Muitas coisas criadas com design, código, testes e um bom café.”',
   sectionTheme: 'section--dark',
 };
-
-const repositories = await getRepos();
 ---
 
 <HighlightLayout {...pageProps}>
@@ -22,4 +68,17 @@ const repositories = await getRepos();
     <i>help functions</i>, <i>linters</i>, <i>boilerplates</i> e os componentes que
     utilizo como meu <strong><u>Design System pessoal</u></strong>.
   </Fragment>
+
+  <div class='whatt-if__posts'>
+    {
+      repositoriesList().map(repo => (
+        <CardGitHub
+          description={repo.description ?? '--'}
+          repoUrl={repo.html_url}
+          variant='extended'
+          title={`whatt-if - ${repo.name}`}
+        />
+      ))
+    }
+  </div>
 </HighlightLayout>

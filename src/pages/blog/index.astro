@@ -1,0 +1,159 @@
+---
+import { getPosts } from '@/api';
+import {
+  CardPost,
+  Button,
+  Container,
+  Link,
+  QuickInput,
+  Text,
+} from '@/components/lib';
+import { BaseLayout } from '@/layouts';
+import { plainText } from '@/utils';
+
+import './blog.styles.scss';
+
+const { posts, tags } = await getPosts();
+
+const tagsList = ['Todas categorias', ...tags];
+const [firstPost, ...postsList] = await posts;
+---
+
+<script>
+  const response = await fetch(
+    'https://admin.dgbragas.dev/api/posts?populate=*',
+  );
+  const data = await response.json();
+
+  console.log(data);
+</script>
+
+<BaseLayout>
+  <section class='styled-section section--dark section-blog__intro'>
+    <Container>
+      <div class='section-blog__intro__presentation'>
+        <Text element='small' variant='caption'>Blog</Text>
+        <Text element='h1' variant='heading-2'
+          >Compartilhando o conhecimento</Text
+        >
+        <Text element='p' variant='intro'>
+          Conteúdos sobre desenvolvimento front-end, carreira, design de
+          interfaces, acessibilidade web e muito mais
+        </Text>
+      </div>
+      <QuickInput
+        id='blog-search'
+        label='> pesquise por trabalhos'
+        searchText='Pesquisar'
+        onSearch={() => {}}
+      />
+    </Container>
+  </section>
+
+  <section class='styled-section section--dark section-blog__content'>
+    <Container>
+      <div class='section-blog__content__filter'>
+        <div class='section-blog__content__filter__label'>
+          <svg
+            width='14'
+            height='14'
+            viewBox='0 0 14 14'
+            fill='none'
+            xmlns='http://www.w3.org/2000/svg'
+          >
+            <path
+              d='M5 2.5C5 3.88071 3.88071 5 2.5 5C1.11929 5 0 3.88071 0 2.5C0 1.11929 1.11929 0 2.5 0C3.88071 0 5 1.11929 5 2.5Z'
+              fill='url(#paint0_linear_2152_1262)'></path>
+            <path
+              d='M14 2.5C14 3.88071 12.8807 5 11.5 5C10.1193 5 9 3.88071 9 2.5C9 1.11929 10.1193 0 11.5 0C12.8807 0 14 1.11929 14 2.5Z'
+              fill='url(#paint1_linear_2152_1262)'></path>
+            <path
+              d='M14 11.5C14 12.8807 12.8807 14 11.5 14C10.1193 14 9 12.8807 9 11.5C9 10.1193 10.1193 9 11.5 9C12.8807 9 14 10.1193 14 11.5Z'
+              fill='url(#paint2_linear_2152_1262)'></path>
+            <defs>
+              <linearGradient
+                id='paint0_linear_2152_1262'
+                x1='14.6723'
+                y1='-2.06818'
+                x2='-0.870628'
+                y2='13.727'
+                gradientUnits='userSpaceOnUse'
+              >
+                <stop stop-color='#2060DF'></stop>
+                <stop offset='1' stop-color='#00F0F0'></stop>
+              </linearGradient>
+              <linearGradient
+                id='paint1_linear_2152_1262'
+                x1='14.6723'
+                y1='-2.06818'
+                x2='-0.870628'
+                y2='13.727'
+                gradientUnits='userSpaceOnUse'
+              >
+                <stop stop-color='#2060DF'></stop>
+                <stop offset='1' stop-color='#00F0F0'></stop>
+              </linearGradient>
+              <linearGradient
+                id='paint2_linear_2152_1262'
+                x1='14.6723'
+                y1='-2.06818'
+                x2='-0.870628'
+                y2='13.727'
+                gradientUnits='userSpaceOnUse'
+              >
+                <stop stop-color='#2060DF'></stop>
+                <stop offset='1' stop-color='#00F0F0'></stop>
+              </linearGradient>
+            </defs>
+          </svg>
+
+          <Text element='p' variant='label'>Categorias:</Text>
+        </div>
+
+        <div class='section-blog__content__filter__items'>
+          {tagsList.map(tag => <Link href={`?filter=${tag}`}>{tag}</Link>)}
+        </div>
+      </div>
+      <div class='section-blog__content__posts'>
+        <CardPost
+          description={firstPost.intro}
+          image={{
+            alt: firstPost.banner.alternativeText,
+            src: firstPost.banner.url,
+          }}
+          labels={firstPost.tags}
+          publishedAt={firstPost.updatedAt}
+          readTime={firstPost.readTime}
+          title={firstPost.title}
+          url={{
+            href: `/blog/${firstPost.title}`,
+            target: '_self',
+          }}
+          variant='extended'
+        />
+        <div>
+          {
+            postsList.map(post => (
+              <CardPost
+                description={post.content}
+                image={{
+                  alt: post.banner.alternativeText,
+                  src: post.banner.url,
+                }}
+                labels={post.tags}
+                publishedAt={post.updatedAt}
+                readTime={post.readTime}
+                title={post.title}
+                url={{
+                  href: `/blog/${post.title}`,
+                  target: '_self',
+                }}
+              />
+            ))
+          }
+        </div>
+        <Button>Carregue mais</Button>
+      </div>
+    </Container>
+  </section>
+</BaseLayout>

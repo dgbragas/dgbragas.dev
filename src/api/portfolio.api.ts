@@ -48,7 +48,11 @@ const getPortfolioPosts = async () => {
 };
 
 const getPortfolioProjects = async () => {
-  const response = await fetch(`${baseUrl.github}/users/dgbragas/repos`);
+  const response = await fetch(`${baseUrl.github}/users/dgbragas/repos`, {
+    headers: {
+      Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
+    },
+  });
   const data = (await response.json()) as PortfolioProject[];
 
   const ownerRepos = data.filter(project => !project.fork);

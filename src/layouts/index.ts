@@ -1,4 +1,5 @@
 import BaseLayout from './Base.layout.astro';
+import HighlightLayout from './Highlight.layout.astro';
 import PostLayout from './Post.layout.astro';
 
-export { BaseLayout, PostLayout };
+export { BaseLayout, HighlightLayout, PostLayout };

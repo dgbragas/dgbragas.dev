@@ -1,18 +1,40 @@
 ---
 import { getDUIPosts } from '@/api';
+import { CardPortfolio } from '@/components/lib';
 import { HighlightLayout } from '@/layouts';
 
 import './daily-ui.styles.scss';
 
+const posts = await getDUIPosts();
+
+const fullUrl = new URL(import.meta.env.SITE + Astro.request.url);
+const currentFilter = fullUrl.searchParams.get('filter') ?? 'Todos';
+
+const categories = posts.flatMap(post => post.category);
+const tagsList = ['Todos', ...categories];
+const links = tagsList.map(link => ({
+  'aria-label': `Filtrar por: ${link}`,
+  active: currentFilter === link,
+  href: `?filter=${link}`,
+  children: link,
+}));
+
+const postsList = () => {
+  if (currentFilter !== 'Todos') {
+    return posts.filter(({ category }) => category === currentFilter);
+  }
+
+  return posts;
+};
+
 const pageProps = {
+  links,
   callToAction: 'Veja os projetos criados',
   className: 'dui--highlight',
   tag: 'Daily UI',
-  title: 'Torne-se um designer melhor com pequenos projetos diários',
+  title: '"Torne-se um designer melhor com pequenos projetos diários"',
   sectionTheme: 'section--dark',
 };
-
-const posts = await getDUIPosts();
 ---
 
 <HighlightLayout {...pageProps}>
@@ -21,4 +43,26 @@ const posts = await getDUIPosts();
     série de <strong>Desafios de Design</strong> enviados diariamente, focando em
     aprimorar habilidades no <strong>Design de Interfaces</strong>.
   </Fragment>
+
+  <div class='dui-posts'>
+    {
+      postsList().map(post => (
+        <CardPortfolio
+          description={post.description}
+          labels={new Array(post.category)}
+          image={{
+            alt: post.images[0].alternativeText,
+            caption: post.images[0].caption,
+            src: post.images[0].url,
+          }}
+          variant='extended'
+          title={post.title}
+          url={{
+            href: '#',
+            target: '_self',
+          }}
+        />
+      ))
+    }
+  </div>
 </HighlightLayout>

@@ -1,7 +1,7 @@
 import { baseUrl } from '@/constants';
 
 const getRepos = async () => {
-  const response = await fetch(`${baseUrl}/orgs/whatt-if/repos`, {
+  const response = await fetch(`${baseUrl.github}/orgs/whatt-if/repos`, {
     headers: {
       Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
     },

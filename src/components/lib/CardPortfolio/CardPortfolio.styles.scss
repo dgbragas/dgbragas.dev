@@ -4,14 +4,6 @@
 
   &:hover,
   &:focus {
-    h3 {
-      background: $color-gradient-detail;
-
-      background-clip: text;
-      -webkit-backgroun-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
     .tag {
       background: $color-neutral-100;
       color: $color-neutral-600;
@@ -26,12 +18,31 @@
 
   /* [🎛️] Variants */
   &--extended {
+    &:hover,
+    &:focus {
+      h2 {
+        background: $color-gradient-light-theme;
+
+        background-clip: text;
+        -webkit-backgroun-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
     img {
       border-radius: 8px;
     }
 
     .card-portfolio__container {
       padding: 24px 16px;
+
+      h2 {
+        color: $color-neutral-600;
+      }
+
+      p {
+        color: $color-neutral-300;
+      }
     }
   }
 
@@ -39,6 +50,17 @@
     border-radius: 4px;
     overflow: hidden;
     position: relative;
+
+    &:hover,
+    &:focus {
+      h2 {
+        background: $color-gradient-detail;
+
+        background-clip: text;
+        -webkit-backgroun-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
 
     .card-portfolio__container {
       bottom: 0;
@@ -48,7 +70,7 @@
       padding: 24px 40px 24px 24px;
       z-index: 1;
 
-      h3 {
+      h2 {
         display: -webkit-box;
         line-clamp: 2;
         overflow: hidden;
@@ -85,18 +107,19 @@
       opacity: 0.9;
       width: 100%;
     }
+
+    &__labels > span {
+      box-shadow: 0 0 0 1px $color-border-on-dark;
+      color: $color-neutral-200;
+    }
   }
 
   /* [🏗️] Structure */
-  &__labels > span {
-    box-shadow: 0 0 0 1px $color-border-on-dark;
-    color: $color-neutral-200;
-  }
 
   &__header {
     margin: 16px 0 8px 0;
 
-    h3 {
+    h2 {
       color: $color-neutral-100;
     }
   }

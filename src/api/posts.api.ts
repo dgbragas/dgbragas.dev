@@ -1,8 +1,14 @@
 import { marked } from 'marked';
 
-import { baseUrl } from '@/constants/baseUrl.constants';
+import { baseUrl } from '@/constants';
+import { limitWords, plainText } from '@/utils';
 
 type Post = {
+  banner: {
+    alternativeText: string;
+    caption: string;
+    url: string;
+  };
   content: string;
   documentId: string;
   intro: Array<{
@@ -11,7 +17,7 @@ type Post = {
     }>;
   }>;
   publishedAt: string;
-  readTime: number;
+  read_time: number;
   section: string;
   tags: string[];
   title: string;
@@ -21,27 +27,44 @@ const formatDate = (date: Date) =>
   new Intl.DateTimeFormat('pt-BR').format(date);
 
 const getPosts = async () => {
-  const response = await fetch(`${baseUrl.server}/posts`);
+  const response = await fetch(`${baseUrl.server}/posts?populate=*`);
   const json = await response.json();
 
   const rawPosts = json.data as Post[];
 
-  const formattedData = rawPosts.map(post => {
-    const { readTime, tags, title } = post;
+  const formattedData = await Promise.all(
+    rawPosts.map(async post => {
+      const {
+        banner,
+        content: postContent,
+        read_time: readTime,
+        tags,
+        title,
+      } = post;
 
-    const intro = marked(post.intro[0].children[0].text);
-    const publishedAt = formatDate(new Date(post.publishedAt));
+      const markedIntro = await marked(post.intro[0].children[0].text);
+      const intro = plainText(markedIntro);
 
-    return {
-      intro,
-      publishedAt,
-      readTime,
-      tags,
-      title,
-    };
-  });
+      const markedContent = await marked(postContent);
+      const content = limitWords(plainText(markedContent), 30);
 
-  return formattedData;
+      const publishedAt = formatDate(new Date(post.publishedAt));
+
+      return {
+        banner,
+        content,
+        intro,
+        publishedAt,
+        readTime,
+        tags,
+        title,
+      };
+    }),
+  );
+
+  const tags = [...new Set(rawPosts.flatMap(({ tags }) => tags))];
+
+  return { posts: formattedData, tags };
 };
 
 const findOnePost = async (documentId: string) => {

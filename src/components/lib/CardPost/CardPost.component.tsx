@@ -16,6 +16,7 @@ type CardPostProps = {
     href: string;
     target: '_blank' | '_self';
   };
+  variant?: 'boxed' | 'extended';
 };
 
 const CardPost = ({
@@ -26,8 +27,13 @@ const CardPost = ({
   readTime,
   title,
   url,
+  variant = 'boxed',
 }: CardPostProps) => (
-  <a className='card-post' href={url.href} target={url.target}>
+  <a
+    className={`card-post card-post--${variant}`}
+    href={url.href}
+    target={url.target}
+  >
     <img alt={image.alt} src={image.src} />
     <article className='card-post__article'>
       <div className='card-post__content'>
@@ -53,7 +59,7 @@ const CardPost = ({
           {publishedAt}
         </Text>
         <Text element='span' variant='label'>
-          {readTime}min de leitura
+          {readTime} min de leitura
         </Text>
       </footer>
     </article>

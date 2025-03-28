@@ -1,8 +1,25 @@
 ---
 import { getRepos } from '@/api';
-import { BaseLayout } from '@/layouts';
+import { HighlightLayout } from '@/layouts';
+
+import './whatt-if.styles.scss';
+
+const pageProps = {
+  callToAction: 'Saiba mais sobre o projeto',
+  className: 'whatt-if--highlight',
+  tag: '⚠️ Em desenvolvimento',
+  title: '“Muitas coisas criadas com design, código, testes e um bom café.”',
+  sectionTheme: 'section--dark',
+};
 
 const repositories = await getRepos();
 ---
 
-<BaseLayout />
+<HighlightLayout {...pageProps}>
+  <Fragment slot='description'>
+    O <i>whatt-if</i> é um projeto pessoal open-source voltado a centralizar uma
+    série de <strong>utilitários de desenvolvimento</strong>, trazendo:
+    <i>help functions</i>, <i>linters</i>, <i>boilerplates</i> e os componentes que
+    utilizo como meu <strong><u>Design System pessoal</u></strong>.
+  </Fragment>
+</HighlightLayout>

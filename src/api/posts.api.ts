@@ -16,11 +16,11 @@ type Post = {
       text: string;
     }>;
   }>;
-  publishedAt: string;
   read_time: number;
   section: string;
   tags: string[];
   title: string;
+  updatedAt: string;
 };
 
 const formatDate = (date: Date) =>
@@ -48,16 +48,16 @@ const getPosts = async () => {
       const markedContent = await marked(postContent);
       const content = limitWords(plainText(markedContent), 30);
 
-      const publishedAt = formatDate(new Date(post.publishedAt));
+      const updatedAt = formatDate(new Date(post.updatedAt));
 
       return {
         banner,
         content,
         intro,
-        publishedAt,
         readTime,
         tags,
         title,
+        updatedAt,
       };
     }),
   );
@@ -75,13 +75,13 @@ const findOnePost = async (documentId: string) => {
 
   const content = marked(post.content);
   const intro = marked(post.intro[0].children[0].text);
-  const publishedAt = formatDate(new Date(post.publishedAt));
+  const updatedAt = formatDate(new Date(post.updatedAt));
 
   return {
     ...post,
     content,
     intro,
-    publishedAt,
+    updatedAt,
   };
 };
 

@@ -1,0 +1,156 @@
+@use '@/styles/mixins.scss' as *;
+
+.section-highlight {
+  margin-bottom: 112px;
+  position: relative;
+
+  /* [🛟] Floating: Circle */
+  &__circle {
+    background-repeat: no-repeat;
+    background-position: top right;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50%;
+  }
+
+  &.section--dark &__circle {
+    background-image: url('@/assets/illustrations/circle-background--light.svg');
+  }
+
+  &.section--light &__circle {
+    background-image: url('@/assets/illustrations/circle-background--dark.svg');
+  }
+
+  .container {
+    position: relative;
+    z-index: $z-index-raised;
+  }
+
+  /* [🏗️] Structure */
+  &__intro {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 176px 16vw;
+    text-align: center;
+
+    &__presentation {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      margin-bottom: 40px;
+    }
+
+    a {
+      @include apply-map($font-label);
+      align-items: center;
+      display: flex;
+      gap: 12px;
+
+      svg {
+        animation: bounce 2s infinite ease-in-out;
+      }
+    }
+
+    &__content {
+      &__navigation {
+        margin-bottom: 64px;
+
+        div {
+          align-items: center;
+          display: flex;
+          gap: 40px;
+
+          a {
+            &.--active {
+              border: 0;
+              border-color: $color-primary-100;
+              border-style: solid;
+              border-bottom-width: 1px;
+
+              span {
+                color: $color-primary-100;
+              }
+
+              &:hover {
+                border-color: $color-primary-200;
+              }
+            }
+
+            span {
+              @include apply-map($font-intro-highlight);
+              color: $color-neutral-600;
+              position: relative;
+
+              &:hover,
+              &:focus {
+                color: $color-primary-200;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* [🎛️] Variants */
+    &.light {
+      .tag {
+        background: rgba(16, 16, 16, 0.12);
+        color: $color-neutral-700;
+      }
+
+      h1 {
+        color: $color-neutral-700;
+        margin-top: 8px;
+      }
+
+      p {
+        color: $color-neutral-400;
+      }
+
+      a {
+        color: $color-neutral-500;
+
+        svg path {
+          stroke: $color-neutral-500;
+        }
+      }
+    }
+
+    &.dark {
+      .tag {
+        background: rgba(240, 240, 240, 0.12);
+        color: $color-neutral-100;
+      }
+
+      h1 {
+        color: $color-neutral-100;
+        margin-top: 8px;
+      }
+
+      p {
+        color: $color-neutral-200;
+      }
+
+      a {
+        color: $color-neutral-200;
+      }
+    }
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}

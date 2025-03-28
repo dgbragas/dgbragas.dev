@@ -12,7 +12,7 @@ type DUIPost = {
 };
 
 const getDUIPosts = async () => {
-  const response = await fetch(`${baseUrl.server}/daily-uis`);
+  const response = await fetch(`${baseUrl.server}/daily-uis?populate=images`);
   const json = await response.json();
 
   const rawData = json.data as DUIPost[];

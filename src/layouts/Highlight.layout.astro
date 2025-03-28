@@ -94,6 +94,7 @@ const theme: 'dark' | 'light' = sectionTheme.split('-')[2];
           {
             links?.map((link: LinkProps & { active: boolean }) => (
               <Link
+                aria-current={link.active}
                 aria-label={link['aria-label']}
                 className={link.active ? '--active' : ''}
                 href={link.href}

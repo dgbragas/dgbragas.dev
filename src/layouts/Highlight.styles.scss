@@ -58,46 +58,6 @@
       }
     }
 
-    &__content {
-      &__navigation {
-        margin-bottom: 64px;
-
-        div {
-          align-items: center;
-          display: flex;
-          gap: 40px;
-
-          a {
-            &.--active {
-              border: 0;
-              border-color: $color-primary-100;
-              border-style: solid;
-              border-bottom-width: 1px;
-
-              span {
-                color: $color-primary-100;
-              }
-
-              &:hover {
-                border-color: $color-primary-200;
-              }
-            }
-
-            span {
-              @include apply-map($font-intro-highlight);
-              color: $color-neutral-600;
-              position: relative;
-
-              &:hover,
-              &:focus {
-                color: $color-primary-200;
-              }
-            }
-          }
-        }
-      }
-    }
-
     /* [🎛️] Variants */
     &.light {
       .tag {
@@ -141,6 +101,50 @@
       a {
         color: $color-neutral-200;
       }
+    }
+  }
+
+  &__content {
+    &__navigation {
+      margin-bottom: 64px;
+
+      div {
+        align-items: center;
+        display: flex;
+        gap: 40px;
+
+        a {
+          &:hover span,
+          &:focus span {
+            color: $color-primary-200;
+          }
+
+          &.--active {
+            border: 0;
+            border-color: $color-primary-100;
+            border-style: solid;
+            border-bottom-width: 1px;
+
+            span {
+              color: $color-primary-100;
+            }
+
+            &:hover {
+              border-color: $color-primary-200;
+            }
+          }
+
+          span {
+            @include apply-map($font-intro-highlight);
+            color: $color-neutral-600;
+            position: relative;
+          }
+        }
+      }
+    }
+
+    &__posts {
+      margin-bottom: 128px;
     }
   }
 }

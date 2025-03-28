@@ -1,8 +1,24 @@
 ---
 import { getDUIPosts } from '@/api';
-import { BaseLayout } from '@/layouts';
+import { HighlightLayout } from '@/layouts';
+
+import './daily-ui.styles.scss';
+
+const pageProps = {
+  callToAction: 'Veja os projetos criados',
+  className: 'dui--highlight',
+  tag: 'Daily UI',
+  title: 'Torne-se um designer melhor com pequenos projetos diários',
+  sectionTheme: 'section--dark',
+};
 
 const posts = await getDUIPosts();
 ---
 
-<BaseLayout />
+<HighlightLayout {...pageProps}>
+  <Fragment slot='description'>
+    Estou reunindo nesta seção minha jornada pelos <u>100 dias</u> do Daily UI, uma
+    série de <strong>Desafios de Design</strong> enviados diariamente, focando em
+    aprimorar habilidades no <strong>Design de Interfaces</strong>.
+  </Fragment>
+</HighlightLayout>

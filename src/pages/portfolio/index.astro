@@ -76,6 +76,7 @@ const currentPortfolio = () => {
 
               return (
                 <Link
+                  aria-current={isCurrent}
                   className={isCurrent ? '--active' : ''}
                   href={`?filter=${tag}`}
                   target='_self'

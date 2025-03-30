@@ -1,0 +1,270 @@
+@use '@/styles/mixins.scss' as *;
+
+$paddingInline: 20vw;
+
+.post {
+  background: $color-neutral-700;
+  color: $color-neutral-200;
+
+  /* [💉] Injected HTML */
+  ul,
+  ol {
+    margin-block: 48px;
+    padding-inline: 16px;
+
+    li {
+      @include apply-map($font-extended-large);
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: -48px;
+        top: 16px;
+
+        background: $color-primary-200;
+        height: 2px;
+        width: 20px;
+      }
+
+      + li {
+        margin-top: 24px;
+      }
+
+      ul {
+        margin-block: 0;
+        margin-top: 16px;
+      }
+    }
+  }
+
+  strong {
+    color: $color-secondary-cyan;
+  }
+
+  a:not(.link) {
+    text-decoration: underline;
+
+    &:hover,
+    &:focus {
+      color: $color-primary-200;
+    }
+  }
+
+  h2:not(.text),
+  h3:not(.text),
+  h4:not(.text) {
+    color: $color-primary-200;
+    margin-bottom: 32px;
+    margin-top: 128px;
+  }
+
+  h2:not(.text) {
+    @include apply-map($font-heading-2);
+  }
+
+  h3:not(.text) {
+    @include apply-map($font-heading-3);
+  }
+
+  h4:not(.text) {
+    @include apply-map($font-heading-4);
+  }
+
+  hr {
+    background: $color-border-on-dark;
+    border: none;
+    height: 1px;
+    margin-block: 72px;
+  }
+
+  /* [🏗️] Structure */
+  &__article {
+    padding-bottom: 128px;
+    padding-top: 176px;
+
+    &__header {
+      margin-bottom: 56px;
+
+      &__content {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+
+        img {
+          border-radius: 10px;
+          max-width: 1008px;
+          width: 100%;
+        }
+      }
+
+      &__intro {
+        padding-inline: $paddingInline;
+        margin-top: 80px;
+
+        .tag {
+          background: $color-neutral-100;
+          color: $color-neutral-600;
+        }
+
+        h1 {
+          color: $color-neutral-100;
+          margin-bottom: 24px;
+          margin-top: 16px;
+        }
+
+        &__date {
+          display: flex;
+          gap: 28px;
+
+          small {
+            position: relative;
+
+            &:last-of-type::before {
+              content: '';
+              position: absolute;
+              top: 10px;
+              left: -16px;
+
+              background: $color-border-on-dark;
+              height: 4px;
+              width: 4px;
+            }
+          }
+        }
+      }
+    }
+
+    &__principle {
+      padding-inline: $paddingInline;
+
+      &__main {
+        margin-bottom: 72px;
+
+        p {
+          @include apply-map($font-blog);
+          font-style: italic;
+        }
+      }
+
+      &__content {
+        blockquote {
+          @include apply-map($font-extended-large);
+          margin-block: 48px;
+          padding: 8px 16px;
+          position: relative;
+
+          &::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 0;
+
+            background: $color-primary-200;
+            height: 100%;
+            width: 8px;
+          }
+        }
+
+        > p {
+          @include apply-map($font-blog);
+          margin-bottom: 32px;
+        }
+      }
+    }
+
+    &__outro {
+      margin-top: 128px;
+      margin-bottom: 72px;
+      padding-inline: $paddingInline;
+
+      &::after,
+      &::before {
+        content: '';
+        display: block;
+        background: $color-border-on-dark;
+        height: 1px;
+        margin: 0 auto;
+        width: 400px;
+      }
+
+      h2 {
+        color: $color-primary-200;
+        margin-bottom: 24px;
+        margin-top: 40px;
+      }
+
+      p {
+        margin-bottom: 40px;
+      }
+
+      strong {
+        color: $color-secondary-cyan;
+      }
+    }
+
+    &__footer {
+      padding-inline: $paddingInline;
+
+      &__related {
+        align-items: flex-end;
+        display: flex;
+        justify-content: space-between;
+        gap: 64px;
+
+        &__item {
+          h2 {
+            color: $color-neutral-100;
+            margin-bottom: 16px;
+          }
+
+          small {
+            color: $color-neutral-300;
+          }
+
+          a {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 16px;
+
+            border-radius: 4px;
+            padding: 24px 32px;
+            text-decoration: none !important;
+            transition: background 0.24s ease-out;
+
+            &:hover,
+            &:focus {
+              box-shadow: 0 0 1px $color-border-on-dark;
+              background: $color-neutral-200;
+
+              p {
+                color: $color-neutral-600;
+              }
+            }
+          }
+
+          &:last-of-type h2 {
+            justify-self: end;
+          }
+        }
+      }
+
+      &__thank-you {
+        margin-top: 128px;
+
+        h3 {
+          color: $color-neutral-100;
+          margin-bottom: 32px;
+          text-align: center;
+        }
+
+        > div {
+          align-items: center;
+          display: flex;
+          justify-content: center;
+          gap: 12px;
+        }
+      }
+    }
+  }
+}

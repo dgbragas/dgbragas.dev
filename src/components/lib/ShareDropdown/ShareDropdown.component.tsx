@@ -6,7 +6,7 @@ import { Text } from '@/components/lib';
 type ShareDropdownTypes = {
   className?: string;
   items: Array<{
-    command: {
+    command?: {
       keys: string[];
       display: string;
     };
@@ -37,9 +37,11 @@ const ShareDropdown = ({ items, trigger }: ShareDropdownTypes) => (
           >
             <a href={item.href} target='_blank'>
               <Text variant='small'>{item.text}</Text>
-              <Text element='small' variant='caption'>
-                {item.command.display}
-              </Text>
+              {item.command && (
+                <Text element='small' variant='caption'>
+                  {item.command.display}
+                </Text>
+              )}
             </a>
           </RUIDropdown.Item>
         ))}

@@ -9,24 +9,28 @@ import {
   Text,
 } from '@/components/lib';
 import { BaseLayout } from '@/layouts';
-import { plainText } from '@/utils';
+import { slugify } from '@/utils';
 
 import './blog.styles.scss';
 
-const { posts, tags } = await getPosts();
+const { posts: fetchedPosts, tags } = await getPosts();
+
+const fullUrl = new URL(import.meta.env.SITE + Astro.request.url);
+const currentFilter = fullUrl.searchParams.get('filter') ?? 'Todas categorias';
 
 const tagsList = ['Todas categorias', ...tags];
-const [firstPost, ...postsList] = await posts;
+const posts = await fetchedPosts;
+
+const filteredPosts = () => {
+  if (currentFilter !== 'Todas categorias') {
+    return posts.filter(({ tags }) => tags.includes(currentFilter));
+  }
+
+  return posts;
+};
+
+const [firstPost, ...postsList] = filteredPosts();
 ---
-
-<script>
-  const response = await fetch(
-    'https://admin.dgbragas.dev/api/posts?populate=*',
-  );
-  const data = await response.json();
-
-  console.log(data);
-</script>
 
 <BaseLayout>
   <section class='styled-section section--dark section-blog__intro'>
@@ -111,7 +115,13 @@ const [firstPost, ...postsList] = await posts;
         </div>
 
         <div class='section-blog__content__filter__items'>
-          {tagsList.map(tag => <Link href={`?filter=${tag}`}>{tag}</Link>)}
+          {
+            tagsList.map(tag => (
+              <Link href={`?filter=${tag}`} target='_self'>
+                {tag}
+              </Link>
+            ))
+          }
         </div>
       </div>
       <div class='section-blog__content__posts'>
@@ -126,14 +136,14 @@ const [firstPost, ...postsList] = await posts;
           readTime={firstPost.readTime}
           title={firstPost.title}
           url={{
-            href: `/blog/${firstPost.title}`,
+            href: `/blog/${slugify(firstPost.title)}`,
             target: '_self',
           }}
           variant='extended'
         />
         <div>
           {
-            postsList.map(post => (
+            postsList?.map(post => (
               <CardPost
                 description={post.content}
                 image={{
@@ -145,14 +155,14 @@ const [firstPost, ...postsList] = await posts;
                 readTime={post.readTime}
                 title={post.title}
                 url={{
-                  href: `/blog/${post.title}`,
+                  href: `/blog/${slugify(post.title)}`,
                   target: '_self',
                 }}
               />
             ))
           }
         </div>
-        <Button>Carregue mais</Button>
+        {false && <Button>Carregue mais</Button>}
       </div>
     </Container>
   </section>

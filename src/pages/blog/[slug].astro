@@ -1,0 +1,186 @@
+---
+import { getPosts, findOnePost } from '@/api';
+import { Button, Container, ShareDropdown, Tag, Text } from '@/components/lib';
+import { Footer, TopMenu } from '@/components/local';
+import { PostLayout } from '@/layouts';
+import { slugify } from '@/utils';
+
+import './blog-post.styles.scss';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const { posts } = await getPosts();
+
+  return posts.map(post => {
+    const slug = slugify(post.title);
+    const [day, month, year] = post.updatedAt.split('/');
+    const date = new Date(`${year}-${month}-${day}`);
+
+    const publishedAt = date
+      .toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+      })
+      .replace('.', '')
+      .replace(' de ', ' ')
+      .replace(' de ', ', ');
+
+    return {
+      params: { slug },
+      props: {
+        id: post.documentId,
+        relatedPosts: post.relatedPosts.map(related => ({
+          ...related,
+          publishedAt,
+        })),
+        title: post.title,
+        slug,
+      },
+    };
+  });
+}
+
+const { id, relatedPosts } = Astro.props;
+
+const post = await findOnePost(id);
+const [previousPost, nextPost] = relatedPosts;
+
+const postProps = {
+  modifiedTime: post.updatedAt,
+  publishedTime: post.updatedAt,
+  section: post.section,
+  tags: post.tags,
+  title: `dgbragas - Blog: ${post.title}`,
+  description: `Blog - ${post.title}`,
+  url: `https://dgbragas.dev/blog/${slugify(post.title)}`,
+  image: post.banner.url,
+  type: 'article',
+};
+---
+
+<PostLayout {...postProps}>
+  <TopMenu client:only />
+
+  <main class='post'>
+    <article class='styled-section section--dark post__article'>
+      <header class='post__article__header'>
+        <Container>
+          <div class='post__article__header__content'>
+            <img
+              alt={post.banner.alternativeText}
+              aria-describedby={post.banner.caption}
+              src={post.banner.url}
+            />
+
+            <div class='post__article__header__intro'>
+              {
+                post.tags.map(tag => (
+                  <Tag label={`#${tag.toLocaleLowerCase()}`} />
+                ))
+              }
+              <Text element='h1' variant='heading-1'>
+                {post.title}
+              </Text>
+
+              <div class='post__article__header__intro__date'>
+                <Text element='small' variant='label'>{post.updatedAt}</Text>
+                <Text element='small' variant='label'>
+                  {post.read_time} min de leitura
+                </Text>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </header>
+
+      <section class='post__article__principle'>
+        <Container>
+          <div class='post__article__principle__main' set:html={post.intro} />
+          <div
+            class='post__article__principle__content'
+            set:html={post.content}
+          />
+        </Container>
+      </section>
+
+      <section class='post__article__outro'>
+        <Container>
+          <Text element='h2' variant='heading-4'>
+            Encontrou algum problema no texto? Me ajude a corrigir!
+          </Text>
+          <Text element='p' variant='blog'>
+            Esse projeto é open source, então basta alterar o arquivo de texto,
+            diretamente no <strong>Github</strong> e abrir um
+            <i>pull-request</i>. É uma maneira simples e eficaz de contribuir
+            com a comunidade de desenvolvimento web.
+          </Text>
+        </Container>
+      </section>
+
+      <footer class='post__article__footer'>
+        <Container>
+          <div class='post__article__footer__related'>
+            <div class='post__article__footer__related__item'>
+              <Text element='h2' variant='heading-4'>
+                {nextPost ? 'Anterior' : 'Próximo'}
+              </Text>
+
+              <a
+                aria-label={`Ler o artigo: ${previousPost.title}`}
+                href={previousPost.url}
+                target='_self'
+              >
+                <Text element='small' variant='caption'>
+                  {previousPost.publishedAt}
+                </Text>
+                <Text element='p' variant='label'>{previousPost.title}</Text>
+              </a>
+            </div>
+
+            {
+              true && (
+                <div class='post__article__footer__related__item'>
+                  <Text element='h2' variant='heading-4'>
+                    Próxima
+                  </Text>
+
+                  <a href={nextPost.url} target='_self'>
+                    <Text element='small' variant='caption'>
+                      {nextPost.publishedAt}
+                    </Text>
+                    <Text element='p' variant='label'>
+                      {nextPost.title}
+                    </Text>
+                  </a>
+                </div>
+              )
+            }
+          </div>
+
+          <div class='post__article__footer__thank-you'>
+            <Text element='h3' variant='heading-4'>
+              Obrigado! Espero que tenha gostado da leitura =)
+            </Text>
+
+            <div>
+              <Button>Vamos conversar</Button>
+              <Text element='small'>ou</Text>
+              <ShareDropdown
+                client:only
+                items={[{ href: '#', text: 'Compartilhe no Twitter' }]}
+                trigger={{
+                  label: `Compartilhe o artigo "${post.title}" em suas redes sociais`,
+                  text: 'compartilhe o post',
+                }}
+              />
+            </div>
+          </div>
+        </Container>
+      </footer>
+    </article>
+  </main>
+
+  <Footer />
+</PostLayout>

@@ -117,7 +117,11 @@ const [firstPost, ...postsList] = filteredPosts();
         <div class='section-blog__content__filter__items'>
           {
             tagsList.map(tag => (
-              <Link href={`?filter=${tag}`} target='_self'>
+              <Link
+                className={currentFilter === tag ? '--active' : ''}
+                href={`?filter=${tag}`}
+                target='_self'
+              >
                 {tag}
               </Link>
             ))
@@ -126,6 +130,7 @@ const [firstPost, ...postsList] = filteredPosts();
       </div>
       <div class='section-blog__content__posts'>
         <CardPost
+          client:only
           description={firstPost.intro}
           image={{
             alt: firstPost.banner.alternativeText,

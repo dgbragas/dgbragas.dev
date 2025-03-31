@@ -59,8 +59,9 @@ const Footer = () => {
             <ul>
               <li>
                 <Link
-                  href='https://github.com/whatt-if'
+                  href='/whatt-if'
                   icon={WhattIfIcon}
+                  target='_self'
                   variant='whatt-if'
                 >
                   whatt-if

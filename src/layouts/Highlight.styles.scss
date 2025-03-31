@@ -38,6 +38,10 @@
     padding: 176px 20vw;
     text-align: center;
 
+    @include breakpoint('medium', 'max') {
+      padding: 128px 12vw;
+    }
+
     &__presentation {
       align-items: center;
       display: flex;
@@ -112,6 +116,10 @@
         align-items: center;
         display: flex;
         gap: 40px;
+
+        @include breakpoint('medium', 'max') {
+          flex-wrap: wrap;
+        }
 
         a {
           &:hover span,

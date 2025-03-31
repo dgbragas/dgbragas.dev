@@ -72,6 +72,7 @@ Abaixo você consegue ver — e eu também, já que provavelmente ia esquecer de
 - [ ] Remover duplicidades de estilização através de `@mixins`;
 - [ ] Testes unitários dos componentes e funções _(é... dessa vez acabou passando 😭)_;
 - [ ] Melhorar a forma de consumo dos SVGs dentro das páginas - _waiting for better SVG API from Astro_;
+- ...
 
 ---
 

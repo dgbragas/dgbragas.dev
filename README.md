@@ -1,48 +1,80 @@
-# Astro Starter Kit: Basics
+# `dgbragas.dev` - Blog, Portfólio e Institucional
 
-```sh
-npm create astro@latest -- --template basics
+> "Solucionando seus problemas através de tech e design."
+
+`dgbragas.dev` é o meu site pessoal, que foi ganhando forma ao longo de vários anos e versões ([mais de seis até realmente ir ao ar](https://behance.net/dgbragas)). Nele, reúno parte dos projetos que vou desenvolvendo durante a minha trajetória, compartilho ideias no blog e, principalmente, uso como playground para testar stacks, bibliotecas, conceitos e estruturas diferentes - que podem também virar novos conteúdos.
+
+## 🛠️ Tecnologias utilizadas
+
+Durante o desenvolvimento do site, desde o design até o código, sempre tive uma preocupação especial com acessibilidade — tanto na arquitetura quanto na estrutura da DOM. Para isso, usei algumas bibliotecas e componentes baseados em boas práticas a11y, além de aplicar várias diretivas ARIA. O foco foi criar uma experiência mais inclusiva e funcional, sem abrir mão do visual — ainda estou trabalhando para deixar tudo 100% 👀.
+
+- `aos`:
+- `astro`:
+- `embla-carrousel`:
+- `marked`:
+- `radix-ui`:
+- `@studio-freight/lenis`:
+- `@whatt-if`:
+
+## 📂 Estrutura de pastas
+
+A estrutura do projeto segue um modelo que curto bastante e é bem comum na comunidade: uma separação organizada em contextos, facilitando a manutenção no longo prazo:
+
+```
+┌────────────────────────┐
+│ @dgbragas/dgbragas.dev │
+├────────────────────────┘
+│
+│── /
+│   ├── .vscode
+│   ├── public/
+│   │   ├── files/
+│   │   ├── fonts/
+│   │   ├── scripts/
+│   ├── eslint.config.js
+│   ├── prettier.config.js
+│   ├── src/
+│   │   ├── api/
+│   │   │   ├── icons/
+│   │   │   ├── illustrations/
+│   │   │   ├── images/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   │   ├── lib/
+│   │   │   ├── local/
+│   │   ├── constants/
+│   │   ├── helpers/
+│   │   ├── layouts/
+│   │   ├── pages/
+│   │   ├── providers/
+│   │   ├── styles/
+│   │   ├── utils/
+└── dist
+    └── @astrojs/vercel
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## 🗺️ Roadmap
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+> So... yeah, work I guess
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+Sobre o roadmap: basicamente, estou sempre aproveitando os momentos para ajustar uma coisa aqui e outra ali. Às vezes testando novas ideias, outras só lapidando o que já estava encaminhado.
 
-## 🚀 Project Structure
+Abaixo você consegue ver — e eu também, já que provavelmente ia esquecer de algum tópico sem essa listinha — os próximos passos, funções, melhorias e afins que serão entregues no projeto:
 
-Inside of your Astro project, you'll see the following folders and files:
+- [] Construir lógica para redirecionamento por filtro sem ocorrência de reload - _SR issue_;
+- [] Adição do "skip-to-content" em todas as páginas;
+- [] Construção da página de `/portfolio/private` com listagem de conteúdos exclusivos;
+- [] Estrutura de compartilhamento de posts nas redes sociais;
+- [] Isolar toda a estrutura de `components/lib` dentro `@whatt-if/design-system`;
+- [] Consumir funções de `/utils` através da lib `@whatt-if/utils`;
+- [] Remover duplicidades de estilização através de `@mixins`;
+- [] Testes unitários dos componentes e funções _(é... dessa vez acabou passando 😭)_;
+- [] Melhorar a forma de consumo dos SVGs dentro das páginas - _waiting for better SVG API from Astro_;
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+---
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+### Contate-me
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [Instagram](https://instagram.com/dgbragas.dev);
+- [LinkedIn](https://linkedin.com/in/dgbragas);
+- E-mail: work@dgbragas.com;

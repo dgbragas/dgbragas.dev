@@ -7,10 +7,10 @@ import {
   QuickInput,
   Text,
 } from '@/components/lib';
+import { CardGitHub } from '@/components/local';
 import { BaseLayout } from '@/layouts';
 
-import './portfolio.styles.scss';
-import { CardGitHub } from '@/components/local';
+import './_portfolio.styles.scss';
 
 const { publicPosts, tags } = await getPortfolioPosts();
 const projects = await getPortfolioProjects();

@@ -3,7 +3,7 @@ import { getRepos } from '@/api';
 import { CardGitHub } from '@/components/local';
 import { HighlightLayout } from '@/layouts';
 
-import './whatt-if.styles.scss';
+import './_whatt-if.styles.scss';
 
 const fullUrl = new URL(import.meta.env.SITE + Astro.request.url);
 const currentFilter = fullUrl.searchParams.get('filter') ?? 'all';

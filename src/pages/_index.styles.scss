@@ -1,6 +1,10 @@
+@use '@/styles/mixins.scss' as *;
+
+/* [🔄] Shared */
 .section-intro {
   position: relative;
 
+  /* [🎛️] Variants */
   &.--dark {
     small {
       background: $color-gradient-dark-theme;
@@ -47,6 +51,7 @@
   }
 }
 
+/* [🏗️] Structure - Presentation */
 .s-presentation {
   padding-bottom: 128px;
 
@@ -73,18 +78,11 @@
       }
 
       &__heading {
-        position: relative;
         margin-bottom: 8px;
 
-        svg {
-          position: absolute;
-          bottom: -20px;
-          right: 128px;
-        }
-
         span {
-          color: $color-primary-100;
           animation: blink infinite 1.2s;
+          color: $color-primary-100;
           margin-left: -8px;
         }
       }
@@ -185,6 +183,7 @@
   }
 }
 
+/* [🏗️] Structure - About */
 .s-about {
   background: $color-gradient-background;
   padding-bottom: 72px;
@@ -305,6 +304,7 @@
   }
 }
 
+/* [🏗️] Structure - Work */
 .s-work {
   background: $color-neutral-600;
   padding-bottom: 96px;
@@ -331,6 +331,7 @@
   }
 }
 
+/* [🏗️] Structure - How */
 .s-how {
   background: $color-neutral-100;
   padding-bottom: 184px;
@@ -454,6 +455,7 @@
   }
 }
 
+/* [🏗️] Structure - Testimonials */
 .s-testimonials {
   background: $color-neutral-100;
   padding-bottom: 40px;
@@ -465,6 +467,7 @@
   }
 }
 
+/* [🏗️] Structure - Blog */
 .s-blog {
   background: $color-neutral-600;
   padding-block: 128px;
@@ -509,6 +512,7 @@
   }
 }
 
+/* [⭐️] Animations */
 @keyframes bounce {
   0%,
   100% {

@@ -10,8 +10,8 @@ import './TestimonySlider.styles.scss';
 
 type TestimonySlider = {
   testimonies: Array<{
-    content: string;
     author: string;
+    content: string;
     description: string;
   }>;
 };

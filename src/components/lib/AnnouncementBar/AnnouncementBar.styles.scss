@@ -9,6 +9,11 @@
   height: 32px;
   width: 100%;
 
+  @include breakpoint('medium', 'max') {
+    height: auto;
+    padding-block: 12px;
+  }
+
   /* [🎛️] Variants */
   &--fixed {
     position: fixed;
@@ -26,6 +31,10 @@
     justify-content: space-between;
 
     width: 100%;
+
+    @include breakpoint('medium', 'max') {
+      gap: 12px;
+    }
 
     p {
       text-align: center;

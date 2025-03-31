@@ -64,6 +64,10 @@
     margin-top: 276px;
     width: 50%;
 
+    @include breakpoint('large', max) {
+      width: 100%;
+    }
+
     &__intro {
       &__labels {
         align-items: center;
@@ -131,6 +135,10 @@
       \left;
     overflow: hidden;
 
+    @include breakpoint('large', max) {
+      display: none;
+    }
+
     &__animation {
       background: linear-gradient(
         to bottom left,
@@ -189,10 +197,19 @@
   padding-bottom: 72px;
   padding-top: 176px;
 
+  @include breakpoint('small', max) {
+    padding-top: 96px;
+  }
+
   &__content {
     display: grid;
     grid-template-columns: 1fr 400px;
     gap: 120px;
+
+    @include breakpoint('large', max) {
+      grid-template-columns: 1fr;
+      align-content: center;
+    }
 
     &__intro {
       display: flex;
@@ -238,9 +255,19 @@
         display: flex;
         gap: 82px;
 
+        @include breakpoint('small', max) {
+          flex-wrap: wrap;
+          gap: 32px;
+        }
+
         div {
           display: flex;
           gap: 8px;
+
+          @include breakpoint('small', max) {
+            flex-wrap: wrap;
+            gap: 16px;
+          }
         }
 
         > a {
@@ -266,6 +293,11 @@
       overflow: hidden;
       position: relative;
       pointer-events: none;
+
+      @include breakpoint('large', max) {
+        max-width: 400px;
+        justify-self: center;
+      }
 
       &__backdrop {
         position: absolute;
@@ -318,6 +350,11 @@
     margin-bottom: 32px;
     margin-top: 64px;
     min-height: 492px;
+
+    @include breakpoint('large', max) {
+      grid-template-columns: 1fr;
+      min-height: fit-content;
+    }
   }
 
   p {
@@ -337,6 +374,14 @@
   padding-bottom: 184px;
   padding-top: 96px;
 
+  @include breakpoint('large', max) {
+    padding-bottom: 128px;
+  }
+
+  @include breakpoint('medium', max) {
+    padding-bottom: 96px;
+  }
+
   .section-intro {
     grid-area: presentation;
     margin-top: 72px;
@@ -346,6 +391,10 @@
     background: url('@/assets/images/workflow-background.png') no-repeat top
       80px center;
     position: relative;
+
+    @include breakpoint('large', max) {
+      background: initial;
+    }
   }
 
   &__grid {
@@ -357,6 +406,31 @@
       '. card-3 card-4 card-5'
       '. . card-7 card-6';
     gap: 72px 57px;
+
+    @include breakpoint('large', max) {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      grid-template-areas:
+        'presentation card-1'
+        'card-2 card-3'
+        'card-4 card-5'
+        'card-6 card-7';
+    }
+
+    @include breakpoint('medium', max) {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(8, 1fr);
+      grid-template-areas:
+        'presentation'
+        'card-1'
+        'card-2'
+        'card-3'
+        'card-4'
+        'card-5'
+        'card-6'
+        'card-7';
+      gap: 32px;
+    }
   }
 
   &__highlight {
@@ -365,6 +439,15 @@
     bottom: -172px;
 
     animation: bounce infinite 2s ease-in-out;
+
+    @include breakpoint('large', max) {
+      bottom: -80px;
+      position: relative;
+
+      svg {
+        margin: 0 auto;
+      }
+    }
   }
 }
 
@@ -379,6 +462,12 @@
     justify-content: space-between;
 
     margin-bottom: 72px;
+
+    @include breakpoint('medium', max) {
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-bottom: 24px;
+    }
 
     .section-intro {
       small {
@@ -423,6 +512,16 @@
     gap: 32px;
     grid-template-columns: repeat(3, 1fr);
 
+    @include breakpoint('large', max) {
+      grid-template-columns: 1fr;
+      gap: 72px;
+    }
+
+    @include breakpoint('small', max) {
+      grid-template-columns: 1fr;
+      gap: 56px;
+    }
+
     .card-portfolio {
       &:hover,
       &:focus {
@@ -452,6 +551,12 @@
         object-fit: cover;
       }
     }
+
+    @include breakpoint('medium', max) {
+      .card-portfolio img {
+        height: auto;
+      }
+    }
   }
 }
 
@@ -464,6 +569,26 @@
   &__slider {
     padding-block: 128px;
     padding-inline: 104px;
+  }
+
+  @include breakpoint('medium', max) {
+    padding-top: 96px;
+    padding-bottom: 24px;
+
+    &__slider {
+      padding-block: 96px;
+      padding-inline: 40px;
+    }
+  }
+
+  @include breakpoint('small', max) {
+    padding-top: 72px;
+    padding-bottom: 24px;
+
+    &__slider {
+      padding-block: 72px;
+      padding-inline: 40px;
+    }
   }
 }
 
@@ -490,6 +615,7 @@
 
     h2 {
       color: $color-neutral-100;
+      text-align: center;
     }
 
     &__socials {
@@ -504,6 +630,11 @@
     gap: 32px;
 
     margin-bottom: 40px;
+
+    @include breakpoint('medium', max) {
+      grid-template-columns: 1fr;
+      gap: 56px;
+    }
   }
 
   &__see-more {

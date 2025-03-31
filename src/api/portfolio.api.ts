@@ -21,8 +21,16 @@ type PortfolioProject = {
   name: string;
 };
 
-const getPortfolioPosts = async () => {
-  const response = await fetch(`${baseUrl.server}/portfolios?populate=image`);
+const getPortfolioPosts = async (limit?: number) => {
+  const params = [`populate=image`];
+
+  if (limit) {
+    params.push(`pagination[limit]=${limit}`);
+  }
+
+  const response = await fetch(
+    `${baseUrl.server}/portfolios?${params.join('&')}`,
+  );
   const json = await response.json();
 
   const rawPosts = json.data as PortfolioPost[];

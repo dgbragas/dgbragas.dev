@@ -43,8 +43,14 @@ type StrapiPostBlock = Array<{
 const formatDate = (date: Date) =>
   new Intl.DateTimeFormat('pt-BR').format(date);
 
-const getPosts = async () => {
-  const response = await fetch(`${baseUrl.server}/posts?populate=*`);
+const getPosts = async (limit?: number) => {
+  const params = [`populate=*`];
+
+  if (limit) {
+    params.push(`pagination[limit]=${limit}`);
+  }
+
+  const response = await fetch(`${baseUrl.server}/posts?${params.join('&')}`);
   const json = await response.json();
 
   const rawPosts = json.data as Post[];
@@ -63,6 +69,7 @@ const getPosts = async () => {
 
       const markedIntro = await marked(post.intro[0].children[0].text);
       const intro = plainText(markedIntro);
+      const introElementsCount = post.intro.length;
 
       const markedContent = await marked(postContent);
       const content = limitWords(plainText(markedContent), 30);
@@ -74,6 +81,7 @@ const getPosts = async () => {
         content,
         documentId,
         intro,
+        introElementsCount,
         readTime,
         relatedPosts,
         tags,

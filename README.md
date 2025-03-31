@@ -8,13 +8,13 @@
 
 Durante o desenvolvimento do site, desde o design até o código, sempre tive uma preocupação especial com acessibilidade — tanto na arquitetura quanto na estrutura da DOM. Para isso, usei algumas bibliotecas e componentes baseados em boas práticas a11y, além de aplicar várias diretivas ARIA. O foco foi criar uma experiência mais inclusiva e funcional, sem abrir mão do visual — ainda estou trabalhando para deixar tudo 100% 👀.
 
-- `aos`:
-- `astro`:
-- `embla-carrousel`:
-- `marked`:
-- `radix-ui`:
-- `@studio-freight/lenis`:
-- `@whatt-if`:
+- `aos`: Animações de entrada dos componentes de maneira fluída — _e com low bundle size 😅_;
+- `astro`: Desenvolvimento de aplicações _content-driven_ de maneira simplificada e com ótima performance;
+- `embla-carrousel`: Componente de `Carrousel` com boas práticas de a11y e fácil estilização;
+- `marked`: Responsável por transformar os conteúdos de `markdown` recebidos pelo [Content Manager](https://github.com/dgbragas/content-manager) em HTML;
+- `radix-ui`: Componentes complexos otimizados, headless e com foco total em acessibilidade;
+- `@studio-freight/lenis`: Suavização dos scrolls da aplicação — sejam estes pelo mouse ou por âncoras da própria aplicação;
+- `@whatt-if`: [Biblioteca de autoria própria](https://github.com/whatt-if) onde disponibilizo uma série de `utils`, `linters` etc.
 
 ## 📂 Estrutura de pastas
 

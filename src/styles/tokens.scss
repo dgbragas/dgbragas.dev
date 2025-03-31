@@ -31,12 +31,12 @@ $color-gradient-detail: linear-gradient(
 $color-gradient-light-theme: linear-gradient(
   225deg,
   $color-primary-100 -9.83%,
-  $color-secondary-cyan 102.1%
+  $color-secondary-purple 102.1%
 );
 $color-gradient-dark-theme: linear-gradient(
   221deg,
-  #2060df -21.86%,
-  #9147ff 100.66%
+  $color-primary-100 -21.86%,
+  $color-secondary-cyan 100.66%
 );
 $color-gradient-background: linear-gradient(
   288deg,
@@ -65,7 +65,7 @@ $color-background-dark: $color-neutral-600;
 $color-background-gradient: $color-gradient-background;
 $color-background-field: $color-neutral-200;
 $color-background-on-dark: $color-neutral-700;
-$color-background-featured: $color-gradient-dark-theme;
+$color-background-featured: $color-gradient-light-theme;
 
 /* Texts */
 $color-text-title-light: $color-white;
@@ -73,8 +73,8 @@ $color-text-title-dark: $color-neutral-700;
 $color-text-body-light: $color-neutral-600;
 $color-text-body-dark: $color-neutral-100;
 $color-text-label: $color-neutral-300;
-$color-text-featured-light: $color-gradient-dark-theme;
-$color-text-featured-dark: $color-gradient-light-theme;
+$color-text-featured-light: $color-gradient-light-theme;
+$color-text-featured-dark: $color-gradient-dark-theme;
 $color-text-label: $color-neutral-500;
 $color-text-placeholder: $color-neutral-300;
 $color-text-caption: $color-primary-100;
@@ -207,8 +207,8 @@ $color-border-on-dark: rgba(252, 252, 252, 0.12);
 
 /* --- Icons --- */
 $color-icon-highlight: $color-primary-200;
-$color-icon-featured: $color-gradient-dark-theme;
-$color-icon-on-text: $color-gradient-light-theme;
+$color-icon-featured: $color-gradient-light-theme;
+$color-icon-on-text: $color-gradient-dark-theme;
 
 /* --- Interactions --- */
 $color-focus: $color-primary-100;

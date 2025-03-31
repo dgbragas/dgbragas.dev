@@ -3,7 +3,7 @@ import { Text } from '@/components/lib';
 
 import './CardWorkflow.styles.scss';
 
-type CardWorkflowProps = {
+type CardWorkflowProps = React.HTMLAttributes<HTMLDivElement> & {
   count?: number;
   description: string;
   icon: string;
@@ -17,8 +17,9 @@ const CardWorkflow = ({
   icon,
   title,
   variant = 'default',
+  ...rest
 }: CardWorkflowProps) => (
-  <div className={`card-workflow card-workflow--${variant}`}>
+  <div {...rest} className={`card-workflow card-workflow--${variant}`}>
     <div className='card-workflow__count'>
       {count && <Text className='card-workflow__count__counter'>{count}</Text>}
       {!count && (

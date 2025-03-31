@@ -18,7 +18,7 @@
   }
 
   &--featured {
-    background: $color-gradient-dark-theme;
+    background: $color-gradient-light-theme;
     box-shadow:
       0px 2px 4px 0px rgba(32, 96, 223, 0.14),
       0px 4px 5px 0px rgba(32, 96, 223, 0.12),
@@ -59,7 +59,7 @@
       font-size: 16px;
       line-height: 100%;
 
-      background: $color-gradient-dark-theme;
+      background: $color-gradient-light-theme;
       background-clip: text;
       -webkit-backgroun-clip: text;
       -webkit-text-fill-color: transparent;

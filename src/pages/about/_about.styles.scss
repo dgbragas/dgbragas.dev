@@ -13,6 +13,10 @@
     &__intro {
       max-width: 48vw;
 
+      @include breakpoint('medium', 'max') {
+        max-width: fit-content;
+      }
+
       h1 {
         color: $color-neutral-200;
       }
@@ -31,6 +35,10 @@
 
       color: $color-neutral-100;
       margin-top: 40px;
+
+      @include breakpoint('medium', 'max') {
+        flex-wrap: wrap;
+      }
 
       a {
         position: relative;
@@ -62,12 +70,24 @@
         span {
           color: inherit;
         }
+
+        @include breakpoint('medium', 'max') {
+          &:last-of-type {
+            margin-left: 0;
+          }
+        }
       }
 
       > div {
         background: $color-border-on-dark;
         height: 2px;
         width: 60px;
+      }
+
+      @include breakpoint('medium', 'max') {
+        > div {
+          display: none;
+        }
       }
     }
 
@@ -112,6 +132,10 @@
 
     &__cards {
       max-width: 32vw;
+
+      @include breakpoint('medium', 'max') {
+        max-width: fit-content;
+      }
 
       nav {
         position: sticky;

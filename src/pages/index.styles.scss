@@ -1,0 +1,584 @@
+.section-intro {
+  position: relative;
+
+  &.--dark {
+    small {
+      background: $color-gradient-dark-theme;
+
+      background-clip: text;
+      -webkit-backgroun-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      color: $color-white;
+
+      span {
+        background: $color-gradient-dark-theme;
+        margin-left: -8px;
+
+        background-clip: text;
+        -webkit-backgroun-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+
+  &.--light {
+    small {
+      background: $color-gradient-light-theme;
+
+      background-clip: text;
+      -webkit-backgroun-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      color: $color-neutral-600;
+
+      span {
+        background: $color-gradient-light-theme;
+
+        background-clip: text;
+        -webkit-backgroun-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+}
+
+.s-presentation {
+  padding-bottom: 128px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+    margin-top: 276px;
+    width: 50%;
+
+    &__intro {
+      &__labels {
+        align-items: center;
+        display: flex;
+        gap: 12px;
+
+        margin-bottom: 8px;
+
+        a {
+          text-decoration: underline;
+        }
+      }
+
+      &__heading {
+        position: relative;
+        margin-bottom: 8px;
+
+        svg {
+          position: absolute;
+          bottom: -20px;
+          right: 128px;
+        }
+
+        span {
+          color: $color-primary-100;
+          animation: blink infinite 1.2s;
+          margin-left: -8px;
+        }
+      }
+
+      p {
+        margin-bottom: 24px;
+        width: 80%;
+      }
+    }
+
+    &__footer {
+      border-top: 1px solid $color-border-on-light;
+      margin-top: 188px;
+      padding-top: 32px;
+
+      &__socials {
+        display: flex;
+        gap: 88px;
+
+        margin-top: 12px;
+
+        > div {
+          display: flex;
+          gap: 32px;
+        }
+
+        > a span {
+          display: inline-flex;
+          gap: 8px;
+        }
+      }
+    }
+  }
+
+  // ref: https://www.frontend.fyi/tutorials/animated-gradients-with-css
+  &__blob-mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    height: 872px;
+    width: 600px;
+
+    mask: url('@/assets/illustrations/blob-hero.svg') no-repeat bottom left;
+    -webkit-mask: url('@/assets/illustrations/blob-hero.svg') no-repeat bottom
+      \left;
+    overflow: hidden;
+
+    &__animation {
+      background: linear-gradient(
+        to bottom left,
+        $color-primary-200,
+        $color-primary-100,
+        $color-mint
+      );
+      position: relative;
+      height: 100%;
+      transition: background 0.24s ease-in-out;
+      width: 100%;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+
+        background: linear-gradient(
+          to bottom right,
+          $color-primary-100,
+          $color-primary-200
+        );
+        filter: blur(48px) brightness(1.24);
+        transform-origin: 40%;
+      }
+
+      &::before {
+        top: 12%;
+        left: 24%;
+        height: 48%;
+        width: 72%;
+        animation: blob 4s infinite cubic-bezier(0.6, -0.28, 0735, 0.045);
+      }
+
+      &::after {
+        top: 32%;
+        left: 48%;
+        height: 80%;
+        width: 72%;
+        animation: blob-reverse 8s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+      }
+    }
+
+    &__text {
+      position: absolute;
+      inset: 0;
+      background: url('@/assets/illustrations/dgbragas-hero.svg') no-repeat;
+      z-index: 2;
+    }
+  }
+}
+
+.s-about {
+  background: $color-gradient-background;
+  padding-bottom: 72px;
+  padding-top: 176px;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 120px;
+
+    &__intro {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      margin-top: 32px;
+
+      &__texts {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        p {
+          color: $color-neutral-200;
+          opacity: 0.8;
+
+          a {
+            align-items: center;
+            display: inline-flex;
+            justify-content: center;
+
+            background: $color-primary-200;
+            box-shadow:
+              0px 0px 2px 0px rgba(144, 152, 216, 0.14),
+              0px 2px 2px 0px rgba(144, 152, 216, 0.12),
+              0px 1px 3px 0px rgba(144, 152, 216, 0.2);
+            border-radius: 4px;
+            height: 24px;
+            padding: 4px;
+            transition: background 0.24s ease-out;
+
+            &:hover,
+            &:focus {
+              background: $color-secondary-cyan;
+            }
+          }
+        }
+      }
+
+      &__socials {
+        align-items: center;
+        display: flex;
+        gap: 82px;
+
+        div {
+          display: flex;
+          gap: 8px;
+        }
+
+        > a {
+          color: $color-neutral-200;
+          position: relative;
+
+          *::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: -44%;
+
+            background: $color-border-on-dark;
+            height: 2px;
+            width: 48px;
+          }
+        }
+      }
+    }
+
+    &__image {
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      pointer-events: none;
+
+      &__backdrop {
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        align-items: end;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        background: linear-gradient(
+          30deg,
+          rgba(18, 18, 18, 1) 1.61%,
+          #121212 1.61%,
+          rgba(18, 18, 18, 0.97) 27.51%,
+          rgba(19, 19, 19, 0.89) 45.77%,
+          rgba(20, 20, 20, 0.75) 78.23%
+        );
+        height: 100%;
+        padding: 16px;
+        width: 100%;
+
+        div {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        span {
+          color: $color-neutral-100;
+          font-family: 'Heebo-Bold';
+        }
+      }
+    }
+  }
+}
+
+.s-work {
+  background: $color-neutral-600;
+  padding-bottom: 96px;
+  padding-top: 128px;
+
+  &__banners {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+
+    margin-bottom: 32px;
+    margin-top: 64px;
+    min-height: 492px;
+  }
+
+  p {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    color: $color-neutral-100;
+    text-align: center;
+  }
+}
+
+.s-how {
+  background: $color-neutral-100;
+  padding-bottom: 184px;
+  padding-top: 96px;
+
+  .section-intro {
+    grid-area: presentation;
+    margin-top: 72px;
+  }
+
+  .container {
+    background: url('@/assets/images/workflow-background.png') no-repeat top
+      80px center;
+    position: relative;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 318px);
+    grid-template-areas:
+      'presentation presentation card-1 card-2'
+      '. card-3 card-4 card-5'
+      '. . card-7 card-6';
+    gap: 72px 57px;
+  }
+
+  &__highlight {
+    position: absolute;
+    left: 0;
+    bottom: -172px;
+
+    animation: bounce infinite 2s ease-in-out;
+  }
+}
+
+.s-portfolio {
+  background: $color-neutral-600;
+  padding-bottom: 144px;
+  padding-top: 172px;
+
+  &__header {
+    align-items: end;
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 72px;
+
+    .section-intro {
+      small {
+        color: $color-neutral-100;
+        -webkit-text-fill-color: initial;
+
+        small {
+          text-transform: capitalize;
+
+          &:first-of-type {
+            color: $color-secondary-cyan;
+          }
+
+          &:last-of-type {
+            color: $color-mint;
+          }
+        }
+      }
+    }
+
+    a {
+      align-items: center;
+      display: flex;
+      gap: 16px;
+
+      &:hover > span {
+        color: $color-primary-200;
+      }
+
+      span {
+        color: $color-neutral-100;
+
+        span {
+          color: $color-neutral-300;
+        }
+      }
+    }
+  }
+
+  &__posts {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(3, 1fr);
+
+    .card-portfolio {
+      &:hover,
+      &:focus {
+        .tag .text {
+          color: $color-neutral-600;
+        }
+      }
+
+      .tag {
+        border: 1px solid $color-border-on-dark;
+
+        .text {
+          color: $color-neutral-200;
+        }
+      }
+
+      h2 {
+        color: $color-neutral-100;
+      }
+
+      p {
+        color: $color-neutral-200;
+      }
+
+      img {
+        height: 250px;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.s-testimonials {
+  background: $color-neutral-100;
+  padding-bottom: 40px;
+  padding-top: 128px;
+
+  &__slider {
+    padding-block: 128px;
+    padding-inline: 104px;
+  }
+}
+
+.s-blog {
+  background: $color-neutral-600;
+  padding-block: 128px;
+
+  &__intro {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    margin-bottom: 72px;
+
+    small {
+      background: $color-gradient-dark-theme;
+
+      background-clip: text;
+      -webkit-backgroun-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      color: $color-neutral-100;
+    }
+
+    &__socials {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &__posts {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+
+    margin-bottom: 40px;
+  }
+
+  &__see-more {
+    display: flex;
+    justify-content: end;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+@keyframes animateBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blob {
+  0% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  30% {
+    rotate: 40deg;
+  }
+  50% {
+    transform: translate(300px, 390px) scale(1.1);
+  }
+  80% {
+    rotate: 90deg;
+  }
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+}
+
+@keyframes blob-reverse {
+  0% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  30% {
+    rotate: -40deg;
+  }
+  50% {
+    transform: translate(-300px, -390px) scale(1.1);
+  }
+  80% {
+    rotate: -90deg;
+  }
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+}

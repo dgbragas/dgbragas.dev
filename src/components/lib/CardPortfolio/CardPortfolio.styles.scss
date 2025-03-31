@@ -1,6 +1,5 @@
 .card-portfolio {
   display: inline-block;
-  border: 1px solid $color-border-on-dark;
 
   &:hover,
   &:focus {
@@ -21,7 +20,7 @@
     &:hover,
     &:focus {
       h2 {
-        background: $color-gradient-light-theme;
+        background: $color-gradient-dark-theme;
 
         background-clip: text;
         -webkit-backgroun-clip: text;
@@ -44,10 +43,16 @@
         color: $color-neutral-300;
       }
     }
+
+    .card-portfolio__labels {
+      display: flex;
+      gap: 4px;
+    }
   }
 
   &--overlay {
     border-radius: 4px;
+    border: 1px solid $color-border-on-dark;
     overflow: hidden;
     position: relative;
 

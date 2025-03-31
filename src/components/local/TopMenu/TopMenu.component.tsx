@@ -115,7 +115,7 @@ const TopMenu = ({ unfixed = false }: TopMenuProps) => {
             {scrolled && (
               <>
                 <button className='top-menu__nav__cta'>
-                  <span aria-hidden />
+                  <span aria-label='Disponibilidade imediata' />
                   Disponível para novos projetos
                 </button>
 

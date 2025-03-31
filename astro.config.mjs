@@ -4,6 +4,8 @@ import react from '@astrojs/react';
 import path from 'path';
 
 export default defineConfig({
+  // INFO: remove after links filter feature
+  output: 'server',
   integrations: [react()],
   vite: {
     css: {

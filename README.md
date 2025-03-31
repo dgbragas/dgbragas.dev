@@ -1,3 +1,5 @@
+<img width="1500" alt="github-thumb" src="https://github.com/user-attachments/assets/cb963624-12ed-430a-977c-c6ec2f481483" />
+
 # `dgbragas.dev` - Blog, Portfólio e Institucional
 
 > "Solucionando seus problemas através de tech e design."

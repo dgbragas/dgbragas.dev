@@ -102,6 +102,10 @@ $paddingInline: 20vw;
         padding-inline: $paddingInline;
         margin-top: 80px;
 
+        @include breakpoint('medium', 'max') {
+          padding-inline: 12vw;
+        }
+
         .tag {
           background: $color-neutral-100;
           color: $color-neutral-600;
@@ -137,6 +141,10 @@ $paddingInline: 20vw;
 
     &__principle {
       padding-inline: $paddingInline;
+
+      @include breakpoint('medium', 'max') {
+        padding-inline: 12vw;
+      }
 
       &__main {
         margin-bottom: 72px;
@@ -178,6 +186,10 @@ $paddingInline: 20vw;
       margin-bottom: 72px;
       padding-inline: $paddingInline;
 
+      @include breakpoint('medium', 'max') {
+        padding-inline: 12vw;
+      }
+
       &::after,
       &::before {
         content: '';
@@ -206,11 +218,19 @@ $paddingInline: 20vw;
     &__footer {
       padding-inline: $paddingInline;
 
+      @include breakpoint('medium', 'max') {
+        padding-inline: 12vw;
+      }
+
       &__related {
         align-items: flex-end;
         display: flex;
         justify-content: space-between;
         gap: 64px;
+
+        @include breakpoint('medium', 'max') {
+          flex-wrap: wrap;
+        }
 
         &__item {
           h2 {
@@ -245,6 +265,12 @@ $paddingInline: 20vw;
 
           &:last-of-type h2 {
             justify-self: end;
+          }
+
+          @include breakpoint('medium', 'max') {
+            &:last-of-type h2 {
+              justify-self: auto;
+            }
           }
         }
       }

@@ -43,29 +43,9 @@
   &--boxed {
     background: $color-neutral-500;
     padding: 32px;
+    width: 100%;
 
-    &:hover,
-    &:focus {
-      background: $color-neutral-300;
-
-      h3 {
-        color: $color-neutral-100;
-      }
-
-      p {
-        color: $color-neutral-200;
-      }
-
-      span {
-        border: 1px solid $color-neutral-200;
-      }
-
-      svg path {
-        fill: $color-neutral-200;
-      }
-    }
-
-    &__header {
+    .card-github__header {
       display: flex;
       flex-direction: column;
       gap: 24px;
@@ -86,6 +66,27 @@
 
       h2 {
         color: $color-neutral-200;
+      }
+    }
+
+    &:hover,
+    &:focus {
+      background: $color-neutral-300;
+
+      h3 {
+        color: $color-neutral-100;
+      }
+
+      p {
+        color: $color-neutral-200;
+      }
+
+      span {
+        border: 1px solid $color-neutral-100;
+      }
+
+      svg path {
+        fill: $color-neutral-200;
       }
     }
 

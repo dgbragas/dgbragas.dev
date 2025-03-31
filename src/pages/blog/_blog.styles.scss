@@ -1,7 +1,13 @@
+@use '@/styles/mixins.scss' as *;
+
 .section-blog {
   &__intro {
     background: $color-neutral-600;
     padding: 176px 20vw 96px 20vw;
+
+    @include breakpoint('medium', 'max') {
+      padding-inline: 12vw;
+    }
 
     &__presentation {
       display: flex;
@@ -43,6 +49,11 @@
       margin-bottom: 72px;
       padding-bottom: 24px;
 
+      @include breakpoint('medium', 'max') {
+        flex-wrap: wrap;
+        gap: 32px;
+      }
+
       &__label {
         display: flex;
         flex-direction: column;
@@ -57,6 +68,10 @@
       a,
       p {
         color: $color-neutral-200;
+      }
+
+      a.--active {
+        color: $color-secondary-cyan;
       }
     }
 

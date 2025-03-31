@@ -61,15 +61,15 @@ Sobre o roadmap: basicamente, estou sempre aproveitando os momentos para ajustar
 
 Abaixo você consegue ver — e eu também, já que provavelmente ia esquecer de algum tópico sem essa listinha — os próximos passos, funções, melhorias e afins que serão entregues no projeto:
 
-- [] Construir lógica para redirecionamento por filtro sem ocorrência de reload - _SR issue_;
-- [] Adição do "skip-to-content" em todas as páginas;
-- [] Construção da página de `/portfolio/private` com listagem de conteúdos exclusivos;
-- [] Estrutura de compartilhamento de posts nas redes sociais;
-- [] Isolar toda a estrutura de `components/lib` dentro `@whatt-if/design-system`;
-- [] Consumir funções de `/utils` através da lib `@whatt-if/utils`;
-- [] Remover duplicidades de estilização através de `@mixins`;
-- [] Testes unitários dos componentes e funções _(é... dessa vez acabou passando 😭)_;
-- [] Melhorar a forma de consumo dos SVGs dentro das páginas - _waiting for better SVG API from Astro_;
+- [ ] Construir lógica para redirecionamento por filtro sem ocorrência de reload - _SR issue_;
+- [ ] Adição do "skip-to-content" em todas as páginas;
+- [ ] Construção da página de `/portfolio/private` com listagem de conteúdos exclusivos;
+- [ ] Estrutura de compartilhamento de posts nas redes sociais;
+- [ ] Isolar toda a estrutura de `components/lib` dentro `@whatt-if/design-system`;
+- [ ] Consumir funções de `/utils` através da lib `@whatt-if/utils`;
+- [ ] Remover duplicidades de estilização através de `@mixins`;
+- [ ] Testes unitários dos componentes e funções _(é... dessa vez acabou passando 😭)_;
+- [ ] Melhorar a forma de consumo dos SVGs dentro das páginas - _waiting for better SVG API from Astro_;
 
 ---
 

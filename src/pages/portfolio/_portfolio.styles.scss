@@ -1,7 +1,17 @@
+@use '@/styles/mixins.scss' as *;
+
 .section-portfolio__intro {
   background: $color-neutral-600;
   padding-top: 176px;
   padding-inline: 20vw;
+
+  @include breakpoint('medium', 'max') {
+    padding-inline: 12vw;
+  }
+
+  @include breakpoint('small', 'max') {
+    padding-inline: 0;
+  }
 
   &__content {
     padding-bottom: 96px;
@@ -43,10 +53,23 @@
     grid-template-columns: 176px 1fr;
     gap: 32px;
 
+    @include breakpoint('medium', 'max') {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
     aside {
       display: flex;
       flex-direction: column;
       gap: 24px;
+
+      @include breakpoint('medium', 'max') {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 32px;
+        justify-content: center;
+        margin-bottom: 32px;
+      }
 
       a {
         span {

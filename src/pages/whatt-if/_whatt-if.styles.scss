@@ -1,3 +1,5 @@
+@use '@/styles/mixins.scss' as *;
+
 .whatt-if--highlight {
   background: linear-gradient(239deg, #fa9401 15.27%, #ef3f36 96.96%);
 }
@@ -6,4 +8,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(384px, 1fr));
   gap: 32px;
+
+  @include breakpoint('small', 'max') {
+    grid-template-columns: 1fr;
+  }
 }

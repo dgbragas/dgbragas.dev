@@ -138,14 +138,22 @@ const MenuOverlay = ({ onToggle, open }: MenuOverlayProps) => {
         </button>
 
         <nav className='top-menu__overlay__nav'>
-          <Link href='/blog'>Blog</Link>
-          <Link href='/about'>Sobre mim</Link>
-          <Link href='/portfolio'>Portfólio</Link>
+          <Link href='/blog' target='_self'>
+            Blog
+          </Link>
+          <Link href='/about' target='_self'>
+            Sobre mim
+          </Link>
+          <Link href='/portfolio' target='_self'>
+            Portfólio
+          </Link>
 
           <div className='top-menu__overlay__nav__additional'>
-            <Link href='/daily-ui'>DailyUI</Link>
+            <Link href='/daily-ui' target='_self'>
+              DailyUI
+            </Link>
             <Link href={socials.mail}>Contate-me</Link>
-            <Link href='https://dgbragas.dev#what'>O que eu faço</Link>
+            <Link href='/'>O que eu faço</Link>
           </div>
         </nav>
 

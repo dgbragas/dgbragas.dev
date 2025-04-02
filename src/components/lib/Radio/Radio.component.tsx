@@ -18,7 +18,7 @@ const Radio = ({ ariaLabel, defaultValue, values }: RadioProps) => (
     defaultValue={defaultValue}
   >
     {values.map(({ id, label, value }) => (
-      <div className='radio__group'>
+      <div className='radio__group' key={id}>
         <RadioGroup.Item className='radio__group__item' id={id} value={value}>
           <RadioGroup.Indicator className='radio__indicator' />
         </RadioGroup.Item>

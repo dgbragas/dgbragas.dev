@@ -31,8 +31,8 @@ const ShareDropdown = ({ items, trigger }: ShareDropdownTypes) => (
       <RUIDropdown.Content className='share-dropdown'>
         {items.map(item => (
           <RUIDropdown.Item
-            className='share-dropdown__item'
             asChild
+            className='share-dropdown__item'
             key={item.text}
           >
             <a href={item.href} target='_blank'>

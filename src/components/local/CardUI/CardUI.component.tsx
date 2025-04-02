@@ -21,7 +21,7 @@ const CardUI = ({ description, image, labels, title, url }: CardUIProps) => (
       <div className='card-ui__content'>
         <div className='card-ui__content__labels'>
           {labels.map(label => (
-            <Tag label={label} />
+            <Tag key={label} label={label} />
           ))}
         </div>
 

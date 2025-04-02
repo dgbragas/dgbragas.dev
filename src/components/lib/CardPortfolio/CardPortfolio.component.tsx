@@ -44,7 +44,7 @@ const CardPortfolio = ({
     <article className='card-portfolio__container'>
       <div className='card-portfolio__labels'>
         {labels.map(label => (
-          <Tag label={label} />
+          <Tag key={label} label={label} />
         ))}
       </div>
 

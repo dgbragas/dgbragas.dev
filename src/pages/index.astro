@@ -221,7 +221,7 @@ const { publicPosts } = await getPortfolioPosts(4);
 
           <Text element='p' variant='extended-large'>
             Solucionando os seus problemas através de uma stack baseada em
-            <strong>tecnologia</strong> e <strong>design</strong>.
+            <strong>código</strong> e <strong>design</strong>.
           </Text>
 
           <a
@@ -233,7 +233,7 @@ const { publicPosts } = await getPortfolioPosts(4);
           </a>
         </div>
 
-        <div class='s-presentation__content__footer'>
+        <div class='s-presentation__content__footer' data-aos='fade-up'>
           <Text element='p'>Acompanhe o meu trabalho</Text>
 
           <div class='s-presentation__content__footer__socials'>
@@ -261,7 +261,7 @@ const { publicPosts } = await getPortfolioPosts(4);
   <section class='styled-section section--dark s-about' id='#about'>
     <Container>
       <div class='s-about__content'>
-        <div class='s-about__content__intro'>
+        <div class='s-about__content__intro' data-aos='fade-up'>
           <div class='section-intro --dark'>
             <Text element='small' variant='caption'>UI Engineer</Text>
             <Text element='h2' variant='heading-2'>
@@ -306,7 +306,7 @@ const { publicPosts } = await getPortfolioPosts(4);
             </div>
           </div>
         </div>
-        <div class='s-about__content__image'>
+        <div class='s-about__content__image' data-aos='fade-left'>
           <img alt='' aria-describedby='' src='/src/assets/images/me.png' />
           <div class='s-about__content__image__backdrop'>
             <div>
@@ -323,7 +323,7 @@ const { publicPosts } = await getPortfolioPosts(4);
 
   <section class='styled-section section--dark s-work'>
     <Container>
-      <div class='section-intro --dark'>
+      <div class='section-intro --dark' data-aos='fade-up'>
         <Text element='small' variant='caption'> Como posso te ajudar </Text>
         <Text element='h2' variant='heading-2'>
           O que eu faço
@@ -333,16 +333,22 @@ const { publicPosts } = await getPortfolioPosts(4);
 
       <div class='s-work__banners'>
         <CardHow
+          data-aos='fade-up'
+          data-aos-delay='200'
           description='Codificação de sites e hotsites totalmente responsivos que se comunicam especialmente com o seu público alvo.'
           icon={WebIllustration}
           title='Desenvolvimento de Interfaces Web'
         />
         <CardHow
+          data-aos='fade-up'
+          data-aos-delay='400'
           description='Utilizo todo o meu conhecimento em prototipação de aplicações e websites para tornar a sua solução mais atrativa e interativa.'
           icon={DesignIllustration}
           title='Design de Interfaces Web e Mobile'
         />
         <CardHow
+          data-aos='fade-up'
+          data-aos-delay='600'
           description='Desenvolvimento de aplicativos, dashboards e aplicações web performáticas através da linguagem de programação JavaScript.'
           icon={AppIllustration}
           title='Desenvolvimento de Aplicativos e Aplicações'
@@ -359,7 +365,7 @@ const { publicPosts } = await getPortfolioPosts(4);
   <section class='styled-section section--light s-how'>
     <Container>
       <div class='s-how__grid'>
-        <div class='section-intro --light'>
+        <div class='section-intro --light' data-aos='fade-up'>
           <Text element='small' variant='caption'>Workflow</Text>
           <Text element='h2' variant='heading-2'>
             Como eu faço
@@ -374,8 +380,10 @@ const { publicPosts } = await getPortfolioPosts(4);
         </div>
 
         {
-          workflows.map(workflow => (
+          workflows.map((workflow, index) => (
             <CardWorkflow
+              data-aos='fade-up'
+              data-aos-delay={50 * index}
               count={workflow.count}
               description={workflow.description}
               icon={workflow.icon}
@@ -398,7 +406,7 @@ const { publicPosts } = await getPortfolioPosts(4);
   <section class='styled-section section--dark s-portfolio'>
     <Container>
       <div class='s-portfolio__header'>
-        <div class='section-intro --dark'>
+        <div class='section-intro --dark' data-aos='fade-up'>
           <Text element='small' variant='caption'>
             Um trabalho constante de
             <Text element='small' variant='label'>Aprimoração.</Text>
@@ -410,7 +418,12 @@ const { publicPosts } = await getPortfolioPosts(4);
           </Text>
         </div>
 
-        <a aria-label='Ver todos os trabalhos' href='/portfolio' target='_self'>
+        <a
+          aria-label='Ver todos os trabalhos'
+          data-aos='fade-left'
+          href='/portfolio'
+          target='_self'
+        >
           <Text element='span' variant='intro'>
             <span>ver</span>
             todos trabalhos
@@ -473,8 +486,10 @@ const { publicPosts } = await getPortfolioPosts(4);
 
       <div class='s-portfolio__posts'>
         {
-          publicPosts.map(post => (
+          publicPosts.map((post, index) => (
             <CardPortfolio
+              data-aos='fade-up'
+              data-aos-delay={100 * index}
               description={post.description}
               image={{
                 alt: post.image.alternativeText,
@@ -497,17 +512,21 @@ const { publicPosts } = await getPortfolioPosts(4);
 
   <section class='styled-section section--light s-testimonials'>
     <Container>
-      <div class='section-intro --light'>
-        <Text element='small' variant='caption'
-          >Relatos daqueles que tiveram meus serviços</Text
-        >
+      <div class='section-intro --light' data-aos='fade-up'>
+        <Text element='small' variant='caption'>
+          Relatos daqueles que tiveram meus serviços
+        </Text>
         <Text element='h2' variant='heading-2'>
           Depoimentos
           <Text element='small' variant='heading-2'>.</Text>
         </Text>
       </div>
 
-      <div class='s-testimonials__slider'>
+      <div
+        class='s-testimonials__slider'
+        data-aos='fade-up'
+        data-aos-delay='200'
+      >
         <TestimonySlider client:load testimonies={testimonials} />
       </div>
     </Container>
@@ -515,11 +534,11 @@ const { publicPosts } = await getPortfolioPosts(4);
 
   <section class='styled-section section--dark s-blog'>
     <Container>
-      <div class='s-blog__intro'>
+      <div class='s-blog__intro' data-aos='fade-up'>
         <Text element='small' variant='caption'>Blog</Text>
-        <Text element='h2' variant='heading-2'
-          >Acompanhe as minhas postagens</Text
-        >
+        <Text element='h2' variant='heading-2'>
+          Acompanhe as minhas postagens
+        </Text>
 
         <div class='s-blog__intro__socials'>
           <FeaturedIcon
@@ -539,8 +558,10 @@ const { publicPosts } = await getPortfolioPosts(4);
 
       <div class='s-blog__posts'>
         {
-          posts.map(post => (
+          posts.map((post, index) => (
             <CardPost
+              data-aos='fade-up'
+              data-aos-delay={100 * index}
               description={plainText(
                 limitWords(
                   post.introElementsCount > 1 ? post.content : post.intro,

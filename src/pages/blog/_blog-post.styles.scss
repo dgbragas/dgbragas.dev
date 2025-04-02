@@ -263,12 +263,12 @@ $paddingInline: 20vw;
             }
           }
 
-          &:last-of-type h2 {
+          &:nth-of-type(2) h2 {
             justify-self: end;
           }
 
           @include breakpoint('medium', 'max') {
-            &:last-of-type h2 {
+            &:nth-of-type(2) h2 {
               justify-self: auto;
             }
           }

@@ -14,6 +14,7 @@ import WhatsAppIcon from '@/assets/icons/whatsapp.svg?raw';
 import CSSIcon from '@/assets/icons/css.svg?raw';
 import HTMLIcon from '@/assets/icons/html.svg?raw';
 import JSIcon from '@/assets/icons/js.svg?raw';
+import MeImg from '@/assets/images/me.png?url';
 
 /* Work Illustrations */
 import AppIllustration from '@/assets/illustrations/apps.svg?raw';
@@ -307,7 +308,7 @@ const { publicPosts } = await getPortfolioPosts(4);
           </div>
         </div>
         <div class='s-about__content__image' data-aos='fade-left'>
-          <img alt='' aria-describedby='' src='/src/assets/images/me.png' />
+          <img alt='' aria-describedby='' src={MeImg} />
           <div class='s-about__content__image__backdrop'>
             <div>
               <span set:html={HTMLIcon} />

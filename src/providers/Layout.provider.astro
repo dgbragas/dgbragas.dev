@@ -1,4 +1,6 @@
 ---
+import Analytics from '@vercel/analytics/astro';
+
 const {
   title = 'dgbragas — UI Engineer',
   description = 'Solucionando seus problemas através de uma stack baseada em código e design',
@@ -48,6 +50,7 @@ const {
 
   <body>
     <slot />
+    <Analytics />
   </body>
 
   <slot name='scripts' />

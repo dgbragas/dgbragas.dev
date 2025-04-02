@@ -30,6 +30,7 @@ const CardPost = ({
   title,
   url,
   variant: inheritedVariant = 'boxed',
+  ...rest
 }: CardPostProps) => {
   const currentBreakpoint = useBreakpoint({ initialWidth: breakpoints.medium });
   const variant =
@@ -39,6 +40,7 @@ const CardPost = ({
 
   return (
     <a
+      {...rest}
       className={`card-post card-post--${variant}`}
       href={url.href}
       target={url.target}
@@ -48,7 +50,7 @@ const CardPost = ({
         <div className='card-post__content'>
           <div className='card-post__labels'>
             {labels.map(label => (
-              <Tag label={label} />
+              <Tag key={label} label={label} />
             ))}
           </div>
 

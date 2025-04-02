@@ -46,8 +46,10 @@ const pageProps = {
 
   <div class='dui-posts'>
     {
-      postsList().map(post => (
+      postsList().map((post, index) => (
         <CardPortfolio
+          data-aos='fade-up'
+          data-aos-delay={100 * index}
           description={post.description}
           labels={new Array(post.category)}
           image={{

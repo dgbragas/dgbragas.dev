@@ -49,9 +49,9 @@ const companies = [
     aria-labelledby='introduction'
     class='styled-section section--dark section-presentation'
   >
-    <Container client:load>
+    <Container>
       <div class='section-presentation__content'>
-        <div class='section-presentation__content__intro'>
+        <div class='section-presentation__content__intro' data-aos='fade-up'>
           <Text id='introduction' element='h1' variant='heading-2'>
             Designer de Interfaces & Desenvolvedor Front-end da região do Grande
             ABC, São Paulo
@@ -119,6 +119,7 @@ const companies = [
         <aside
           aria-labelledby='extra-navigation'
           class='section-presentation__content__cards'
+          data-aos='fade-left'
         >
           <Text id='extra-navigation' className='sr-only'>Links extras</Text>
           <nav>
@@ -164,8 +165,12 @@ const companies = [
     <Container>
       <div class='section-career__jobs-history'>
         {
-          companies.map(company => (
-            <div class='section-career__job'>
+          companies.map((company, index) => (
+            <div
+              class='section-career__job'
+              data-aos='fade-up'
+              data-aos-delay={50 * index}
+            >
               <div>
                 <Text element='h2' variant='heading-4'>
                   {company.name}

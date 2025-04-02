@@ -23,7 +23,10 @@ const theme: 'dark' | 'light' = sectionTheme.split('-')[2];
   >
     <Container>
       <div class={`section-highlight__intro ${theme}`}>
-        <div class='section-highlight__intro__presentation'>
+        <div
+          class='section-highlight__intro__presentation'
+          data-aos='fade-down'
+        >
           <Tag label={tag} />
           <Text element='h1' variant='heading-1'>{title}</Text>
           <Text element='p' variant='intro'>
@@ -31,7 +34,7 @@ const theme: 'dark' | 'light' = sectionTheme.split('-')[2];
           </Text>
         </div>
 
-        <a href='#content'>
+        <a href='#content' data-aos='fade-up'>
           {callToAction}
 
           <svg
@@ -90,7 +93,7 @@ const theme: 'dark' | 'light' = sectionTheme.split('-')[2];
           Filtre o conteúdo apresentado
         </Text>
 
-        <div>
+        <div data-aos='fade-left'>
           {
             links?.map((link: LinkProps & { active: boolean }) => (
               <Link

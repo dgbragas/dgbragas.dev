@@ -44,7 +44,10 @@ const currentPortfolio = () => {
   <section class='styled-section section--dark section-portfolio__intro'>
     <Container>
       <div class='section-portfolio__intro__content'>
-        <div class='section-portfolio__intro__content__texts'>
+        <div
+          class='section-portfolio__intro__content__texts'
+          data-aos='fade-up'
+        >
           <Text element='small' variant='caption'>Portfólio</Text>
           <Text element='h1' variant='heading-2'>
             Designs de Interface, protótipos navegáveis e aplicações web
@@ -68,7 +71,7 @@ const currentPortfolio = () => {
   <section class='styled-section section--dark section-portfolio'>
     <Container>
       <div class='section-portfolio__content'>
-        <aside>
+        <aside data-aos='fade-left'>
           <Text className='sr-only' element='h2'>Filtro de conteúdos</Text>
           {
             tagsList.map(tag => {
@@ -92,10 +95,14 @@ const currentPortfolio = () => {
         <div class='section-portfolio__content__posts'>
           <div class='masonry-grid'>
             {
-              currentPortfolio().map(post => {
+              currentPortfolio().map((post, index) => {
                 if ('html_url' in post) {
                   return (
-                    <div class='masonry-grid__item'>
+                    <div
+                      class='masonry-grid__item'
+                      data-aos='fade-up'
+                      data-aos-delay={100 * index}
+                    >
                       <CardGitHub
                         aria-label={`Acessar o projeto ${post.name} no GitHub`}
                         className='masonry-grid__item__content'
@@ -110,6 +117,8 @@ const currentPortfolio = () => {
                 return (
                   <div class='masonry-grid__item'>
                     <CardPortfolio
+                      data-aos='fade-up'
+                      data-aos-delay={100 * index}
                       aria-label={`Acessar "${post.title}" no Instagram"`}
                       className='masonry-grid__item__content'
                       description={post.description}

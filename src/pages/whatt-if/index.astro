@@ -71,8 +71,10 @@ const pageProps = {
 
   <div class='whatt-if__posts'>
     {
-      repositoriesList().map(repo => (
+      repositoriesList().map((repo, index) => (
         <CardGitHub
+          data-aos='fade-up'
+          data-aos-delay={100 * index}
           description={repo.description ?? '--'}
           repoUrl={repo.html_url}
           variant='extended'

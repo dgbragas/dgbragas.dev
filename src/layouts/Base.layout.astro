@@ -1,7 +1,7 @@
 ---
 import { AnnouncementBar, Link } from '@/components/lib';
 import { Footer, TopMenu } from '@/components/local';
-import { SmoothScroll } from '@/helpers';
+import { AOSProvider, SmoothScroll } from '@/helpers';
 import { LayoutProvider, StylesProvider } from '@/providers';
 
 import './Base.styles.scss';
@@ -28,5 +28,6 @@ import './Base.styles.scss';
 
     <slot name='scripts' />
     <SmoothScroll client:only />
+    <AOSProvider client:only />
   </StylesProvider>
 </LayoutProvider>

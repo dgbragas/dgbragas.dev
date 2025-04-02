@@ -215,8 +215,8 @@
       }
 
       &__last-work {
-        background: url('../../assets/images/about-post.png') top center
-          no-repeat;
+        background: url('../../assets/images/about-post.png');
+        background-size: cover;
         border-radius: 4px;
         height: 200px;
         width: 200px;
@@ -232,6 +232,10 @@
           padding: 24px;
           transition: opacity 0.24s ease-out;
           width: 100%;
+
+          > span {
+            display: flex;
+          }
         }
 
         &:hover,

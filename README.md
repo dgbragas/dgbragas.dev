@@ -4,7 +4,7 @@
 
 > "Solucionando seus problemas através de tech e design."
 
-`dgbragas.dev` é o meu site pessoal, que foi ganhando forma ao longo de vários anos e versões ([mais de seis até realmente ir ao ar](https://behance.net/dgbragas)). Nele, reúno parte dos projetos que vou desenvolvendo durante a minha trajetória, compartilho ideias no blog e, principalmente, uso como playground para testar stacks, bibliotecas, conceitos e estruturas diferentes - que podem também virar novos conteúdos.
+`dgbragas.dev` é o meu site pessoal, que foi ganhando forma ao longo de vários anos e versões ([mais de seis até realmente ir ao ar](https://www.behance.net/gallery/222749765/UI-Engineer-Portfolio)). Nele, reúno parte dos projetos que vou desenvolvendo durante a minha trajetória, compartilho ideias no blog e, principalmente, uso como playground para testar stacks, bibliotecas, conceitos e estruturas diferentes - que podem também virar novos conteúdos.
 
 ## 🛠️ Tecnologias utilizadas
 

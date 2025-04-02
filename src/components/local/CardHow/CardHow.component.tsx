@@ -8,8 +8,8 @@ type CardHowProps = {
   title: string;
 };
 
-const CardHow = ({ description, icon, title }: CardHowProps) => (
-  <div className='card-how'>
+const CardHow = ({ description, icon, title, ...props }: CardHowProps) => (
+  <div className='card-how' {...props}>
     <span dangerouslySetInnerHTML={{ __html: icon }} />
     <div className='card-how__content'>
       <header>

@@ -9,7 +9,7 @@ import {
   Text,
 } from '@/components/lib';
 import { BaseLayout } from '@/layouts';
-import { slugify } from '@/utils';
+import { limitWords, plainText, slugify } from '@/utils';
 
 import './_blog.styles.scss';
 
@@ -35,7 +35,7 @@ const [firstPost, ...postsList] = filteredPosts();
 <BaseLayout>
   <section class='styled-section section--dark section-blog__intro'>
     <Container>
-      <div class='section-blog__intro__presentation'>
+      <div class='section-blog__intro__presentation' data-aos='fade-up'>
         <Text element='small' variant='caption'>Blog</Text>
         <Text element='h1' variant='heading-2'
           >Compartilhando o conhecimento</Text
@@ -130,8 +130,11 @@ const [firstPost, ...postsList] = filteredPosts();
       </div>
       <div class='section-blog__content__posts'>
         <CardPost
+          data-aos='fade-up'
           client:only
-          description={firstPost.intro}
+          description={firstPost.introElementsCount > 1
+            ? limitWords(plainText(firstPost.content), 40)
+            : limitWords(plainText(firstPost.intro), 40)}
           image={{
             alt: firstPost.banner.alternativeText,
             src: firstPost.banner.url,
@@ -148,9 +151,17 @@ const [firstPost, ...postsList] = filteredPosts();
         />
         <div>
           {
-            postsList?.map(post => (
+            postsList?.map((post, index) => (
               <CardPost
-                description={post.content}
+                client:only
+                variant='extended'
+                data-aos='fade-up'
+                data-aos-delay={100 * index}
+                description={
+                  post.introElementsCount > 1
+                    ? limitWords(plainText(post.content), 40)
+                    : limitWords(plainText(post.intro), 40)
+                }
                 image={{
                   alt: post.banner.alternativeText,
                   src: post.banner.url,

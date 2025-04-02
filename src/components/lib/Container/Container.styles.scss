@@ -4,11 +4,15 @@
   width: 100%;
 
   /* [🎛️] Variants */
-  @include breakpoint('small') {
+  @include breakpoint('small', 'max') {
     padding: 0 20px;
   }
 
-  @include breakpoint('medium') {
+  @include between('small', 'medium') {
+    padding: 0 40px;
+  }
+
+  @include between('medium', 'large') {
     padding: 0 40px;
   }
 

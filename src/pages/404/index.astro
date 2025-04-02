@@ -1,4 +1,5 @@
 ---
+import Illustration404 from '@/assets/illustrations/404.svg?url';
 import { Container, Link, Text } from '@/components/lib';
 import { BaseLayout } from '@/layouts';
 
@@ -11,7 +12,7 @@ import './_404.styles.scss';
       <Container>
         <div class='section-404__content'>
           <div class='section-404__content__cta'>
-            <img alt='404 - Oh shit' src='src/assets/illustrations/404.svg' />
+            <img alt='404 - Oh shit' src={Illustration404} />
             <Text element='h1' variant='heading-3'>
               You're in a wrong place
             </Text>

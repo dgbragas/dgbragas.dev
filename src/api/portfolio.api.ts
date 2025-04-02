@@ -22,7 +22,7 @@ type PortfolioProject = {
 };
 
 const getPortfolioPosts = async (limit?: number) => {
-  const params = [`populate=image`];
+  const params = ['populate=image', 'sort=publishedAt:desc'];
 
   if (limit) {
     params.push(`pagination[limit]=${limit}`);

@@ -69,12 +69,13 @@ const postProps = {
         <Container>
           <div class='post__article__header__content'>
             <img
+              data-aos='fade-down'
               alt={post.banner.alternativeText}
               aria-describedby={post.banner.caption}
               src={post.banner.url}
             />
 
-            <div class='post__article__header__intro'>
+            <div class='post__article__header__intro' data-aos='fade-down'>
               {
                 post.tags.map(tag => (
                   <Tag label={`#${tag.toLocaleLowerCase()}`} />
@@ -97,8 +98,14 @@ const postProps = {
 
       <section class='post__article__principle'>
         <Container>
-          <div class='post__article__principle__main' set:html={post.intro} />
           <div
+            data-aos='fade-down'
+            class='post__article__principle__main'
+            set:html={post.intro}
+          />
+          <div
+            data-aos='fade-down'
+            data-aos-delay='200'
             class='post__article__principle__content'
             set:html={post.content}
           />
@@ -121,7 +128,7 @@ const postProps = {
 
       <footer class='post__article__footer'>
         <Container>
-          <div class='post__article__footer__related'>
+          <div class='post__article__footer__related' data-aos='fade-down'>
             <div class='post__article__footer__related__item'>
               <Text element='h2' variant='heading-4'>
                 {nextPost ? 'Anterior' : 'Próximo'}
@@ -159,7 +166,7 @@ const postProps = {
             }
           </div>
 
-          <div class='post__article__footer__thank-you'>
+          <div class='post__article__footer__thank-you' data-aos='fade-down'>
             <Text element='h3' variant='heading-4'>
               Obrigado! Espero que tenha gostado da leitura =)
             </Text>

@@ -23,3 +23,16 @@ $breakpoints: (
     }
   }
 }
+
+@mixin between($min, $max) {
+  $minVal: map.get($breakpoints, $min);
+  $maxVal: map.get($breakpoints, $max);
+
+  @if $minVal and $maxVal {
+    @media (min-width: #{$minVal}) and (max-width: #{$maxVal - 1px}) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoints inválidos: #{$min} → #{$minVal}, #{$max} → #{$maxVal}";
+  }
+}

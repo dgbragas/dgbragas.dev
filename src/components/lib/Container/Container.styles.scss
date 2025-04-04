@@ -1,6 +1,7 @@
 @use '@/styles/mixins.scss' as *;
 
 .container {
+  max-width: 1440px;
   width: 100%;
 
   /* [🎛️] Variants */

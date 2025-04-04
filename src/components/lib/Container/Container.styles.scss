@@ -1,6 +1,7 @@
 @use '@/styles/mixins.scss' as *;
 
 .container {
+  margin: 0 auto;
   max-width: 1440px;
   width: 100%;
 

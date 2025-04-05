@@ -42,9 +42,16 @@ const companies = [
     position: 'Estagiário de desenvolvimento Front-end',
   },
 ];
+
+const layoutProps = {
+  title: 'Sobre mim | dgbragas - UI Engineer',
+  description:
+    'Designer de Interfaces & Desenvolvedor Front-end da região do GrandeABC, São Paulo',
+  url: 'https://dgbragas.dev/about',
+};
 ---
 
-<BaseLayout>
+<BaseLayout {...layoutProps}>
   <section
     aria-labelledby='introduction'
     class='styled-section section--dark section-presentation'

@@ -51,17 +51,25 @@ const repositoriesList = () => {
   return repositories;
 };
 
-const pageProps = {
-  links,
-  callToAction: 'Saiba mais sobre o projeto',
-  className: 'whatt-if--highlight',
-  tag: '⚠️ Em desenvolvimento',
-  title: '“Muitas coisas criadas com design, código, testes e um bom café.”',
-  sectionTheme: 'section--dark',
+const props = {
+  pageProps: {
+    links,
+    callToAction: 'Saiba mais sobre o projeto',
+    className: 'whatt-if--highlight',
+    tag: '⚠️ Em desenvolvimento',
+    title: '“Muitas coisas criadas com design, código, testes e um bom café.”',
+    sectionTheme: 'section--dark',
+  },
+  layoutProps: {
+    title: 'whatt-if | dgbragas - UI Engineer',
+    description:
+      'O whatt-if é um projeto pessoal open-source voltado a centralizar uma série de utilitários de desenvolvimento',
+    url: 'https://dgbragas.dev/whatt-if',
+  },
 };
 ---
 
-<HighlightLayout {...pageProps}>
+<HighlightLayout {...props}>
   <Fragment slot='description'>
     O <i>whatt-if</i> é um projeto pessoal open-source voltado a centralizar uma
     série de <strong>utilitários de desenvolvimento</strong>, trazendo:

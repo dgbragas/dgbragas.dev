@@ -27,17 +27,25 @@ const postsList = () => {
   return posts;
 };
 
-const pageProps = {
-  links,
-  callToAction: 'Veja os projetos criados',
-  className: 'dui--highlight',
-  tag: 'Daily UI',
-  title: '"Torne-se um designer melhor com pequenos projetos diários"',
-  sectionTheme: 'section--dark',
+const props = {
+  pageProps: {
+    links,
+    callToAction: 'Veja os projetos criados',
+    className: 'dui--highlight',
+    tag: 'Daily UI',
+    title: '"Torne-se um designer melhor com pequenos projetos diários"',
+    sectionTheme: 'section--dark',
+  },
+  layoutProps: {
+    title: 'Daily UI | dgbragas - UI Engineer',
+    description:
+      'Estou reunindo nesta seção minha jornada pelos 100 dias do Daily UI, uma série de Desafios de Design enviados diariamente, focando em aprimorar habilidades no Design de Interfaces.',
+    url: 'https://dgbragas.dev/daily-ui',
+  },
 };
 ---
 
-<HighlightLayout {...pageProps}>
+<HighlightLayout {...props}>
   <Fragment slot='description'>
     Estou reunindo nesta seção minha jornada pelos <u>100 dias</u> do Daily UI, uma
     série de <strong>Desafios de Design</strong> enviados diariamente, focando em

@@ -34,9 +34,16 @@ const currentPortfolio = () => {
 
   return portfolioList;
 };
+
+const layoutProps = {
+  title: 'Portfólio | dgbragas - UI Engineer',
+  description:
+    'Todos os meus principais trabalhos de design e desenvolvimento web reunidos em um único local',
+  url: 'https://dgbragas.dev/portfolio',
+};
 ---
 
-<BaseLayout>
+<BaseLayout {...layoutProps}>
   <Fragment slot='scripts'>
     <script src='/scripts/resize-grid.js' type='module'></script>
   </Fragment>

@@ -30,9 +30,16 @@ const filteredPosts = () => {
 };
 
 const [firstPost, ...postsList] = filteredPosts();
+
+const layoutProps = {
+  title: 'Blog | dgbragas - UI Engineer',
+  description:
+    'Conteúdos sobre desenvolvimento front-end, carreira, design de interfaces, acessibilidade web e muito mais',
+  url: 'https://dgbragas.dev/blog',
+};
 ---
 
-<BaseLayout>
+<BaseLayout {...layoutProps}>
   <section class='styled-section section--dark section-blog__intro'>
     <Container>
       <div class='section-blog__intro__presentation' data-aos='fade-up'>

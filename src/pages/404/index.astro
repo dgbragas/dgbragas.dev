@@ -4,9 +4,15 @@ import { Container, Link, Text } from '@/components/lib';
 import { BaseLayout } from '@/layouts';
 
 import './_404.styles.scss';
+
+const layoutProps = {
+  title: '404 | dgbragas - UI Engineer',
+  description: "Oh Shit! You are in a wrong place. Let's go back?",
+  url: 'https://dgbragas.dev/404',
+};
 ---
 
-<BaseLayout>
+<BaseLayout {...layoutProps}>
   <section class='styled-section section--dark'>
     <div class='section-404'>
       <Container>

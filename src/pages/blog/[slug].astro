@@ -119,9 +119,15 @@ const postProps = {
           </Text>
           <Text element='p' variant='blog'>
             Esse projeto é open source, então basta alterar o arquivo de texto,
-            diretamente no <strong>Github</strong> e abrir um
-            <i>pull-request</i>. É uma maneira simples e eficaz de contribuir
-            com a comunidade de desenvolvimento web.
+            diretamente no <strong>Github</strong> e
+            <a
+              href='https://github.com/dgbragas/dgbragas.dev/issues'
+              target='_blank'
+              rel='noopener referrer'
+            >
+              <i>abrir uma issue</i>
+            </a>. É uma maneira simples e eficaz de contribuir com a comunidade
+            de desenvolvimento web.
           </Text>
         </Container>
       </section>
@@ -131,7 +137,7 @@ const postProps = {
           <div class='post__article__footer__related' data-aos='fade-down'>
             <div class='post__article__footer__related__item'>
               <Text element='h2' variant='heading-4'>
-                {nextPost ? 'Anterior' : 'Próximo'}
+                {nextPost ? 'Próximo' : 'Anterior'}
               </Text>
 
               <a

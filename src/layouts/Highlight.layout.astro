@@ -5,19 +5,22 @@ import { BaseLayout } from '@/layouts';
 import './Highlight.styles.scss';
 
 const {
-  callToAction,
-  image,
-  links,
-  tag,
-  title,
-  sectionTheme,
-  className = '',
+  pageProps: {
+    callToAction,
+    image,
+    links,
+    tag,
+    title,
+    sectionTheme,
+    className = '',
+  },
+  layoutProps,
 } = Astro.props;
 
 const theme: 'dark' | 'light' = sectionTheme.split('-')[2];
 ---
 
-<BaseLayout>
+<BaseLayout {...layoutProps}>
   <section
     class={`styled-section ${sectionTheme} section-highlight ${className}`}
   >

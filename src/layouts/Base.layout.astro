@@ -5,9 +5,11 @@ import { AOSProvider, SmoothScroll } from '@/helpers';
 import { LayoutProvider, StylesProvider } from '@/providers';
 
 import './Base.styles.scss';
+
+const props = Astro.props;
 ---
 
-<LayoutProvider>
+<LayoutProvider {...props}>
   <StylesProvider>
     <div class='fixed-header'>
       <AnnouncementBar client:visible unfixed>

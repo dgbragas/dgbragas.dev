@@ -393,9 +393,21 @@
   }
 
   .container {
-    background: url('@/assets/images/workflow-background.png') no-repeat top
-      80px center;
     position: relative;
+    overflow: visible;
+    z-index: $z-index-raised;
+
+    &::after {
+      content: '';
+      background: url('@/assets/images/workflow-background.png') no-repeat top
+        80px right 56px;
+      position: absolute;
+      top: 0;
+
+      height: 100%;
+      width: 100%;
+      z-index: $z-index-hide;
+    }
 
     @include breakpoint('large', max) {
       background: initial;
@@ -404,8 +416,9 @@
 
   &__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 287px);
     grid-template-rows: repeat(3, 318px);
+    justify-content: space-between;
     grid-template-areas:
       'presentation presentation card-1 card-2'
       '. card-3 card-4 card-5'

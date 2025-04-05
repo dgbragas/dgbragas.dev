@@ -52,7 +52,8 @@ const postProps = {
   publishedTime: post.updatedAt,
   section: post.section,
   tags: post.tags,
-  title: `dgbragas - Blog: ${post.title}`,
+  // layoutProps
+  title: `Blog — ${post.title}`,
   description: `Blog - ${post.title}`,
   url: `https://dgbragas.dev/blog/${slugify(post.title)}`,
   image: post.banner.url,

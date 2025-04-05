@@ -8,6 +8,7 @@ function AOSProvider() {
   React.useEffect(() => {
     AOS.init({
       duration: 800,
+      once: true,
     });
 
     setTimeout(() => AOS.refreshHard(), 500);

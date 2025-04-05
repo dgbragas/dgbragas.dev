@@ -4,6 +4,7 @@ $breakpoints: (
   'small': 420px,
   'medium': 768px,
   'large': 1280px,
+  'x-large': 1440px,
 );
 
 @mixin apply-map($map) {

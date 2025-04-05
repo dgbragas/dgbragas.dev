@@ -11,7 +11,13 @@ type LinkProps = Omit<
   href: string;
   icon?: string;
   target?: '_blank' | '_self';
-  variant?: 'dribbble' | 'instagram' | 'linkedin' | 'whatt-if' | 'whatsapp';
+  variant?:
+    | 'daily-ui'
+    | 'dribbble'
+    | 'instagram'
+    | 'linkedIn'
+    | 'whatt-if'
+    | 'whatsApp';
 };
 
 const Link = ({
@@ -43,4 +49,4 @@ const Link = ({
   </a>
 );
 
-export { Link };
+export { Link, type LinkProps };

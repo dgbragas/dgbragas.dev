@@ -3,13 +3,13 @@
 .section-portfolio__intro {
   background: $color-neutral-600;
   padding-top: 176px;
-  padding-inline: 20vw;
+  padding-inline: 264px;
 
-  @include breakpoint('medium', 'max') {
-    padding-inline: 12vw;
+  @include breakpoint('large', 'max') {
+    padding-inline: 120px;
   }
 
-  @include breakpoint('small', 'max') {
+  @include breakpoint('medium', 'max') {
     padding-inline: 0;
   }
 

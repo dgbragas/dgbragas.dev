@@ -9,6 +9,7 @@ type DUIPost = {
     url: string;
   }>;
   title: string;
+  url: string;
 };
 
 const getDUIPosts = async () => {

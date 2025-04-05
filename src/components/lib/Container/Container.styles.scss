@@ -18,7 +18,7 @@
     padding: 0 40px;
   }
 
-  @include breakpoint('large') {
+  @include between('large', 'x-large') {
     padding: 0 112px;
   }
 }

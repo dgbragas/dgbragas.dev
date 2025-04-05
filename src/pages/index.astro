@@ -241,7 +241,7 @@ const { publicPosts } = await getPortfolioPosts(4);
             <div>
               <Link href={socials.instagram} variant='instagram'>Instagram</Link
               >
-              <Link href={socials.linkedIn} variant='linkedin'>LinkedIn</Link>
+              <Link href={socials.linkedIn} variant='linkedIn'>LinkedIn</Link>
             </div>
 
             <Link href='#about' target='_self'>
@@ -259,7 +259,7 @@ const { publicPosts } = await getPortfolioPosts(4);
     </div>
   </section>
 
-  <section class='styled-section section--dark s-about' id='#about'>
+  <section class='styled-section section--dark s-about' id='about'>
     <Container>
       <div class='s-about__content'>
         <div class='s-about__content__intro' data-aos='fade-up'>
@@ -566,7 +566,7 @@ const { publicPosts } = await getPortfolioPosts(4);
               description={plainText(
                 limitWords(
                   post.introElementsCount > 1 ? post.content : post.intro,
-                  20,
+                  32,
                 ),
               )}
               image={{

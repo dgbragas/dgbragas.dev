@@ -36,6 +36,7 @@ const Link = ({
     tabIndex={disabled ? -1 : 0}
     className={`link ${className ?? ''} ${variant ? `link--${variant}` : ''}`}
     href={href}
+    rel={target === '_blank' ? 'noopener noreferrer' : undefined}
     target={target}
   >
     {icon && (

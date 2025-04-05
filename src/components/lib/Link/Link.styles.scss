@@ -1,10 +1,16 @@
+@use '@/styles/mixins.scss' as *;
+
+$transition:
+  color 0.24s ease-out,
+  background 0.24s ease-out;
+
 .link {
   align-items: center;
   display: inline-flex;
   gap: 8px;
 
   cursor: pointer;
-  transition: color 0.24s ease-out;
+  transition: $transition;
   width: fit-content;
 
   &:hover,
@@ -23,9 +29,30 @@
   }
 
   /* [🎛️] Variants */
+  &--daily-ui {
+    span:first-of-type {
+      font-family: 'Heebo-Bold';
+      font-weight: 700;
+      line-height: 100%;
+      top: 3px;
+      position: relative;
+    }
+
+    &:hover span,
+    &:focus span {
+      background: $color-gradient-dark-theme;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      transition: $transition;
+    }
+  }
+
   &--dribbble:hover span,
   &--dribbble:focus span {
     color: #ea4c89;
+    transition: $transition;
   }
 
   &--instagram:hover,
@@ -42,6 +69,8 @@
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+
+      transition: $transition;
     }
 
     svg path {
@@ -49,9 +78,10 @@
     }
   }
 
-  &--linkedin:hover span,
-  &--linkedin:focus span {
+  &--linkedIn:hover span,
+  &--linkedIn:focus span {
     color: #0a66c2;
+    transition: $transition;
   }
 
   &--whatt-if:hover,
@@ -61,15 +91,19 @@
       background-clip: text;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+
+      transition: $transition;
     }
 
     svg path {
       fill: #ef3f36;
+      transition: $transition;
     }
   }
 
-  &--whatsapp:hover span,
-  &--whatsapp:focus span {
+  &--whatsApp:hover span,
+  &--whatsApp:focus span {
     color: #25d366;
+    transition: $transition;
   }
 }

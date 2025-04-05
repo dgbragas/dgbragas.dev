@@ -44,7 +44,7 @@ const Footer = () => {
                 <Link
                   href={socials.linkedIn}
                   icon={LinkedInIcon}
-                  variant='linkedin'
+                  variant='linkedIn'
                 >
                   LinkedIn
                 </Link>
@@ -71,16 +71,15 @@ const Footer = () => {
                 <Link
                   href={socials.whatsApp}
                   icon={WhatsAppIcon}
-                  variant='whatsapp'
+                  variant='whatsApp'
                 >
                   WhatsApp
                 </Link>
               </li>
               <li>
-                <Link disabled href='#'>
-                  DS Library
+                <Link href='/daily-ui' variant='daily-ui'>
+                  Daily UI
                 </Link>
-                {/* <Text variant='small'>Em breve</Text> */}
               </li>
               <li>
                 <Link href='/portfolio' target='_self'>

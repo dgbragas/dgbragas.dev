@@ -1,6 +1,6 @@
 @use '@/styles/mixins.scss' as *;
 
-$paddingInline: 20vw;
+$paddingInline: 352px;
 
 .post {
   background: $color-neutral-700;
@@ -90,20 +90,35 @@ $paddingInline: 20vw;
         align-items: center;
         display: flex;
         flex-direction: column;
+        width: 100%;
 
         img {
           border-radius: 10px;
           max-width: 1008px;
-          width: 100%;
+        }
+
+        @include breakpoint('large', 'max') {
+          img {
+            width: 100%;
+          }
         }
       }
 
       &__intro {
-        padding-inline: $paddingInline;
         margin-top: 80px;
+        padding-inline: $paddingInline;
+        width: 100%;
+
+        @include between('large', 'x-large') {
+          padding-inline: 256px;
+        }
+
+        @include breakpoint('large', 'max') {
+          padding-inline: 120px;
+        }
 
         @include breakpoint('medium', 'max') {
-          padding-inline: 12vw;
+          padding-inline: 32px;
         }
 
         .tag {
@@ -140,22 +155,43 @@ $paddingInline: 20vw;
     }
 
     &__principle {
-      padding-inline: $paddingInline;
-
-      @include breakpoint('medium', 'max') {
-        padding-inline: 12vw;
-      }
-
       &__main {
         margin-bottom: 72px;
+        padding-inline: $paddingInline;
 
         p {
           @include apply-map($font-blog);
           font-style: italic;
         }
+
+        @include between('large', 'x-large') {
+          padding-inline: 256px;
+        }
+
+        @include breakpoint('large', 'max') {
+          padding-inline: 120px;
+        }
+
+        @include breakpoint('medium', 'max') {
+          padding-inline: 32px;
+        }
       }
 
       &__content {
+        padding-inline: $paddingInline;
+
+        @include between('large', 'x-large') {
+          padding-inline: 256px;
+        }
+
+        @include breakpoint('large', 'max') {
+          padding-inline: 120px;
+        }
+
+        @include breakpoint('medium', 'max') {
+          padding-inline: 32px;
+        }
+
         blockquote {
           @include apply-map($font-extended-large);
           margin-block: 48px;
@@ -184,7 +220,6 @@ $paddingInline: 20vw;
     &__outro {
       margin-top: 128px;
       margin-bottom: 72px;
-      padding-inline: $paddingInline;
 
       @include breakpoint('medium', 'max') {
         padding-inline: 12vw;
@@ -213,23 +248,49 @@ $paddingInline: 20vw;
       strong {
         color: $color-secondary-cyan;
       }
+
+      .container > * {
+        padding-inline: $paddingInline;
+      }
+
+      @include between('large', 'x-large') {
+        .container > * {
+          padding-inline: 256px;
+        }
+      }
+
+      @include breakpoint('large', 'max') {
+        .container > * {
+          padding-inline: 120px;
+        }
+      }
+
+      @include breakpoint('medium', 'max') {
+        .container > * {
+          padding-inline: 32px;
+        }
+      }
     }
 
     &__footer {
-      padding-inline: $paddingInline;
-
-      @include breakpoint('medium', 'max') {
-        padding-inline: 12vw;
-      }
-
       &__related {
         align-items: flex-end;
         display: flex;
         justify-content: space-between;
         gap: 64px;
+        padding-inline: $paddingInline;
+
+        @include between('large', 'x-large') {
+          padding-inline: 256px;
+        }
+
+        @include breakpoint('large', 'max') {
+          padding-inline: 120px;
+        }
 
         @include breakpoint('medium', 'max') {
           flex-wrap: wrap;
+          padding-inline: 32px;
         }
 
         &__item {

@@ -44,7 +44,7 @@ const formatDate = (date: Date) =>
   new Intl.DateTimeFormat('pt-BR').format(date);
 
 const getPosts = async (limit?: number) => {
-  const params = [`populate=*`];
+  const params = ['populate=*', 'sort=released_at:desc'];
 
   if (limit) {
     params.push(`pagination[limit]=${limit}`);

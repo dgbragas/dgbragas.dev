@@ -77,11 +77,14 @@ const postProps = {
             />
 
             <div class='post__article__header__intro' data-aos='fade-down'>
-              {
-                post.tags.map(tag => (
-                  <Tag label={`#${tag.toLocaleLowerCase()}`} />
-                ))
-              }
+              <div class='post__article__header__intro__tags'>
+                {
+                  post.tags.map(tag => (
+                    <Tag label={`#${tag.toLocaleLowerCase()}`} />
+                  ))
+                }
+              </div>
+
               <Text element='h1' variant='heading-1'>
                 {post.title}
               </Text>

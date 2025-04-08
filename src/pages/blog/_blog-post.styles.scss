@@ -143,6 +143,12 @@ $paddingInline: 352px;
           margin-top: 16px;
         }
 
+        &__tags {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+
         &__date {
           display: flex;
           gap: 28px;

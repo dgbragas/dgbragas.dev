@@ -147,7 +147,7 @@ const layoutProps = {
             src: firstPost.banner.url,
           }}
           labels={firstPost.tags}
-          publishedAt={firstPost.updatedAt}
+          publishedAt={firstPost.releasedAt}
           readTime={firstPost.readTime}
           title={firstPost.title}
           url={{
@@ -160,8 +160,6 @@ const layoutProps = {
           {
             postsList?.map((post, index) => (
               <CardPost
-                client:only
-                variant='extended'
                 data-aos='fade-up'
                 data-aos-delay={100 * index}
                 description={
@@ -174,7 +172,7 @@ const layoutProps = {
                   src: post.banner.url,
                 }}
                 labels={post.tags}
-                publishedAt={post.updatedAt}
+                publishedAt={post.releasedAt}
                 readTime={post.readTime}
                 title={post.title}
                 url={{

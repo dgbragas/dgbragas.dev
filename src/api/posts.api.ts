@@ -22,10 +22,10 @@ type Post = {
     title: string;
     url: string;
   }>;
+  released_at: string;
   section: string;
   tags: string[];
   title: string;
-  updatedAt: string;
 };
 
 type StrapiPostBlock = Array<{
@@ -74,7 +74,7 @@ const getPosts = async (limit?: number) => {
       const markedContent = await marked(postContent);
       const content = limitWords(plainText(markedContent), 30);
 
-      const updatedAt = formatDate(new Date(post.updatedAt));
+      const releasedAt = formatDate(new Date(post.released_at));
 
       return {
         banner,
@@ -86,7 +86,7 @@ const getPosts = async (limit?: number) => {
         relatedPosts,
         tags,
         title,
-        updatedAt,
+        releasedAt,
       };
     }),
   );
@@ -105,7 +105,7 @@ const findOnePost = async (documentId: string) => {
   const post = json.data as Post;
 
   const content = marked(post.content);
-  const updatedAt = formatDate(new Date(post.updatedAt));
+  const releasedAt = formatDate(new Date(post.released_at));
 
   const rawIntro = post.intro as StrapiPostBlock;
 
@@ -130,7 +130,7 @@ const findOnePost = async (documentId: string) => {
     ...post,
     content,
     intro,
-    updatedAt,
+    releasedAt,
   };
 };
 

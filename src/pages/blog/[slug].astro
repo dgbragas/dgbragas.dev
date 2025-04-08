@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 
   return posts.map(post => {
     const slug = slugify(post.title);
-    const [day, month, year] = post.updatedAt.split('/');
+    const [day, month, year] = post.releasedAt.split('/');
     const date = new Date(`${year}-${month}-${day}`);
 
     const publishedAt = date
@@ -48,8 +48,8 @@ const post = await findOnePost(id);
 const [previousPost, nextPost] = relatedPosts;
 
 const postProps = {
-  modifiedTime: post.updatedAt,
-  publishedTime: post.updatedAt,
+  modifiedTime: post.releasedAt,
+  publishedTime: post.releasedAt,
   section: post.section,
   tags: post.tags,
   // layoutProps
@@ -87,7 +87,7 @@ const postProps = {
               </Text>
 
               <div class='post__article__header__intro__date'>
-                <Text element='small' variant='label'>{post.updatedAt}</Text>
+                <Text element='small' variant='label'>{post.releasedAt}</Text>
                 <Text element='small' variant='label'>
                   {post.read_time} min de leitura
                 </Text>

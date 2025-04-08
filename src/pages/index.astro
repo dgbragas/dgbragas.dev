@@ -568,7 +568,7 @@ const { publicPosts } = await getPortfolioPosts(4);
                 src: post.banner.url,
               }}
               labels={post.tags}
-              publishedAt={post.updatedAt}
+              publishedAt={post.releasedAt}
               readTime={post.readTime}
               title={post.title}
               url={{

@@ -19,6 +19,7 @@ type Post = {
   read_time: number;
   related_posts: Array<{
     id: number;
+    released_at: string;
     title: string;
     url: string;
   }>;
@@ -62,9 +63,10 @@ const getPosts = async (limit?: number) => {
         documentId,
         tags,
         title,
+        released_at,
+        related_posts,
         content: postContent,
         read_time: readTime,
-        related_posts: relatedPosts,
       } = post;
 
       const markedIntro = await marked(post.intro[0].children[0].text);
@@ -74,7 +76,25 @@ const getPosts = async (limit?: number) => {
       const markedContent = await marked(postContent);
       const content = limitWords(plainText(markedContent), 30);
 
-      const releasedAt = formatDate(new Date(post.released_at));
+      const releasedAt = formatDate(new Date(released_at));
+
+      const relatedPosts = related_posts.map(related => {
+        const date = new Date(related.released_at)
+          .toLocaleDateString('pt-BR', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+            timeZone: 'UTC',
+          })
+          .replace('.', '')
+          .replace(' de ', ' ')
+          .replace(' de ', ', ');
+
+        return {
+          ...related,
+          releasedAt: date,
+        };
+      });
 
       return {
         banner,
@@ -84,9 +104,9 @@ const getPosts = async (limit?: number) => {
         introElementsCount,
         readTime,
         relatedPosts,
+        releasedAt,
         tags,
         title,
-        releasedAt,
       };
     }),
   );

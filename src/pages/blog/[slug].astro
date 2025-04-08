@@ -14,27 +14,12 @@ export async function getStaticPaths() {
 
   return posts.map(post => {
     const slug = slugify(post.title);
-    const [day, month, year] = post.releasedAt.split('/');
-    const date = new Date(`${year}-${month}-${day}`);
-
-    const publishedAt = date
-      .toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric',
-      })
-      .replace('.', '')
-      .replace(' de ', ' ')
-      .replace(' de ', ', ');
 
     return {
       params: { slug },
       props: {
         id: post.documentId,
-        relatedPosts: post.relatedPosts.map(related => ({
-          ...related,
-          publishedAt,
-        })),
+        relatedPosts: post.relatedPosts,
         title: post.title,
         slug,
       },
@@ -150,7 +135,7 @@ const postProps = {
                 target='_self'
               >
                 <Text element='small' variant='caption'>
-                  {previousPost.publishedAt}
+                  {previousPost.releasedAt}
                 </Text>
                 <Text element='p' variant='label'>{previousPost.title}</Text>
               </a>
@@ -165,7 +150,7 @@ const postProps = {
 
                   <a href={nextPost.url} target='_self'>
                     <Text element='small' variant='caption'>
-                      {nextPost.publishedAt}
+                      {nextPost.releasedAt}
                     </Text>
                     <Text element='p' variant='label'>
                       {nextPost.title}

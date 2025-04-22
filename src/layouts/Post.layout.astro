@@ -1,5 +1,5 @@
 ---
-import { AOSProvider, SmoothScroll } from '@/helpers';
+import { AOSProvider, CodeHighlight, SmoothScroll } from '@/helpers';
 import { LayoutProvider, StylesProvider } from '@/providers';
 
 const { modifiedTime, publishedTime, section, tags, ...layoutProps } =
@@ -50,5 +50,6 @@ const jsonLD = {
   </Fragment>
 
   <AOSProvider client:only />
+  <CodeHighlight client:only />
   <SmoothScroll client:only />
 </LayoutProvider>

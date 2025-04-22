@@ -89,6 +89,23 @@ $paddingInline: 352px;
     width: 100%;
   }
 
+  p code {
+    color: $color-neutral-600;
+    background: $color-neutral-200;
+    border-radius: 4px;
+    padding-inline: 8px;
+  }
+
+  pre {
+    margin-bottom: 48px;
+    margin-inline: 32px;
+
+    code {
+      border-radius: 4px;
+      background: $color-neutral-100;
+    }
+  }
+
   /* [🏗️] Structure */
   &__article {
     padding-bottom: 128px;

@@ -37,6 +37,15 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Monospace';
+  src:
+    url('/fonts/FiraCode-Regular.woff2') format('woff2'),
+    url('/fonts/FiraCode-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* [🗺️] Global Settings */
 h1,
 h2,
@@ -46,6 +55,11 @@ h5,
 h6 {
   color: $color-neutral-700;
   font-family: 'Heebo-Bold';
+}
+
+pre,
+code {
+  font-family: 'Monospace';
 }
 
 html {

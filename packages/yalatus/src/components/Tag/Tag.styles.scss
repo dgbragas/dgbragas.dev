@@ -1,0 +1,87 @@
+@use '../../styles/mixins' as *;
+
+.yl-tag {
+  @include typography('label');
+
+  align-items: center;
+  block-size: var(--yl-space-32);
+  border: var(--yl-border-width-1) solid transparent;
+  border-radius: var(--yl-radius-4);
+  display: inline-flex;
+  padding: var(--yl-space-4) var(--yl-space-12);
+  white-space: nowrap;
+
+  &--outline {
+    &.yl-tag--brand {
+      border-color: var(--yl-color-border-accent);
+      color: var(--yl-color-fg-accent);
+    }
+
+    &.yl-tag--neutral {
+      border-color: var(--yl-color-border-default);
+      color: var(--yl-color-fg-subtle);
+    }
+
+    &.yl-tag--inverse {
+      border-color: var(--yl-color-border-inverse);
+      color: var(--yl-color-fg-inverse);
+    }
+
+    &.yl-tag--danger {
+      border-color: var(--yl-color-fg-danger);
+      color: var(--yl-color-fg-danger);
+    }
+
+    &.yl-tag--warning {
+      border-color: var(--yl-color-fg-warning);
+      color: var(--yl-color-fg-warning);
+    }
+
+    &.yl-tag--success {
+      border-color: var(--yl-color-fg-success);
+      color: var(--yl-color-fg-success);
+    }
+
+    &.yl-tag--informative {
+      border-color: var(--yl-color-fg-info);
+      color: var(--yl-color-fg-info);
+    }
+  }
+
+  &--filled {
+    &.yl-tag--brand {
+      background-color: var(--yl-color-surface-accent-subtle);
+      color: var(--yl-color-fg-accent);
+    }
+
+    &.yl-tag--neutral {
+      background-color: var(--yl-color-surface-strong);
+      color: var(--yl-color-fg-subtle);
+    }
+
+    &.yl-tag--inverse {
+      background-color: var(--yl-color-surface-inverse);
+      color: var(--yl-color-on-inverse);
+    }
+
+    &.yl-tag--danger {
+      background-color: var(--yl-color-fg-danger);
+      color: var(--yl-color-on-danger);
+    }
+
+    &.yl-tag--warning {
+      background-color: var(--yl-color-fg-warning);
+      color: var(--yl-color-on-warning);
+    }
+
+    &.yl-tag--success {
+      background-color: var(--yl-color-fg-success);
+      color: var(--yl-color-on-success);
+    }
+
+    &.yl-tag--informative {
+      background-color: var(--yl-color-surface-info);
+      color: var(--yl-color-on-info);
+    }
+  }
+}

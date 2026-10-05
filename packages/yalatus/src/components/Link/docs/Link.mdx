@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as LinkStories from './Link.stories';
+
+<Meta of={LinkStories} />
+
+<Title />
+
+Inline navigation link with the thin underline of the brand and an optional trailing icon.
+
+```tsx
+import { Link } from '@dgbragas/yalatus';
+```
+
+<Canvas of={LinkStories.Basic} />
+
+<Controls of={LinkStories.Basic} />
+
+<Stories includePrimary={false} />

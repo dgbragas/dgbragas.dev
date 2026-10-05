@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as DividerStories from './Divider.stories';
+
+<Meta of={DividerStories} />
+
+<Title />
+
+Thin line that separates groups of content on either axis.
+
+```tsx
+import { Divider } from '@dgbragas/yalatus';
+```
+
+<Canvas of={DividerStories.Basic} />
+
+<Controls of={DividerStories.Basic} />
+
+<Stories includePrimary={false} />

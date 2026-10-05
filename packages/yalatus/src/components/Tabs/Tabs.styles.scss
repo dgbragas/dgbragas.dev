@@ -1,0 +1,58 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/motion' as *;
+
+.yl-tabs {
+  &__tab {
+    align-items: flex-end;
+    block-size: var(--yl-space-40);
+    border-block-end: var(--yl-border-width-2) solid transparent;
+    color: var(--yl-color-fg-placeholder);
+    cursor: pointer;
+    display: inline-flex;
+    gap: var(--yl-space-8);
+    opacity: var(--yl-opacity-700);
+    padding-block-end: var(--yl-space-4);
+    padding-inline: var(--yl-space-16);
+    white-space: nowrap;
+
+    @include motion-transition((border-color, color, opacity), 'short-03', 'standard');
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+
+    &:hover {
+      color: var(--yl-color-fg-subtle);
+      opacity: 1;
+    }
+
+    &--active {
+      border-block-end-color: var(--yl-color-border-accent);
+      color: var(--yl-color-fg-default);
+      opacity: 1;
+
+      &:hover {
+        color: var(--yl-color-fg-accent);
+      }
+
+      .yl-tabs__count {
+        color: var(--yl-color-fg-accent);
+      }
+    }
+
+    &--disabled {
+      color: var(--yl-color-fg-disabled);
+      pointer-events: none;
+    }
+  }
+
+  &__label {
+    @include typography('heading-4');
+  }
+
+  &__count {
+    @include typography('label');
+
+    padding-block-end: var(--yl-space-4);
+  }
+}

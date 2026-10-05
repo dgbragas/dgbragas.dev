@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as TagStories from './Tag.stories';
+
+<Meta of={TagStories} />
+
+<Title />
+
+Short label that classifies content, such as a post tag or a status.
+
+```tsx
+import { Tag } from '@dgbragas/yalatus';
+```
+
+<Canvas of={TagStories.Basic} />
+
+<Controls of={TagStories.Basic} />
+
+<Stories includePrimary={false} />

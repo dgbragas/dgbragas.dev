@@ -1,0 +1,23 @@
+.yl-logo {
+  color: var(--yl-color-fg-default);
+  display: inline-flex;
+  line-height: 0;
+
+  svg {
+    block-size: 100%;
+    inline-size: 100%;
+  }
+
+  &--clearspace,
+  &--filled {
+    block-size: var(--yl-space-120);
+    inline-size: var(--yl-space-120);
+  }
+
+  &--colored {
+    block-size: var(--yl-space-80);
+
+    // FIGMA: the coloured mark is 52px wide, a step the space scale does not have.
+    inline-size: 52px;
+  }
+}

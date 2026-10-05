@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as IconButtonStories from './IconButton.stories';
+
+<Meta of={IconButtonStories} />
+
+<Title />
+
+Square button that shows only an icon; the required `label` gives it an accessible name.
+
+```tsx
+import { IconButton } from '@dgbragas/yalatus';
+```
+
+<Canvas of={IconButtonStories.Basic} />
+
+<Controls of={IconButtonStories.Basic} />
+
+<Stories includePrimary={false} />

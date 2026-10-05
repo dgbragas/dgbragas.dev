@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as LogoStories from './Logo.stories';
+
+<Meta of={LogoStories} />
+
+<Title />
+
+The dgbragas mark as inline SVG, in the three drawings the brand defines.
+
+```tsx
+import { Logo } from '@dgbragas/yalatus';
+```
+
+<Canvas of={LogoStories.Basic} />
+
+<Controls of={LogoStories.Basic} />
+
+<Stories includePrimary={false} />

@@ -1,0 +1,138 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/motion' as *;
+
+.yl-icon-button {
+  border: 0;
+  border-radius: var(--yl-radius-4);
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0;
+  text-decoration: none;
+
+  @include motion-transition((background-color, color, opacity), 'short-03', 'standard');
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &--small {
+    block-size: var(--yl-space-32);
+    inline-size: var(--yl-space-32);
+  }
+
+  &--medium {
+    block-size: var(--yl-space-40);
+    inline-size: var(--yl-space-40);
+  }
+
+  &--large {
+    block-size: var(--yl-space-48);
+    inline-size: var(--yl-space-48);
+  }
+
+  &--disabled {
+    pointer-events: none;
+  }
+
+  &--default {
+    &.yl-icon-button--accent {
+      background-color: var(--yl-color-action-accent);
+      color: var(--yl-color-on-accent);
+
+      &:hover {
+        background-color: var(--yl-color-action-hover);
+      }
+
+      &:active {
+        background-color: var(--yl-color-action-active);
+      }
+
+      &.yl-icon-button--disabled {
+        background-color: var(--yl-color-surface-disabled);
+        color: var(--yl-color-fg-disabled);
+      }
+    }
+
+    &.yl-icon-button--neutral {
+      background-color: var(--yl-color-surface-default);
+      color: var(--yl-color-fg-default);
+
+      &:hover {
+        background-color: var(--yl-color-surface-strong);
+      }
+
+      &:active {
+        background-color: var(--yl-color-surface-strong);
+        opacity: var(--yl-opacity-700);
+      }
+
+      &.yl-icon-button--disabled {
+        background-color: var(--yl-color-surface-subtle);
+        color: var(--yl-color-fg-disabled);
+      }
+    }
+
+    &.yl-icon-button--inverse {
+      background-color: var(--yl-color-surface-inverse);
+      color: var(--yl-color-fg-inverse);
+
+      &:hover {
+        opacity: var(--yl-opacity-700);
+      }
+
+      &:active {
+        opacity: var(--yl-opacity-600);
+      }
+
+      &.yl-icon-button--disabled {
+        background-color: var(--yl-color-surface-subtle);
+        color: var(--yl-color-fg-disabled);
+      }
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+
+    &.yl-icon-button--accent {
+      color: var(--yl-color-fg-accent);
+
+      &:hover {
+        background-color: var(--yl-color-surface-accent-subtle);
+      }
+
+      &:active {
+        background-color: var(--yl-color-surface-accent-subtle);
+        opacity: var(--yl-opacity-700);
+      }
+    }
+
+    &.yl-icon-button--neutral {
+      color: var(--yl-color-fg-default);
+
+      &:hover {
+        opacity: var(--yl-opacity-700);
+      }
+
+      &:active {
+        opacity: var(--yl-opacity-600);
+      }
+    }
+
+    &.yl-icon-button--inverse {
+      color: var(--yl-color-fg-inverse);
+
+      &:hover {
+        opacity: var(--yl-opacity-700);
+      }
+
+      &:active {
+        opacity: var(--yl-opacity-600);
+      }
+    }
+
+    &.yl-icon-button--disabled {
+      color: var(--yl-color-fg-disabled);
+    }
+  }
+}

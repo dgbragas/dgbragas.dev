@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as InputChipStories from './InputChip.stories';
+
+<Meta of={InputChipStories} />
+
+<Title />
+
+Chip that represents a value the person entered, with a control to remove it.
+
+```tsx
+import { InputChip } from '@dgbragas/yalatus';
+```
+
+<Canvas of={InputChipStories.Basic} />
+
+<Controls of={InputChipStories.Basic} />
+
+<Stories includePrimary={false} />

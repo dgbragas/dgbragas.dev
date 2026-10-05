@@ -1,0 +1,61 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/motion' as *;
+
+.yl-link {
+  align-items: center;
+  color: var(--yl-color-fg-link);
+  cursor: pointer;
+  display: inline-flex;
+  gap: var(--yl-space-8);
+  text-decoration: none;
+
+  @include motion-transition((color, opacity), 'short-03', 'standard');
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &__label {
+    // FIGMA: the link label is 16/24 medium, a step the type scale does not have.
+    font: var(--yl-font-weight-medium) var(--yl-font-size-200) / 24px var(--yl-font-family-body);
+    position: relative;
+
+    // The font's own underline is too heavy, so a 1px line is drawn under the text instead
+    &::after {
+      background-color: currentcolor;
+      block-size: var(--yl-border-width-1);
+      content: '';
+      inline-size: 100%;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      position: absolute;
+      transform: scaleX(0);
+      transform-origin: left;
+
+      @include motion-transition(transform, 'short-03', 'standard');
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--yl-color-fg-link-hover);
+
+    .yl-link__label::after {
+      transform: scaleX(1);
+    }
+  }
+
+  &:active {
+    color: var(--yl-color-fg-link-hover);
+    opacity: var(--yl-opacity-700);
+  }
+
+  &:visited {
+    color: var(--yl-color-fg-link-visited);
+  }
+
+  &--disabled {
+    color: var(--yl-color-fg-disabled);
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as ButtonStories from './Button.stories';
+
+<Meta of={ButtonStories} />
+
+<Title />
+
+Primary control for actions and navigation, in three colour roles and a ghost variant. Rendered as an anchor it navigates like a link; disabled anchors drop the `href` and expose `aria-disabled`.
+
+```tsx
+import { Button } from '@dgbragas/yalatus';
+```
+
+<Canvas of={ButtonStories.Basic} />
+
+<Controls of={ButtonStories.Basic} />
+
+<Stories includePrimary={false} />

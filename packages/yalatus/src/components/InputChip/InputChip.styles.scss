@@ -1,0 +1,50 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/motion' as *;
+
+.yl-input-chip {
+  background-color: var(--yl-color-surface-inverse);
+  block-size: var(--yl-space-40);
+  border-radius: var(--yl-radius-20);
+  color: var(--yl-color-fg-inverse);
+  padding-inline: var(--yl-space-16);
+  white-space: nowrap;
+
+  @include motion-transition((background-color, color, opacity), 'short-03', 'standard');
+
+  &:hover {
+    background-color: var(--yl-color-surface-strong);
+    color: var(--yl-color-fg-default);
+  }
+
+  &:active {
+    background-color: var(--yl-color-surface-strong);
+    color: var(--yl-color-fg-default);
+    opacity: var(--yl-opacity-700);
+  }
+
+  &__label {
+    @include typography('label');
+  }
+
+  &__remove {
+    align-items: center;
+    border-radius: var(--yl-radius-2);
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    margin-block: calc(-1 * var(--yl-space-16));
+
+    // The visual icon is 16px, but the pointer target keeps the 48px minimum through a transparent extension
+    padding: var(--yl-space-16) var(--yl-space-4);
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  &--disabled {
+    background-color: var(--yl-color-surface-disabled);
+    color: var(--yl-color-fg-disabled);
+    pointer-events: none;
+  }
+}

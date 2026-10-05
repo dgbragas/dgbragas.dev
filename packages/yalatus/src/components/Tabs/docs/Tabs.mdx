@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as TabsStories from './Tabs.stories';
+
+<Meta of={TabsStories} />
+
+<Title />
+
+Horizontal list of tabs that selects one section at a time, with roving focus and arrow-key navigation. Works controlled through `value` and `onChange` or uncontrolled through `defaultValue`.
+
+```tsx
+import { Tabs } from '@dgbragas/yalatus';
+```
+
+<Canvas of={TabsStories.Basic} />
+
+<Controls of={TabsStories.Basic} />
+
+<Stories includePrimary={false} />

@@ -1,1 +1,0 @@
-export * from './SliderDot.component';

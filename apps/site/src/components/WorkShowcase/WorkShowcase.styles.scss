@@ -1,0 +1,60 @@
+@use '@dgbragas/yalatus/styles/mixins' as *;
+
+.site-work {
+  display: flex;
+  flex-direction: column;
+  gap: var(--yl-space-32);
+
+  &__navigation {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--yl-space-24);
+    justify-content: space-between;
+    margin-block-end: var(--yl-space-48);
+  }
+
+  &__arrows {
+    display: flex;
+    gap: var(--yl-space-16);
+  }
+
+  // The track scrolls horizontally and snaps one card at a time; four cards fill the web grid
+  &__track {
+    column-gap: var(--yl-grid-web-gutter);
+    display: grid;
+    grid-auto-columns: calc((100% - 3 * var(--yl-grid-web-gutter)) / 4);
+    grid-auto-flow: column;
+    list-style: none;
+    margin: 0;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding: 0;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+
+    @include until('web') {
+      grid-auto-columns: calc((100% - var(--yl-grid-tablet-gutter)) / 2);
+    }
+
+    @include until('tablet') {
+      grid-auto-columns: 80%;
+    }
+  }
+
+  &__item {
+    scroll-snap-align: start;
+  }
+
+  &__placeholder {
+    aspect-ratio: 1;
+    background-color: var(--yl-color-surface-default);
+    display: block;
+    inline-size: 100%;
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

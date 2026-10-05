@@ -1,0 +1,31 @@
+---
+import About from '@/components/home/About.astro';
+import Hero from '@/components/home/Hero.astro';
+import Showcase from '@/components/home/Showcase.astro';
+import BaseLayout from '@/layouts/Base.layout.astro';
+import { DEFAULT_LOCALE, type Locale } from '@/lib/i18n';
+
+const locale = (Astro.currentLocale ?? DEFAULT_LOCALE) as Locale;
+const meta = {
+  'pt-BR': {
+    title: 'Design Engineer',
+    description:
+      'Soluciono problemas através de design e código: Design Systems, AI Systems e interfaces web e mobile.',
+  },
+  en: {
+    title: 'Design Engineer',
+    description:
+      'I solve problems through design and code: Design Systems, AI Systems and web and mobile interfaces.',
+  },
+}[locale];
+---
+
+<BaseLayout title={meta.title} description={meta.description}>
+  <Hero locale={locale} />
+  <div class="site-section" data-theme-scope="inverse">
+    <div class="yl-theme-inverse site-section">
+      <About locale={locale} />
+      <Showcase locale={locale} />
+    </div>
+  </div>
+</BaseLayout>

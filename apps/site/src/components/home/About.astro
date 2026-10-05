@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets';
+
+import { Container, CursorHint, Marquee, Tag, Text } from '@dgbragas/yalatus';
+
+import profile from '@/assets/home/profile.png';
+import { HOME, MARQUEE_ITEMS } from '@/lib/copy/home';
+import type { Locale } from '@/lib/i18n';
+
+type Props = {
+  /** Locale of the page. */
+  locale: Locale;
+};
+
+const { locale } = Astro.props;
+const copy = HOME[locale];
+---
+
+<section aria-labelledby="about-title" class="site-about">
+  <Container className="site-about__content">
+    <div class="site-about__texts">
+      <div class="site-about__presentation">
+        <CursorHint client:visible content={copy.aboutHint} focusable>
+          <Tag appearance="brand" kind="filled">
+            {copy.aboutTag}
+          </Tag>
+        </CursorHint>
+        <Text element="h2" id="about-title" kind="heading-2">
+          {copy.aboutTitle}
+        </Text>
+        <Text color="fg-subtle" element="p" kind="body-lg">
+          {copy.aboutText.map(part => (part.strong ? <strong>{part.text}</strong> : part.text))}
+        </Text>
+      </div>
+      <div class="site-about__building">
+        <Text color="fg-subtle" element="p" kind="label">
+          {copy.building}
+        </Text>
+        <ul class="site-about__tags">
+          {copy.buildingTags.map(tag => (
+            <li>
+              <Text element="span" kind="label-uppercase">
+                {tag}
+              </Text>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <figure class="site-about__me">
+      <Text element="figcaption" kind="label-uppercase" color="fg-subtle">
+        {copy.meLabel}
+      </Text>
+      <Image
+        alt={copy.meAlt}
+        class="site-about__photo"
+        densities={[1, 2]}
+        fit="cover"
+        height={458}
+        src={profile}
+        width={488}
+      />
+    </figure>
+  </Container>
+  <Marquee className="site-about__marquee" items={MARQUEE_ITEMS} label={copy.marqueeLabel} />
+</section>
+
+<style lang="scss">
+  @use '@dgbragas/yalatus/styles/mixins' as *;
+
+  .site-about {
+    display: flex;
+    flex-direction: column;
+    gap: var(--yl-space-144);
+    padding-block-start: var(--yl-space-120);
+
+    :global(.site-about__content) {
+      display: grid;
+      gap: var(--yl-space-64);
+
+      @include from('web') {
+        // FIGMA: columns are 592px and 488px with a 136px gap, all outside the spacing scale.
+        gap: calc(var(--yl-space-120) + var(--yl-space-16));
+        grid-template-columns: minmax(0, 592px) minmax(0, 488px);
+        justify-content: space-between;
+      }
+    }
+
+    &__texts {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-64);
+      justify-content: space-between;
+      padding-block: var(--yl-space-4);
+    }
+
+    &__presentation {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-8);
+
+      > :global(h2) {
+        margin-block-start: var(--yl-space-24);
+      }
+    }
+
+    &__building {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-8);
+    }
+
+    &__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--yl-space-24) var(--yl-space-80);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &__me {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-4);
+      margin: 0;
+    }
+
+    :global(.site-about__photo) {
+      block-size: auto;
+      inline-size: 100%;
+    }
+  }
+</style>

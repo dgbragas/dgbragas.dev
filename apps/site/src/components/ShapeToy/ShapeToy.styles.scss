@@ -1,0 +1,37 @@
+@use '@dgbragas/yalatus/styles/mixins' as *;
+@use '@dgbragas/yalatus/styles/motion' as *;
+
+.site-shape-toy {
+  align-items: center;
+  background: none;
+  border: 0;
+  border-radius: var(--yl-radius-4);
+  color: var(--yl-color-fg-default);
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--yl-space-8);
+  padding: 0;
+  perspective: 800px;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  // FIGMA: shapes are a 128px square outside the spacing scale.
+  &__shapes {
+    block-size: 128px;
+    display: block;
+    inline-size: 128px;
+    transform: rotateX(var(--site-spin-x, 0deg)) rotateY(var(--site-spin-y, 0deg))
+      rotateZ(var(--site-spin-z, 0deg));
+    transform-style: preserve-3d;
+
+    @include motion-transition(transform, 'long-02', 'expressive');
+
+    > svg {
+      block-size: 100%;
+      inline-size: 100%;
+    }
+  }
+}

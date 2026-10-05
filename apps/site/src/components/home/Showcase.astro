@@ -1,0 +1,153 @@
+---
+import { getImage } from 'astro:assets';
+import { getCollection } from 'astro:content';
+
+import { Container, Tag, Text } from '@dgbragas/yalatus';
+
+import Shapes from '@/assets/home/shapes.svg';
+import { ShapeToy } from '@/components/ShapeToy/ShapeToy.component';
+import { WorkShowcase } from '@/components/WorkShowcase/WorkShowcase.component';
+import { HOME } from '@/lib/copy/home';
+import { formatDate } from '@/lib/dates';
+import { localizePath, type Locale } from '@/lib/i18n';
+import { byNewest, type WorkCover, type WorkItem, type WorkKind } from '@/lib/work';
+
+import type { ImageMetadata } from 'astro';
+
+type Props = {
+  /** Locale of the page. */
+  locale: Locale;
+  /**
+   * Maximum number of items shown.
+   * @default 8
+   */
+  limit?: number;
+};
+
+const { limit = 8, locale } = Astro.props;
+const copy = HOME[locale];
+
+/** FIGMA: cards show a 280px square cover; the source is rendered at 2x. */
+const COVER_SIZE = 560;
+
+const cover = async (
+  figure: { src: ImageMetadata; alt: string } | undefined
+): Promise<WorkCover | undefined> => {
+  if (!figure) return undefined;
+  const image = await getImage({
+    src: figure.src,
+    width: COVER_SIZE,
+    height: COVER_SIZE,
+    fit: 'cover',
+    format: 'webp',
+  });
+  return {
+    src: image.src,
+    srcSet: image.srcSet.attribute || undefined,
+    width: COVER_SIZE,
+    height: COVER_SIZE,
+    alt: figure.alt,
+  };
+};
+
+const published = <T extends { data: { draft: boolean; lang: string } }>(entry: T) =>
+  !entry.data.draft && entry.data.lang === locale;
+
+const portfolio = await getCollection('portfolio', published);
+const cases = await getCollection('cases', published);
+
+const items: WorkItem[] = (
+  await Promise.all([
+    ...portfolio.map(async entry => {
+      const kind: WorkKind = entry.data.category === 'landing' ? 'landing' : 'portfolio';
+      return {
+        id: `portfolio/${entry.id}`,
+        href: localizePath(locale, `/portfolio/${entry.id}`),
+        title: entry.data.title,
+        description: entry.data.description,
+        tag: copy.tabs[kind],
+        kind,
+        date: formatDate(entry.data.publishedAt, locale),
+        dateTime: entry.data.publishedAt.toISOString().slice(0, 10),
+        cover: await cover(entry.data.cover),
+      };
+    }),
+    ...cases.map(async entry => ({
+      id: `case/${entry.id}`,
+      href: localizePath(locale, `/case/${entry.id}`),
+      title: entry.data.title,
+      description: entry.data.summary,
+      tag: copy.tabs.cases,
+      kind: 'cases' as const,
+      date: formatDate(entry.data.publishedAt, locale),
+      dateTime: entry.data.publishedAt.toISOString().slice(0, 10),
+      cover: await cover(entry.data.cover),
+    })),
+  ])
+)
+  .sort(byNewest)
+  .slice(0, limit);
+---
+
+<section aria-labelledby="work-title" class="site-showcase">
+  <Container className="site-showcase__content">
+    <div class="site-showcase__heading">
+      <div class="site-showcase__texts">
+        <Tag appearance="brand" kind="filled">
+          {copy.workTag}
+        </Tag>
+        <Text element="h2" id="work-title" kind="heading-2">
+          {copy.workTitle}
+        </Text>
+      </div>
+      <ShapeToy client:visible hint={copy.shapesHint} label={copy.shapesLabel}>
+        <Shapes aria-hidden="true" />
+      </ShapeToy>
+    </div>
+    <WorkShowcase
+      client:visible
+      items={items}
+      labels={{
+        tabs: copy.tabs,
+        tabsLabel: copy.tabsLabel,
+        list: copy.workList,
+        previous: copy.previous,
+        next: copy.next,
+        viewAll: copy.viewAll,
+        empty: copy.empty,
+      }}
+      viewAllHref={localizePath(locale, '/portfolio')}
+    />
+  </Container>
+</section>
+
+<style lang="scss">
+  @use '@dgbragas/yalatus/styles/mixins' as *;
+
+  .site-showcase {
+    padding-block: var(--yl-space-144) var(--yl-space-96);
+
+    :global(.site-showcase__content) {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-80);
+    }
+
+    &__heading {
+      align-items: flex-start;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--yl-space-48);
+      justify-content: space-between;
+    }
+
+    &__texts {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-16);
+      // FIGMA: heading column is 592px, outside the spacing scale.
+      max-inline-size: 592px;
+    }
+  }
+</style>

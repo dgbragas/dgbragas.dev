@@ -1,0 +1,131 @@
+---
+import { Container, ServiceCard, Tag, Text } from '@dgbragas/yalatus';
+
+import Solutions from '@/assets/about/solutions.svg';
+import { ABOUT } from '@/lib/copy/about';
+import type { Locale } from '@/lib/i18n';
+
+type Props = {
+  /** Locale of the page. */
+  locale: Locale;
+};
+
+const { locale } = Astro.props;
+const copy = ABOUT[locale];
+---
+
+<section aria-labelledby="workflow-title" class="site-workflow">
+  <Container className="site-workflow__content">
+    <div class="site-workflow__presentation">
+      <Tag appearance="brand" kind="filled">
+        {copy.workflowTag}
+      </Tag>
+      <Text element="h2" id="workflow-title" kind="heading-2">
+        {copy.workflowTitle.map((line, index) => (
+          <>
+            {index > 0 && <br />}
+            {line}
+          </>
+        ))}
+      </Text>
+    </div>
+    <div class="site-workflow__grid">
+      <div class="site-workflow__solutions">
+        <Text element="p" kind="heading-3">
+          {copy.solutions}
+        </Text>
+        <Solutions aria-hidden="true" class="site-workflow__illustration" />
+      </div>
+      <Text className="site-workflow__premise" color="fg-subtle" element="p" kind="heading-4">
+        {copy.premise}
+      </Text>
+      {copy.services.map(service => (
+        <ServiceCard {...service} />
+      ))}
+    </div>
+  </Container>
+</section>
+
+<style lang="scss">
+  @use '@dgbragas/yalatus/styles/mixins' as *;
+
+  .site-workflow {
+    padding-block: var(--yl-space-96);
+
+    :global(.site-workflow__content) {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-120);
+    }
+
+    &__presentation {
+      align-items: flex-start;
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-16);
+      // FIGMA: the heading column is 488px, outside the spacing scale.
+      max-inline-size: 488px;
+    }
+
+    // Four columns with a 4px seam, as the cards are drawn as one tiled block
+    &__grid {
+      display: grid;
+      gap: var(--yl-space-40) var(--yl-space-4);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+
+      @include until('web') {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      @include until('tablet') {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    &__solutions {
+      background-color: var(--yl-color-surface-inverse);
+      // FIGMA: this card rounds at 8px, a step the radius scale does not have.
+      border-radius: var(--yl-radius-4);
+      color: var(--yl-color-fg-inverse);
+      display: flex;
+      flex-direction: column;
+      grid-row: span 2;
+      min-block-size: 572px;
+      overflow: hidden;
+      padding: var(--yl-space-32);
+      position: relative;
+
+      @include until('web') {
+        grid-row: auto;
+        min-block-size: 396px;
+      }
+
+      > :global(p) {
+        // FIGMA: text keeps a 237px column.
+        max-inline-size: 237px;
+        position: relative;
+        z-index: 1;
+      }
+    }
+
+    // FIGMA: the illustration bleeds 86px past the left edge and sits 254px from the top.
+    :global(.site-workflow__illustration) {
+      block-size: auto;
+      inline-size: 536px;
+      inset-block-start: 254px;
+      inset-inline-start: -86px;
+      position: absolute;
+    }
+
+    :global(.site-workflow__premise) {
+      align-self: end;
+      grid-column: span 3;
+      padding: var(--yl-space-40) var(--yl-space-192) 0;
+
+      @include until('web') {
+        grid-column: span 1;
+        padding: 0;
+      }
+    }
+  }
+</style>

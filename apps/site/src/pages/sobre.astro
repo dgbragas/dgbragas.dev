@@ -1,0 +1,17 @@
+---
+import AboutHero from '@/components/about/AboutHero.astro';
+import WhoAmI from '@/components/about/WhoAmI.astro';
+import Workflow from '@/components/about/Workflow.astro';
+import BaseLayout from '@/layouts/Base.layout.astro';
+import { ABOUT } from '@/lib/copy/about';
+import { DEFAULT_LOCALE, type Locale } from '@/lib/i18n';
+
+const locale = (Astro.currentLocale ?? DEFAULT_LOCALE) as Locale;
+const copy = ABOUT[locale];
+---
+
+<BaseLayout title={copy.title} description={copy.description}>
+  <AboutHero locale={locale} />
+  <WhoAmI locale={locale} />
+  <Workflow locale={locale} />
+</BaseLayout>

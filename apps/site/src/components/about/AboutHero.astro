@@ -1,0 +1,127 @@
+---
+import { Image } from 'astro:assets';
+
+import { BigNumber, Container } from '@dgbragas/yalatus';
+
+import heroLeft from '@/assets/about/hero-left.png';
+import heroRight from '@/assets/about/hero-right.png';
+import { ABOUT } from '@/lib/copy/about';
+import type { Locale } from '@/lib/i18n';
+
+type Props = {
+  /** Locale of the page. */
+  locale: Locale;
+};
+
+const { locale } = Astro.props;
+const copy = ABOUT[locale];
+---
+
+<section class="site-about-hero">
+  <Container className="site-about-hero__intro">
+    <div class="site-about-hero__photos">
+      <Image
+        alt={copy.heroAlt.left}
+        class="site-about-hero__photo site-about-hero__photo--left"
+        densities={[1, 2]}
+        height={828}
+        loading="eager"
+        src={heroLeft}
+        width={662}
+      />
+      <Image
+        alt={copy.heroAlt.right}
+        class="site-about-hero__photo site-about-hero__photo--right"
+        densities={[1, 2]}
+        height={828}
+        loading="eager"
+        src={heroRight}
+        width={662}
+      />
+    </div>
+    <h1 class="site-about-hero__title">{copy.heroWord}</h1>
+  </Container>
+  <Container className="site-about-hero__numbers">
+    {copy.numbers.map(metric => (
+      <BigNumber
+        client:visible
+        label={metric.label}
+        locale={locale}
+        prefix={metric.prefix}
+        suffix={metric.suffix}
+        value={metric.value}
+      />
+    ))}
+  </Container>
+</section>
+
+<style lang="scss">
+  @use '@dgbragas/yalatus/styles/mixins' as *;
+
+  .site-about-hero {
+    padding-block-start: var(--yl-space-192);
+
+    @include until('tablet') {
+      padding-block-start: var(--yl-space-120);
+    }
+
+    :global(.site-about-hero__intro) {
+      display: grid;
+      place-items: center;
+    }
+
+    // The two photos overlap by 108px inside the 1216px grid; the word sits over them
+    &__photos {
+      aspect-ratio: 1216 / 828;
+      display: grid;
+      grid-area: 1 / 1;
+      grid-template-columns: 1fr;
+      inline-size: 100%;
+    }
+
+    :global(.site-about-hero__photo) {
+      block-size: auto;
+      grid-area: 1 / 1;
+      inline-size: calc(662 / 1216 * 100%);
+    }
+
+    :global(.site-about-hero__photo--left) {
+      justify-self: start;
+    }
+
+    :global(.site-about-hero__photo--right) {
+      justify-self: end;
+    }
+
+    // FIGMA: the word is set at 224px with a 1:1 line height, far above the type scale.
+    &__title {
+      color: var(--yl-color-fg-default);
+      font-family: var(--yl-font-family-display);
+      font-size: clamp(var(--yl-font-size-1200), 15.5vw, 224px);
+      font-weight: var(--yl-font-weight-extrabold);
+      grid-area: 1 / 1;
+      line-height: 1;
+      margin: 0;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+
+    :global(.site-about-hero__numbers) {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--yl-space-32);
+      justify-content: space-between;
+      padding-block: var(--yl-space-120) var(--yl-space-80);
+      padding-inline: var(--yl-space-40);
+
+      @include until('tablet') {
+        justify-content: flex-start;
+      }
+    }
+
+    :global(.yl-big-number) {
+      // FIGMA: each number keeps a 160px column.
+      inline-size: 160px;
+    }
+  }
+</style>

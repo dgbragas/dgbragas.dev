@@ -1,0 +1,38 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/motion' as *;
+
+.yl-blog-navigation {
+  border: var(--yl-border-width-1) solid transparent;
+  border-radius: var(--yl-radius-4);
+  color: var(--yl-color-fg-default);
+  min-inline-size: var(--yl-space-256);
+  text-decoration: none;
+
+  @include motion-transition((background-color, border-color), 'short-03', 'standard');
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--yl-color-surface-subtle);
+    border-color: var(--yl-color-border-subtle);
+  }
+
+  &:active {
+    background-color: var(--yl-color-surface-default);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &__date {
+    opacity: var(--yl-opacity-700);
+  }
+
+  &--previous {
+    text-align: start;
+  }
+
+  &--next {
+    text-align: end;
+  }
+}

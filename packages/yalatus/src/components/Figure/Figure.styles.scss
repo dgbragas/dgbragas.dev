@@ -1,0 +1,20 @@
+.yl-figure {
+  margin: 0;
+
+  &__image,
+  > img,
+  > picture img {
+    background-color: var(--yl-color-surface-strong);
+    block-size: auto;
+    border-radius: var(--yl-radius-4);
+    inline-size: 100%;
+  }
+
+  &__caption {
+    padding-inline: var(--yl-space-12);
+  }
+
+  &__caption-label {
+    font-weight: var(--yl-font-weight-medium);
+  }
+}

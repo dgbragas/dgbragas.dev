@@ -1,0 +1,63 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/motion' as *;
+
+.yl-blog-card {
+  background-color: var(--yl-color-surface-subtle);
+  border: var(--yl-border-width-1) solid transparent;
+  border-radius: var(--yl-radius-4);
+  color: var(--yl-color-fg-default);
+  display: flex;
+  overflow: hidden;
+  text-decoration: none;
+
+  @include motion-transition((background-color, border-color), 'short-03', 'standard');
+
+  &:hover,
+  &:focus-visible {
+    background-color: var(--yl-color-surface-default);
+    border-color: var(--yl-color-border-default);
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &__brief {
+    flex: 1;
+  }
+
+  &__category {
+    opacity: var(--yl-opacity-700);
+  }
+
+  &__cover {
+    background-color: var(--yl-color-surface-strong);
+    flex: 1;
+    min-inline-size: var(--yl-space-256);
+
+    img {
+      block-size: 100%;
+      inline-size: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &--expanded {
+    min-block-size: var(--yl-space-256);
+
+    .yl-blog-card__brief {
+      flex: 0 0 auto;
+
+      // FIGMA: the highlighted card keeps a 344px brief column next to the cover.
+      inline-size: 344px;
+    }
+
+    @include until('tablet') {
+      flex-direction: column;
+
+      .yl-blog-card__brief {
+        inline-size: auto;
+      }
+    }
+  }
+}

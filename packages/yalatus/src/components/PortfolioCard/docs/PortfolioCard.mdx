@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as PortfolioCardStories from './PortfolioCard.stories';
+
+<Meta of={PortfolioCardStories} />
+
+<Title />
+
+Card that links to a portfolio project with its cover, category, title and description.
+
+```tsx
+import { PortfolioCard } from '@dgbragas/yalatus';
+```
+
+<Canvas of={PortfolioCardStories.Basic} />
+
+<Controls of={PortfolioCardStories.Basic} />
+
+<Stories includePrimary={false} />

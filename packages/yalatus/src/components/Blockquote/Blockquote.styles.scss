@@ -1,0 +1,19 @@
+.yl-blockquote {
+  border-inline-start: var(--yl-space-8) solid var(--yl-color-border-accent);
+  margin: 0;
+  padding-inline-start: var(--yl-space-40);
+  position: relative;
+
+  &__author {
+    display: inline-flex;
+    gap: var(--yl-space-8);
+
+    &::before {
+      align-self: center;
+      background-color: var(--yl-color-border-accent);
+      block-size: var(--yl-border-width-2);
+      content: '';
+      inline-size: var(--yl-space-16);
+    }
+  }
+}

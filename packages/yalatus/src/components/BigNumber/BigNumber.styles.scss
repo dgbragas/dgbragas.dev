@@ -1,0 +1,18 @@
+.yl-big-number {
+  &__figure {
+    color: var(--yl-color-fg-default);
+    display: inline-grid;
+    font-variant-numeric: tabular-nums;
+  }
+
+  // Both spans share the same grid cell, so the invisible final value sizes the box while the current value is painted on top
+  &__current,
+  &__final {
+    grid-area: 1 / 1;
+    white-space: nowrap;
+  }
+
+  &__final {
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,53 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/motion' as *;
+
+.yl-cursor-hint {
+  display: inline-block;
+  position: relative;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &__bubble {
+    @include typography('label');
+
+    background-color: var(--yl-color-surface-info);
+    border-radius: var(--yl-radius-2);
+    color: var(--yl-color-on-info);
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    max-inline-size: var(--yl-space-256);
+    opacity: 0;
+    padding: var(--yl-space-4) var(--yl-space-8);
+    pointer-events: none;
+    position: fixed;
+    transform: translate3d(var(--yl-hint-x, -100vw), var(--yl-hint-y, -100vh), 0);
+    visibility: hidden;
+    white-space: nowrap;
+    z-index: 1;
+
+    @include motion-transition((opacity, visibility), 'short-02', 'standard');
+  }
+
+  &__image {
+    block-size: auto;
+    border-radius: var(--yl-radius-2);
+    display: block;
+    inline-size: var(--yl-space-192);
+  }
+
+  &--pointer &__bubble {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  // Keyboard focus has no pointer to follow, so the bubble sits under the element instead
+  &--anchored &__bubble {
+    inset-block-start: calc(100% + var(--yl-space-8));
+    opacity: 1;
+    position: absolute;
+    transform: none;
+    visibility: visible;
+  }
+}

@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as BigNumberStories from './BigNumber.stories';
+
+<Meta of={BigNumberStories} />
+
+<Title />
+
+Headline statistic whose number counts up from zero when it scrolls into view. Assistive technology reads the final value only; with reduced motion the number appears already complete.
+
+```tsx
+import { BigNumber } from '@dgbragas/yalatus';
+```
+
+<Canvas of={BigNumberStories.Basic} />
+
+<Controls of={BigNumberStories.Basic} />
+
+<Stories includePrimary={false} />

@@ -1,0 +1,36 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/motion' as *;
+
+.yl-view-more {
+  background-color: transparent;
+  border: var(--yl-border-width-1) dashed var(--yl-color-border-default);
+  border-radius: var(--yl-radius-4);
+  color: var(--yl-color-fg-subtle);
+  cursor: pointer;
+  inline-size: 100%;
+  min-block-size: var(--yl-space-48);
+  opacity: var(--yl-opacity-600);
+  padding: var(--yl-space-12) var(--yl-space-24);
+  text-decoration: none;
+
+  @include motion-transition((border-color, opacity), 'short-03', 'standard');
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--yl-color-border-strong);
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &__label {
+    // FIGMA: the label is 16/24 medium, a step the type scale does not have.
+    font: var(--yl-font-weight-medium) var(--yl-font-size-200) / 24px var(--yl-font-family-body);
+  }
+
+  &--disabled {
+    pointer-events: none;
+  }
+}

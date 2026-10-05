@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as BlogCardStories from './BlogCard.stories';
+
+<Meta of={BlogCardStories} />
+
+<Title />
+
+Card that links to a blog post with its title, summary, date and section.
+
+```tsx
+import { BlogCard } from '@dgbragas/yalatus';
+```
+
+<Canvas of={BlogCardStories.Basic} />
+
+<Controls of={BlogCardStories.Basic} />
+
+<Stories includePrimary={false} />

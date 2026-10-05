@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as CompanyCardStories from './CompanyCard.stories';
+
+<Meta of={CompanyCardStories} />
+
+<Title />
+
+Entry of the experience list: the company plate, the position and the period, closed by a rule.
+
+```tsx
+import { CompanyCard } from '@dgbragas/yalatus';
+```
+
+<Canvas of={CompanyCardStories.Basic} />
+
+<Controls of={CompanyCardStories.Basic} />
+
+<Stories includePrimary={false} />

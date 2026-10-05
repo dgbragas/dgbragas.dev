@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as BlockquoteStories from './Blockquote.stories';
+
+<Meta of={BlockquoteStories} />
+
+<Title />
+
+Quotation set apart from the text.
+
+```tsx
+import { Blockquote } from '@dgbragas/yalatus';
+```
+
+<Canvas of={BlockquoteStories.Basic} />
+
+<Controls of={BlockquoteStories.Basic} />
+
+<Stories includePrimary={false} />

@@ -1,0 +1,38 @@
+@use '../../styles/motion' as *;
+
+.yl-service-card {
+  color: var(--yl-color-fg-inverse);
+  gap: var(--yl-space-4);
+
+  @include motion-transition(gap, 'short-03', 'standard');
+
+  &__heading,
+  &__content {
+    background-color: var(--yl-color-surface-inverse);
+    border-radius: var(--yl-radius-4);
+
+    @include motion-transition(border-radius, 'short-03', 'standard');
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__detail {
+    opacity: var(--yl-opacity-700);
+  }
+
+  &:hover {
+    gap: 0;
+
+    .yl-service-card__heading {
+      border-end-end-radius: 0;
+      border-end-start-radius: 0;
+    }
+
+    .yl-service-card__content {
+      border-start-end-radius: 0;
+      border-start-start-radius: 0;
+    }
+  }
+}

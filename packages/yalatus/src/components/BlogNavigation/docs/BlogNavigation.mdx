@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as BlogNavigationStories from './BlogNavigation.stories';
+
+<Meta of={BlogNavigationStories} />
+
+<Title />
+
+Link to the previous or next post at the end of an article, with its date and title.
+
+```tsx
+import { BlogNavigation } from '@dgbragas/yalatus';
+```
+
+<Canvas of={BlogNavigationStories.Basic} />
+
+<Controls of={BlogNavigationStories.Basic} />
+
+<Stories includePrimary={false} />

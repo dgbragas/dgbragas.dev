@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as FigureStories from './Figure.stories';
+
+<Meta of={FigureStories} />
+
+<Title />
+
+Image with an optional caption that opens with the #PraCegoVer convention.
+
+```tsx
+import { Figure } from '@dgbragas/yalatus';
+```
+
+<Canvas of={FigureStories.Basic} />
+
+<Controls of={FigureStories.Basic} />
+
+<Stories includePrimary={false} />

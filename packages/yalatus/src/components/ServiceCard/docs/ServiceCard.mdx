@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as ServiceCardStories from './ServiceCard.stories';
+
+<Meta of={ServiceCardStories} />
+
+<Title />
+
+Card of the workflow grid that names a service on an inverted plate and describes it below; on hover the two blocks join into one.
+
+```tsx
+import { ServiceCard } from '@dgbragas/yalatus';
+```
+
+<Canvas of={ServiceCardStories.Basic} />
+
+<Controls of={ServiceCardStories.Basic} />
+
+<Stories includePrimary={false} />

@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as MarqueeStories from './Marquee.stories';
+
+<Meta of={MarqueeStories} />
+
+<Title />
+
+Band of icons and labels that scrolls sideways on a loop, pausing on hover and focus and standing still under reduced motion. Assistive technology reads the list once.
+
+```tsx
+import { Marquee } from '@dgbragas/yalatus';
+```
+
+<Canvas of={MarqueeStories.Basic} />
+
+<Controls of={MarqueeStories.Basic} />
+
+<Stories includePrimary={false} />

@@ -1,0 +1,47 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/motion' as *;
+
+.yl-portfolio-card {
+  border-radius: var(--yl-radius-4);
+  color: var(--yl-color-fg-default);
+  text-decoration: none;
+
+  &:focus-visible {
+    @include focus-ring;
+  }
+
+  &__cover {
+    aspect-ratio: 320 / 280;
+    background-color: var(--yl-color-surface-strong);
+    border-radius: var(--yl-radius-4);
+    overflow: hidden;
+
+    img {
+      block-size: 100%;
+      inline-size: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__tag,
+  &__title {
+    @include motion-transition((background-color, border-color, color), 'short-03', 'standard');
+  }
+
+  &__date {
+    opacity: var(--yl-opacity-700);
+  }
+
+  &:hover,
+  &:focus-visible {
+    .yl-portfolio-card__title {
+      color: var(--yl-color-fg-accent);
+    }
+
+    .yl-portfolio-card__tag {
+      background-color: var(--yl-color-surface-accent-subtle);
+      border-color: transparent;
+      color: var(--yl-color-fg-accent);
+    }
+  }
+}

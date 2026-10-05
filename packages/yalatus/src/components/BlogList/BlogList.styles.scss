@@ -1,0 +1,45 @@
+@use '../../styles/mixins' as *;
+
+.yl-blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--yl-space-24);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    @include typography('body-lg');
+
+    color: var(--yl-color-fg-default);
+    position: relative;
+
+    &::before {
+      background-color: var(--yl-color-border-accent);
+      block-size: var(--yl-border-width-2);
+      content: '';
+      inline-size: var(--yl-space-24);
+      inset-block-start: var(--yl-space-16);
+      inset-inline-start: calc(-1 * var(--yl-space-48));
+      position: absolute;
+    }
+  }
+
+  &--ordered {
+    counter-reset: yl-blog-list;
+
+    .yl-blog-list__item {
+      counter-increment: yl-blog-list;
+
+      &::before {
+        @include typography('label');
+
+        background-color: transparent;
+        block-size: auto;
+        color: var(--yl-color-fg-accent);
+        content: counter(yl-blog-list, decimal-leading-zero);
+        inset-block-start: 0;
+      }
+    }
+  }
+}

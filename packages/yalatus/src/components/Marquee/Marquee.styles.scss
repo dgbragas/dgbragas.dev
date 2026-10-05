@@ -1,0 +1,48 @@
+@use '../../styles/motion' as *;
+
+// Scroll: translateX from 0 to one track plus one gap, linear over the whole duration
+@keyframes yl-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-100% - var(--yl-space-64)));
+  }
+}
+
+.yl-marquee {
+  border-block-end: var(--yl-border-width-2) dashed var(--yl-color-border-subtle);
+  padding-block-end: var(--yl-space-48);
+
+  &__viewport {
+    display: flex;
+    gap: var(--yl-space-64);
+    overflow: hidden;
+    padding-inline: var(--yl-space-32);
+  }
+
+  &__track {
+    flex-shrink: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    // MOTION: marquee loop, duration = 40s linear infinite.
+    @include motion-animation(yl-marquee-scroll, 40s, 'linear', infinite);
+  }
+
+  &:hover &__track,
+  &:focus-within &__track {
+    animation-play-state: paused;
+  }
+
+  &__item {
+    white-space: nowrap;
+  }
+
+  &__plate {
+    block-size: var(--yl-space-48);
+    inline-size: var(--yl-space-48);
+  }
+}

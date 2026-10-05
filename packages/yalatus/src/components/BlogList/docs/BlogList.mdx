@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as BlogListStories from './BlogList.stories';
+
+<Meta of={BlogListStories} />
+
+<Title />
+
+List used inside long-form content, marking each entry with the brand rule outside the text column.
+
+```tsx
+import { BlogList } from '@dgbragas/yalatus';
+```
+
+<Canvas of={BlogListStories.Basic} />
+
+<Controls of={BlogListStories.Basic} />
+
+<Stories includePrimary={false} />

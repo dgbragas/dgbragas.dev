@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as ViewMoreStories from './ViewMore.stories';
+
+<Meta of={ViewMoreStories} />
+
+<Title />
+
+Wide dashed control at the end of a list that loads the next batch or leads to the full archive.
+
+```tsx
+import { ViewMore } from '@dgbragas/yalatus';
+```
+
+<Canvas of={ViewMoreStories.Basic} />
+
+<Controls of={ViewMoreStories.Basic} />
+
+<Stories includePrimary={false} />

@@ -1,0 +1,145 @@
+---
+import { Font } from 'astro:assets';
+import { ClientRouter } from 'astro:transitions';
+
+import CallToAction from '@/components/CallToAction.astro';
+import Footer from '@/components/Footer.astro';
+import { Header } from '@/components/Header/Header.component';
+import { alternateLocale, getLocale, localizePath, stripLocale, t, type Locale } from '@/lib/i18n';
+import { SITE } from '@/lib/site';
+
+import '@/styles/global.scss';
+
+type Props = {
+  /** Document title; the site name is appended automatically. */
+  title: string;
+  /** Meta description used by search engines and social cards. */
+  description: string;
+  /**
+   * Shows the "before you go" section above the footer.
+   * @default true
+   */
+  callToAction?: boolean;
+};
+
+const { callToAction = true, description, title } = Astro.props;
+const pathname = Astro.originPathname;
+const locale = (Astro.currentLocale ?? getLocale(pathname)) as Locale;
+const text = t(locale);
+const page = stripLocale(pathname);
+const other = alternateLocale(locale);
+
+const links = [
+  { href: localizePath(locale, '/portfolio'), label: text('nav.portfolio') },
+  { href: localizePath(locale, '/blog'), label: text('nav.blog') },
+  { href: localizePath(locale, '/contato'), label: text('nav.contact') },
+];
+
+// Curtain: the leaving page fades out in 160ms while the entering page rises over 320ms
+const curtain = {
+  forwards: {
+    old: {
+      name: 'site-curtain-out',
+      duration: '160ms',
+      easing: 'cubic-bezier(0.4, 0, 1, 1)',
+      fillMode: 'forwards',
+    },
+    new: {
+      name: 'site-curtain-in',
+      duration: '320ms',
+      easing: 'cubic-bezier(0, 0, 0, 1)',
+      fillMode: 'backwards',
+    },
+  },
+  backwards: {
+    old: {
+      name: 'site-curtain-out',
+      duration: '160ms',
+      easing: 'cubic-bezier(0.4, 0, 1, 1)',
+      fillMode: 'forwards',
+    },
+    new: {
+      name: 'site-curtain-in',
+      duration: '320ms',
+      easing: 'cubic-bezier(0, 0, 0, 1)',
+      fillMode: 'backwards',
+    },
+  },
+};
+---
+
+<!doctype html>
+<html lang={locale} data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} — {SITE.name}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(pathname, SITE.url)} />
+    <link rel="alternate" hreflang="pt-BR" href={new URL(localizePath('pt-BR', page), SITE.url)} />
+    <link rel="alternate" hreflang="en" href={new URL(localizePath('en', page), SITE.url)} />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(localizePath('pt-BR', page), SITE.url)}
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <Font cssVariable="--font-display" preload />
+    <Font cssVariable="--font-body" preload />
+    <Font cssVariable="--font-mono" />
+    <ClientRouter />
+    <script is:inline data-astro-rerun>
+      // Runs before paint, on every navigation, so the page never flashes the wrong theme
+      (() => {
+        let stored = null;
+        try {
+          stored = localStorage.getItem('theme');
+        } catch {
+          stored = null;
+        }
+        const hour = new Date().getHours();
+        document.documentElement.dataset.theme =
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : hour >= 6 && hour < 18
+              ? 'light'
+              : 'dark';
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="site-skip-link" href="#main">
+      {text('skip')}
+    </a>
+    <Header
+      client:load
+      transition:persist
+      currentPath={pathname}
+      designSystemUrl={SITE.designSystemUrl}
+      homeHref={localizePath(locale, '/')}
+      labels={{
+        home: text('nav.home'),
+        language: text('nav.language'),
+        main: text('nav.main'),
+        theme: text('theme.toggle'),
+        yalatus: text('nav.yalatus'),
+      }}
+      languageHref={localizePath(other, page)}
+      links={links}
+    />
+    <main id="main" tabindex="-1" transition:animate={curtain}>
+      <slot />
+      {callToAction && <CallToAction locale={locale} />}
+    </main>
+    <Footer locale={locale} />
+    <div aria-hidden="true" class="site-glass"></div>
+    <script>
+      import { startSmoothScroll } from '@/lib/smoothScroll';
+
+      startSmoothScroll();
+    </script>
+  </body>
+</html>

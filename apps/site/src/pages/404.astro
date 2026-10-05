@@ -1,0 +1,37 @@
+---
+import { Button, Container, Text } from '@dgbragas/yalatus';
+
+import BaseLayout from '@/layouts/Base.layout.astro';
+---
+
+<BaseLayout title="404" description="Página não encontrada." callToAction={false}>
+  <section class="site-section site-404" data-theme-scope="dark">
+    <Container>
+      <Text align="center" aria-hidden="true" element="p" kind="display">
+        4OH4
+      </Text>
+      <Text align="center" element="h1" kind="heading-1">
+        You're in a wrong place
+      </Text>
+      <Button as="a" href="/" trailingIcon="arrow-return">
+        Go back home
+      </Button>
+    </Container>
+  </section>
+</BaseLayout>
+
+<style lang="scss">
+  .site-404 {
+    align-items: center;
+    display: flex;
+    min-block-size: 100dvh;
+    text-align: center;
+
+    :global(.yl-container) {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-32);
+    }
+  }
+</style>

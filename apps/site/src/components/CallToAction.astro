@@ -1,0 +1,211 @@
+---
+import { getCollection } from 'astro:content';
+
+import { BlogCard, Button, Container, IconButton, Link, Text } from '@dgbragas/yalatus';
+
+import { CopyButton } from '@/components/CopyButton/CopyButton.component';
+import { formatDate } from '@/lib/dates';
+import { localizePath, t, type Locale } from '@/lib/i18n';
+import { SITE } from '@/lib/site';
+
+type Props = {
+  /** Locale of the page the section sits in. */
+  locale: Locale;
+};
+
+const { locale } = Astro.props;
+const text = t(locale);
+
+const [latest] = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime()
+);
+---
+
+<section aria-labelledby="cta-title" class="site-cta site-section" data-theme-scope="dark">
+  <Container as="div">
+    <div class="site-cta__frame">
+      <div class="site-cta__heading">
+        <Text color="fg-subtle">{text('cta.kicker')}</Text>
+        <Text element="h2" id="cta-title" kind="heading-2">
+          {text('cta.title')}
+        </Text>
+      </div>
+      <div class="site-cta__redirects">
+        <div class="site-cta__infos">
+          <div class="site-cta__blog">
+            <Text kind="body-lg" color="fg-subtle">
+              {text('cta.blog')}
+            </Text>
+            <Link href={localizePath(locale, '/blog')}>{text('cta.blogLink')}</Link>
+          </div>
+          <div class="site-cta__socials">
+            <IconButton
+              appearance="neutral"
+              as="a"
+              href={SITE.socials.linkedin}
+              icon="linkedin"
+              kind="ghost"
+              label="LinkedIn"
+              target="_blank"
+            />
+            <IconButton
+              appearance="neutral"
+              as="a"
+              href={SITE.socials.instagram}
+              icon="instagram"
+              kind="ghost"
+              label="Instagram"
+              target="_blank"
+            />
+            <IconButton
+              appearance="neutral"
+              as="a"
+              href={SITE.socials.figma}
+              icon="figma"
+              kind="ghost"
+              label="Figma"
+              target="_blank"
+            />
+          </div>
+        </div>
+        {latest && (
+          <div class="site-cta__latest">
+            <Text kind="label-uppercase">{text('cta.recent')}</Text>
+            <BlogCard
+              category={latest.data.section}
+              date={formatDate(latest.data.publishedAt, locale)}
+              dateTime={latest.data.publishedAt.toISOString().slice(0, 10)}
+              description={latest.data.description}
+              href={localizePath(locale, `/blog/${latest.id}`)}
+              title={latest.data.title}
+            />
+          </div>
+        )}
+      </div>
+      <div class="site-cta__quote">
+        <Text kind="body-lg" color="fg-subtle">
+          {text('cta.quote')}
+        </Text>
+        <Link href={localizePath(locale, '/contato')}>{text('cta.start')}</Link>
+      </div>
+      <div class="site-cta__closing">
+        <Text align="center" element="p" kind="heading-1">
+          {text('cta.closing')}
+        </Text>
+        <div class="site-cta__actions">
+          <Button as="a" href={`mailto:${SITE.email}`} leadIcon="mail">
+            {text('cta.send')}
+          </Button>
+          <CopyButton
+            client:visible
+            copiedLabel={text('cta.copied')}
+            label={text('cta.copy')}
+            value={SITE.email}
+          />
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style lang="scss">
+  @use '@dgbragas/yalatus/styles/mixins' as *;
+
+  .site-cta {
+    border-end-end-radius: var(--yl-radius-20);
+    border-end-start-radius: var(--yl-radius-20);
+    padding-block: var(--yl-space-96);
+
+    &__frame {
+      border: var(--yl-border-width-1) solid var(--yl-color-border-subtle);
+      border-radius: var(--yl-radius-2);
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-32);
+      padding-block: var(--yl-space-48) var(--yl-space-96);
+    }
+
+    &__heading,
+    &__quote {
+      padding-inline: var(--yl-space-48);
+    }
+
+    &__heading {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-4);
+    }
+
+    &__redirects {
+      border-block: var(--yl-border-width-1) solid var(--yl-color-border-subtle);
+      display: grid;
+      gap: var(--yl-space-48);
+      padding-inline: var(--yl-space-48);
+
+      @include from('tablet') {
+        grid-template-columns: 1fr auto;
+      }
+    }
+
+    &__infos {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-32);
+      justify-content: space-between;
+      padding-block: var(--yl-space-32);
+    }
+
+    &__blog {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-8);
+    }
+
+    &__socials {
+      display: flex;
+      gap: var(--yl-space-16);
+    }
+
+    &__latest {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-16);
+      max-inline-size: 512px;
+      padding-block: var(--yl-space-32);
+
+      @include from('tablet') {
+        border-inline-start: var(--yl-border-width-1) solid var(--yl-color-border-subtle);
+        padding-inline-start: var(--yl-space-48);
+      }
+    }
+
+    &__quote {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--yl-space-16);
+      justify-content: space-between;
+    }
+
+    &__closing {
+      align-items: center;
+      border-block-start: var(--yl-border-width-1) solid var(--yl-color-border-subtle);
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-32);
+      padding-block-start: var(--yl-space-96);
+      padding-inline: var(--yl-space-48);
+
+      > :global(p) {
+        max-inline-size: 592px;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--yl-space-16);
+      justify-content: center;
+    }
+  }
+</style>

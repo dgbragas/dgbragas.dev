@@ -1,0 +1,67 @@
+@use '@dgbragas/yalatus/styles/mixins' as *;
+@use '@dgbragas/yalatus/styles/motion' as *;
+
+.site-theme-dial {
+  block-size: var(--yl-space-112);
+  position: relative;
+
+  &__ticks {
+    align-items: flex-end;
+    display: flex;
+    inset-block-end: 0;
+    inset-inline: 0;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+  }
+
+  &__tick {
+    background-color: var(--yl-color-border-subtle);
+    block-size: var(--yl-space-16);
+    inline-size: var(--yl-border-width-2);
+
+    @include motion-transition((background-color, block-size), 'short-03', 'standard');
+
+    &--light {
+      background-color: var(--yl-color-border-strong);
+      block-size: var(--yl-space-32);
+      opacity: var(--yl-opacity-700);
+    }
+
+    &--current {
+      background-color: var(--yl-color-border-strong);
+      block-size: var(--yl-space-48);
+      opacity: 1;
+    }
+  }
+
+  &__knob {
+    align-items: center;
+    background-color: var(--yl-color-action-accent);
+    block-size: var(--yl-space-48);
+    border: 0;
+    border-radius: var(--yl-space-24);
+    box-shadow: var(--yl-shadow-2);
+    color: var(--yl-color-on-accent);
+    cursor: pointer;
+    display: inline-flex;
+    inline-size: var(--yl-space-48);
+    inset-block-start: 0;
+    inset-inline-start: calc(var(--site-dial-hour, 12) / 23 * 100%);
+    justify-content: center;
+    position: absolute;
+    transform: translateX(-50%);
+
+    @include motion-transition((background-color, inset-inline-start), 'medium-01', 'standard');
+
+    &:hover {
+      background-color: var(--yl-color-action-hover);
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+}

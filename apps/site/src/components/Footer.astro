@@ -1,0 +1,204 @@
+---
+import { Container, Divider, Logo, Text } from '@dgbragas/yalatus';
+
+import { ThemeDial } from '@/components/ThemeDial/ThemeDial.component';
+import { localizePath, t, type Locale } from '@/lib/i18n';
+import { SITE } from '@/lib/site';
+
+type Props = {
+  /** Locale of the page the footer sits in. */
+  locale: Locale;
+};
+
+const { locale } = Astro.props;
+const text = t(locale);
+const year = new Date().getFullYear();
+
+type FooterLink = { label: string; href: string; external?: boolean };
+
+const groups: { title: string; links: FooterLink[] }[] = [
+  {
+    title: text('footer.explore'),
+    links: [
+      { label: text('nav.blog'), href: localizePath(locale, '/blog') },
+      { label: text('nav.portfolio'), href: localizePath(locale, '/portfolio') },
+      { label: text('nav.about'), href: localizePath(locale, '/sobre') },
+    ],
+  },
+  {
+    title: text('footer.contact'),
+    links: [
+      { label: text('footer.email'), href: `mailto:${SITE.email}`, external: true },
+      { label: 'LinkedIn', href: SITE.socials.linkedin, external: true },
+    ],
+  },
+  {
+    title: text('footer.follow'),
+    links: [
+      { label: 'Behance', href: SITE.socials.behance, external: true },
+      { label: 'Dribbble', href: SITE.socials.dribbble, external: true },
+      { label: 'GitHub', href: SITE.socials.github, external: true },
+      { label: 'Instagram', href: SITE.socials.instagram, external: true },
+    ],
+  },
+];
+---
+
+<footer class="site-footer site-section" data-theme-scope="inverse">
+  <div class="yl-theme-inverse site-footer__surface">
+    <Container as="div" className="site-footer__content">
+      <div class="site-footer__navigation">
+        <div class="site-footer__brand">
+          <Logo className="site-footer__logo" />
+          <Text kind="label">{text('footer.tagline')}</Text>
+        </div>
+        <nav aria-label={text('nav.main')} class="site-footer__groups">
+          {groups.map(group => (
+            <div class="site-footer__group">
+              <Text element="h2" kind="label">
+                {group.title}
+              </Text>
+              <ul class="site-footer__links">
+                {group.links.map(link => (
+                  <li>
+                    <a
+                      class="site-footer__link"
+                      href={link.href}
+                      rel={link.external ? 'noopener noreferrer' : undefined}
+                      target={link.external ? '_blank' : undefined}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
+      </div>
+      <Divider decorative />
+      <div class="site-footer__copy">
+        <Text color="fg-subtle">
+          © {SITE.name} {SITE.foundedYear}-{year}. {text('footer.rights')}
+        </Text>
+        <div class="site-footer__meta">
+          <a
+            class="site-footer__link"
+            href={SITE.designSystemUrl}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {text('footer.ds')}
+          </a>
+          <a
+            class="site-footer__link site-footer__link--italic"
+            href={SITE.coffeeUrl}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {text('footer.coffee')}
+          </a>
+        </div>
+      </div>
+      <ThemeDial
+        client:load
+        transition:persist
+        hourLabel={text('theme.hour')}
+        label={text('theme.toggle')}
+      />
+    </Container>
+  </div>
+</footer>
+
+<style lang="scss">
+  @use '@dgbragas/yalatus/styles/mixins' as *;
+  @use '@dgbragas/yalatus/styles/motion' as *;
+
+  .site-footer {
+    &__surface {
+      background-color: var(--yl-color-bg-canvas);
+      color: var(--yl-color-fg-default);
+      padding-block: var(--yl-space-96) var(--yl-space-48);
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-48);
+    }
+
+    &__navigation {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--yl-space-48);
+      justify-content: space-between;
+    }
+
+    &__brand {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-12);
+    }
+
+    :global(.site-footer__logo) {
+      block-size: var(--yl-space-80);
+      inline-size: var(--yl-space-80);
+      margin: calc(-1 * var(--yl-space-12)) calc(-1 * var(--yl-space-24));
+    }
+
+    &__groups {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--yl-space-64);
+    }
+
+    &__group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-16);
+    }
+
+    &__links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--yl-space-8);
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    &__link {
+      color: var(--yl-color-fg-subtle);
+      font: var(--yl-text-body);
+      text-decoration: none;
+
+      @include motion-transition(color, 'short-03', 'standard');
+
+      &:hover,
+      &:focus-visible {
+        color: var(--yl-color-fg-default);
+      }
+
+      &:focus-visible {
+        @include focus-ring;
+      }
+
+      &--italic {
+        font-style: italic;
+      }
+    }
+
+    &__copy {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--yl-space-16);
+      justify-content: space-between;
+    }
+
+    &__meta {
+      display: flex;
+      gap: var(--yl-space-32);
+    }
+  }
+</style>

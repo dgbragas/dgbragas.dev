@@ -1,0 +1,60 @@
+@use 'sass:map';
+
+// ─── Breakpoints ───
+
+$breakpoints: (
+  'tablet': 744px,
+  'web': 1280px,
+);
+
+@mixin from($name) {
+  $value: map.get($breakpoints, $name);
+
+  @if not $value {
+    @error 'Unknown breakpoint "#{$name}"';
+  }
+
+  @media (min-width: $value) {
+    @content;
+  }
+}
+
+@mixin until($name) {
+  $value: map.get($breakpoints, $name);
+
+  @if not $value {
+    @error 'Unknown breakpoint "#{$name}"';
+  }
+
+  @media (max-width: ($value - 1px)) {
+    @content;
+  }
+}
+
+// ─── Typography ───
+
+@mixin typography($name) {
+  font: var(--yl-text-#{$name});
+  letter-spacing: var(--yl-text-#{$name}-tracking);
+  text-transform: var(--yl-text-#{$name}-transform, none);
+}
+
+// ─── Accessibility ───
+
+@mixin focus-ring {
+  box-shadow: var(--yl-focus-ring);
+  outline: var(--yl-border-width-2) solid transparent;
+  outline-offset: var(--yl-border-width-2);
+}
+
+@mixin visually-hidden {
+  border: 0;
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

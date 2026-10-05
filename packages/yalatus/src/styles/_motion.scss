@@ -1,0 +1,67 @@
+@use 'sass:map';
+@use 'sass:meta';
+
+// ─── Scale ───
+
+$durations: (
+  'short-01': 80ms,
+  'short-02': 120ms,
+  'short-03': 160ms,
+  'medium-01': 240ms,
+  'medium-02': 320ms,
+  'long-01': 480ms,
+  'long-02': 640ms,
+);
+$easings: (
+  'standard': cubic-bezier(0.2, 0, 0, 1),
+  'enter': cubic-bezier(0, 0, 0, 1),
+  'exit': cubic-bezier(0.4, 0, 1, 1),
+  'expressive': cubic-bezier(0.68, -0.2, 0.32, 1.2),
+  'linear': linear,
+);
+
+// A time value outside the scale passes through, so a MOTION mark can document it at the call site
+@function duration($name) {
+  @if meta.type-of($name) == number {
+    @return $name;
+  }
+
+  $value: map.get($durations, $name);
+
+  @if not $value {
+    @error 'Unknown duration "#{$name}"';
+  }
+
+  @return $value;
+}
+
+@function easing($name) {
+  $value: map.get($easings, $name);
+
+  @if not $value {
+    @error 'Unknown easing "#{$name}"';
+  }
+
+  @return $value;
+}
+
+// ─── Mixins ───
+
+// Both mixins emit the reduced-motion fallback, so hand-written transition or animation never belongs in a component
+@mixin motion-transition($properties, $duration: 'short-03', $easing: 'standard') {
+  transition-duration: duration($duration);
+  transition-property: $properties;
+  transition-timing-function: easing($easing);
+
+  @media (prefers-reduced-motion: reduce) {
+    transition-duration: 0.01ms;
+  }
+}
+
+@mixin motion-animation($name, $duration: 'medium-01', $easing: 'standard', $iterations: 1) {
+  animation: $name duration($duration) easing($easing) $iterations;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}

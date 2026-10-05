@@ -1,0 +1,29 @@
+@use './mixins' as *;
+
+html {
+  background-color: var(--yl-color-bg-canvas);
+  color: var(--yl-color-fg-default);
+  color-scheme: dark;
+  font: var(--yl-text-body);
+
+  &[data-theme='light'] {
+    color-scheme: light;
+  }
+}
+
+body {
+  min-height: 100dvh;
+}
+
+:focus-visible {
+  @include focus-ring;
+}
+
+.yl-theme-inverse {
+  background-color: var(--yl-color-bg-canvas);
+  color: var(--yl-color-fg-default);
+}
+
+.yl-sr-only {
+  @include visually-hidden;
+}

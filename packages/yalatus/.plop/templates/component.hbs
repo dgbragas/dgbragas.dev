@@ -1,0 +1,27 @@
+import { forwardRef } from 'react';
+
+import { clsx } from 'clsx';
+
+import './{{name}}.styles.scss';
+
+import type { {{name}}Element, {{name}}Props } from './{{name}}.types';
+
+function {{name}}Base(
+  { className, children, ...rest }: {{name}}Props,
+  ref: React.ForwardedRef<{{name}}Element>
+) {
+  const styles = clsx('yl-{{kebab name}}', className);
+
+  return (
+    <{{tag}} ref={ref} className={styles} {...rest}>
+      {children}
+    </{{tag}}>
+  );
+}
+
+/**
+ * {{description}}
+ * @example
+ * <{{name}}>Content</{{name}}>
+ */
+export const {{name}} = forwardRef<{{name}}Element, {{name}}Props>({{name}}Base);

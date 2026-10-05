@@ -1,0 +1,45 @@
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+
+import { runAxe } from '@dgbragas/yalatus/test-utils';
+import { {{name}} } from '..';
+
+describe('{{name}}.component', () => {
+  it('should be defined (no circular dependency)', () => {
+    expect({{name}}).toBeDefined();
+  });
+
+  describe('when render', () => {
+    it('should render children', () => {
+      render(<{{name}}>Content</{{name}}>);
+
+      expect(screen.getByText('Content')).toBeInTheDocument();
+    });
+  });
+
+  describe('when receive props', () => {
+    describe('className prop', () => {
+      it('should append the consumer class after the block class', () => {
+        render(<{{name}} className="custom" data-testid="root" />);
+
+        expect(screen.getByTestId('root')).toHaveClass('yl-{{kebab name}}', 'custom');
+      });
+    });
+  });
+
+  describe('when handling edge cases', () => {
+    it.each([null, false, undefined])('should render without children (%s)', children => {
+      render(<{{name}} data-testid="root">{children}</{{name}}>);
+
+      expect(screen.getByTestId('root')).toBeEmptyDOMElement();
+    });
+  });
+
+  describe('when validating accessibility', () => {
+    it('should have no axe violations', async () => {
+      const { container } = render(<{{name}}>Content</{{name}}>);
+
+      expect(await runAxe(container)).toHaveNoViolations();
+    });
+  });
+});

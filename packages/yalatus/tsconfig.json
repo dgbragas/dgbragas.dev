@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "types": ["vite/client", "@testing-library/jest-dom"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src",
+    "tokens",
+    "scripts",
+    ".storybook/**/*.ts",
+    "plopfile.mjs",
+    "vitest.config.ts",
+    "vitest.setup.ts"
+  ]
+}

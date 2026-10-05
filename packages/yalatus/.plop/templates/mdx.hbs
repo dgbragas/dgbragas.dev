@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as {{name}}Stories from './{{name}}.stories';
+
+<Meta of={{{name}}Stories} />
+
+<Title />
+
+{{description}}
+
+```tsx
+import { {{name}} } from '@dgbragas/yalatus';
+```
+
+<Canvas of={{{name}}Stories.Basic} />
+
+<Controls of={{{name}}Stories.Basic} />
+
+<Stories includePrimary={false} />

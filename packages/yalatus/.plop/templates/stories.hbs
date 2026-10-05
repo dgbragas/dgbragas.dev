@@ -1,0 +1,36 @@
+import type { Meta, StoryObj } from '@storybook/react-vite';
+
+import { {{name}} } from '..';
+
+import type { {{name}}Props } from '../{{name}}.types';
+
+const meta: Meta<{{name}}Props> = {
+  title: 'Components/{{name}}',
+  component: {{name}},
+  parameters: {
+    design: { type: 'figma', url: '{{figma}}' },
+  },
+  argTypes: {
+    appearance: {
+      description: 'Visual variant.',
+      table: { category: '{{name}}', subcategory: 'MODIFIERS', type: { summary: "'default'" }, defaultValue: { summary: 'default' } },
+      control: 'select',
+      options: ['default'],
+    },
+    children: {
+      description: 'Content rendered inside the component.',
+      table: { category: '{{name}}', subcategory: 'ATTRIBUTES', type: { summary: 'ReactNode' } },
+      control: 'text',
+    },
+  },
+  args: {
+    children: 'Content',
+  },
+};
+
+export default meta;
+
+type Story = StoryObj<{{name}}Props>;
+
+/** Default state of the component. */
+export const Basic: Story = {};

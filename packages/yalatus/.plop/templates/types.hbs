@@ -1,0 +1,14 @@
+import type { HTMLAttributes } from 'react';
+
+import type { BaseComponentProps, MergeProps } from '@dgbragas/yalatus/helpers';
+
+type {{name}}Element = {{element}};
+
+type Yalatus{{name}} = BaseComponentProps & {
+  /** Visual variant. */
+  appearance?: 'default';
+};
+
+type {{name}}Props = MergeProps<Yalatus{{name}}, HTMLAttributes<{{name}}Element>>;
+
+export type { {{name}}Element, {{name}}Props };

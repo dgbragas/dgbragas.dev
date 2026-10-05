@@ -1,3 +1,14 @@
-module.exports = {
-  ...require("./node_modules/@whatt-if/prettier/index.js"),
+/** @type {import('prettier').Config} */
+export default {
+  arrowParens: 'avoid',
+  printWidth: 100,
+  singleQuote: true,
+  trailingComma: 'es5',
+  plugins: ['prettier-plugin-astro'],
+  overrides: [
+    {
+      files: '*.astro',
+      options: { parser: 'astro' },
+    },
+  ],
 };

@@ -1,0 +1,13 @@
+node_modules
+dist
+.astro
+storybook-static
+coverage
+playwright-report
+test-results
+.yarn
+yarn.lock
+*.hbs
+packages/yalatus/src/tokens/tokens.css
+packages/yalatus/src/tokens/tokens.names.ts
+apps/site/src/content/**/*.md

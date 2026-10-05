@@ -1,0 +1,5 @@
+{
+  "eslint.validate": ["javascript", "typescript", "typescriptreact", "astro"],
+  "stylelint.validate": ["css", "scss"],
+  "js/ts.tsdk.path": "node_modules/typescript/lib"
+}

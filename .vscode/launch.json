@@ -2,8 +2,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "command": "./node_modules/.bin/astro dev",
-      "name": "Development server",
+      "command": "yarn dev",
+      "name": "Site (astro dev)",
+      "request": "launch",
+      "type": "node-terminal"
+    },
+    {
+      "command": "yarn storybook",
+      "name": "Yalatus (storybook)",
       "request": "launch",
       "type": "node-terminal"
     }

@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as IconStories from './Icon.stories';
+
+<Meta of={IconStories} />
+
+<Title />
+
+Inline SVG icon from the Yalatus set that takes the colour and size of its context.
+
+```tsx
+import { Icon } from '@dgbragas/yalatus';
+```
+
+<Canvas of={IconStories.Basic} />
+
+<Controls of={IconStories.Basic} />
+
+<Stories includePrimary={false} />

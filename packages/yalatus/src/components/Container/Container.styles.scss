@@ -1,0 +1,19 @@
+@use '../../styles/mixins' as *;
+
+.yl-container {
+  inline-size: 100%;
+  margin-inline: auto;
+  padding-inline: var(--yl-grid-mobile-margin);
+
+  @include from('tablet') {
+    padding-inline: var(--yl-grid-tablet-margin);
+  }
+
+  @include from('web') {
+    padding-inline: var(--yl-grid-web-margin);
+  }
+
+  &--content {
+    max-inline-size: calc(var(--yl-grid-web-content) + 2 * var(--yl-grid-web-margin));
+  }
+}

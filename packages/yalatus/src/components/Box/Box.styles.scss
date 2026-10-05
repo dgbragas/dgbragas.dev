@@ -1,0 +1,51 @@
+@use 'sass:map';
+@use '../../styles/mixins' as *;
+
+$responsive-props: (
+  'm': margin,
+  'mt': margin-block-start,
+  'mb': margin-block-end,
+  'ml': margin-inline-start,
+  'mr': margin-inline-end,
+  'mx': margin-inline,
+  'my': margin-block,
+  'p': padding,
+  'pt': padding-block-start,
+  'pb': padding-block-end,
+  'pl': padding-inline-start,
+  'pr': padding-inline-end,
+  'px': padding-inline,
+  'py': padding-block,
+  'gap': gap,
+  'width': width,
+  'minWidth': min-width,
+  'maxWidth': max-width,
+  'height': height,
+  'minHeight': min-height,
+  'maxHeight': max-height,
+  'display': display,
+  'flexDirection': flex-direction,
+  'alignItems': align-items,
+  'justifyContent': justify-content,
+  'flexWrap': flex-wrap,
+  'textAlign': text-align,
+);
+
+.yl-box {
+  box-sizing: border-box;
+}
+
+// Each breakpoint variable falls back to the one below it, so a prop set only on base applies everywhere
+@each $prop, $css in $responsive-props {
+  .yl-box--r-#{$prop} {
+    #{$css}: var(--yl-r-#{$prop});
+
+    @include from('tablet') {
+      #{$css}: var(--yl-r-#{$prop}-tablet, var(--yl-r-#{$prop}));
+    }
+
+    @include from('web') {
+      #{$css}: var(--yl-r-#{$prop}-web, var(--yl-r-#{$prop}-tablet, var(--yl-r-#{$prop})));
+    }
+  }
+}

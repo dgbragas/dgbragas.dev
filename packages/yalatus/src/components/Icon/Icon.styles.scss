@@ -1,0 +1,31 @@
+.yl-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  line-height: 0;
+
+  svg {
+    height: 100%;
+    width: 100%;
+  }
+
+  &--smallest {
+    block-size: var(--yl-space-16);
+    inline-size: var(--yl-space-16);
+  }
+
+  &--small {
+    // FIGMA: the small icon is 20px, a step the space scale does not have.
+    block-size: 20px;
+    inline-size: 20px;
+  }
+
+  &--medium {
+    block-size: var(--yl-space-24);
+    inline-size: var(--yl-space-24);
+  }
+
+  &--large {
+    block-size: var(--yl-space-32);
+    inline-size: var(--yl-space-32);
+  }
+}

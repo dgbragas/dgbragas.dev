@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as TextStories from './Text.stories';
+
+<Meta of={TextStories} />
+
+<Title />
+
+Typography primitive that applies one style of the Yalatus type scale and the matching semantic element.
+
+```tsx
+import { Text } from '@dgbragas/yalatus';
+```
+
+<Canvas of={TextStories.Basic} />
+
+<Controls of={TextStories.Basic} />
+
+<Stories includePrimary={false} />

@@ -1,0 +1,52 @@
+@use '../../styles/mixins' as *;
+
+$kinds:
+  display, title, heading-1, heading-2, heading-3, heading-4, heading-5, prose, body-lg, body,
+  label-uppercase, label, caption, numeral-lg, numeral, value, code;
+
+.yl-text {
+  margin: 0;
+
+  @each $kind in $kinds {
+    &--#{$kind} {
+      @include typography($kind);
+    }
+  }
+
+  &--display,
+  &--title,
+  &--heading-1,
+  &--heading-2 {
+    text-wrap: balance;
+  }
+
+  &--prose,
+  &--body-lg,
+  &--body {
+    text-wrap: pretty;
+  }
+
+  &--numeral-lg,
+  &--numeral,
+  &--value {
+    font-variant-numeric: tabular-nums;
+  }
+
+  &--start {
+    text-align: start;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--end {
+    text-align: end;
+  }
+
+  &--truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

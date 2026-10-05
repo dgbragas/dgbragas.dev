@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as StackStories from './Stack.stories';
+
+<Meta of={StackStories} />
+
+<Title />
+
+Flex container that stacks children on one axis with a token gap; use it instead of writing flex rules in component SCSS.
+
+```tsx
+import { Stack } from '@dgbragas/yalatus';
+```
+
+<Canvas of={StackStories.Basic} />
+
+<Controls of={StackStories.Basic} />
+
+<Stories includePrimary={false} />

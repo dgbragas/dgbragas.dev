@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as ContainerStories from './Container.stories';
+
+<Meta of={ContainerStories} />
+
+<Title />
+
+Centred column with the gutters of the Figma grids, capped at the 1216px web content width.
+
+```tsx
+import { Container } from '@dgbragas/yalatus';
+```
+
+<Canvas of={ContainerStories.Basic} />
+
+<Controls of={ContainerStories.Basic} />
+
+<Stories includePrimary={false} />

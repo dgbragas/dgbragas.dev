@@ -1,0 +1,19 @@
+import { Canvas, Controls, Meta, Stories, Title } from '@storybook/addon-docs/blocks';
+
+import * as BoxStories from './Box.stories';
+
+<Meta of={BoxStories} />
+
+<Title />
+
+Layout primitive that maps spacing, size, flex and colour tokens to inline styles, so components keep layout out of their SCSS.
+
+```tsx
+import { Box } from '@dgbragas/yalatus';
+```
+
+<Canvas of={BoxStories.Basic} />
+
+<Controls of={BoxStories.Basic} />
+
+<Stories includePrimary={false} />
